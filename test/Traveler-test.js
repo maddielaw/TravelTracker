@@ -39,7 +39,19 @@ describe('Traveler', () => {
 
   it('should keep track of a traveler\'s id', function () {
     expect(traveler.id).to.equal(1)
-  })
+  });
+
+  it('should keep track of a traveler\'s name', function () {
+    expect(traveler.name).to.equal("Ham Leadbeater")
+    traveler.name = "";
+    expect(traveler.name).to.equal("")
+  });
+
+  it('should keep track of a traveler\'s type', function () {
+    expect(traveler.travelerType).to.equal("relaxer")
+  });
+
+
 
 
 
