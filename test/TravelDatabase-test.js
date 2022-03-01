@@ -11,7 +11,7 @@ describe('Travel Database', () => {
 
     allTravelData = {
       travelers: [
-        {id: 1, name: "Ham Leadbeater", travelerType: "relaxer"},
+        {id: 1, name: "Ham Leadbeater", travelerType: "relaxer", travelerTrips: [{id: 117, userID: 1, destinationID: 28, travelers: 3, date: "2021/01/09", duration: 15, status: "approved", suggestedActivities: []}]},
         {id: 2, name: "Rachael Vaughten", travelerType: "thrill-seeker"},
         {id: 3, name: "Sibby Dawidowitsch", travelerType: "shopper"}],
       trips: [
@@ -51,6 +51,14 @@ describe('Travel Database', () => {
   it('should keep track of all destination options', function () {
     expect(travelDatabase.destinations).to.eql(allTravelData.destinations);
   });
+
+  it('should be able to find a traveler', function () {
+    expect(travelDatabase.findATraveler(1)).to.eql(allTravelData.travelers[0]);
+  });
+
+  // it('should keep track of the current traveler', function () {
+  //   expect(travelDatabase.findATraveler(1)).to.eql(allTravelData.travelers[0]);
+  // });
 
 
 
