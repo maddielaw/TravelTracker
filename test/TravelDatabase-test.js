@@ -48,6 +48,10 @@ describe('Travel Database', () => {
     expect(travelDatabase.trips).to.eql(allTravelData.trips);
   });
 
+  it('should keep track of all destination options', function () {
+    expect(travelDatabase.destinations).to.eql(allTravelData.destinations);
+  });
+
 
 
 

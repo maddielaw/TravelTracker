@@ -5,6 +5,7 @@ class TravelDatabase {
     this.data = data;
     this.travelers = data.travelers;
     this.trips = data.trips;
+    this.destinations = data.destinations;
   }
 }
 
@@ -15,7 +16,6 @@ export default TravelDatabase;
 
 
 /*
-    this.tripsData = data.tripsData;
     this.destinationsData = data.destinationsData;
     this.currentTraveler = {};
 */
