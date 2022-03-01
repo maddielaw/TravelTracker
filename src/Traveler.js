@@ -5,7 +5,7 @@ class Traveler {
     this.name = travelerData.name;
     this.travelerType = travelerData.travelerType;
     this.travelerTrips = travelerTrips;
-    // this.pastTrips = [];
+    this.pastTrips = [];
     // this.upcomingTrips = [];
     // this.pendingTrips = [];
     // this.currentTrip = [];
@@ -16,6 +16,12 @@ class Traveler {
       return new Date(a.date) - new Date(b.date)
     })
     return sortedTrips
+  }
+
+  findPastTrips() {
+    this.sortTrips();
+    const currentDate = new Date().toLocaleDateString();
+    this.pastTrips = this.travelerTrips.filter(trip => trip.date < currentDate);
   }
 
 

@@ -78,22 +78,22 @@ describe('Traveler', () => {
         suggestedActivities: []
         },
         {id: 177,
-          userID: 2,
-          destinationID: 20,
-          travelers: 6,
-          date: "2020/01/29",
-          duration: 8,
-          status: "approved",
-          suggestedActivities: []
+        userID: 2,
+        destinationID: 20,
+        travelers: 6,
+        date: "2020/01/29",
+        duration: 8,
+        status: "approved",
+        suggestedActivities: []
         },
         {id: 166,
-          userID: 2,
-          destinationID: 7,
-          travelers: 2,
-          date: "2020/03/05",
-          duration: 6,
-          status: "approved",
-          suggestedActivities: []
+        userID: 2,
+        destinationID: 7,
+        travelers: 2,
+        date: "2020/03/05",
+        duration: 6,
+        status: "approved",
+        suggestedActivities: []
         },
         {id: 100,
         userID: 2,
@@ -155,9 +155,14 @@ describe('Traveler', () => {
     expect(traveler.travelerTrips).to.eql([]);
   });
 
-  it('should be able to sort a traveler\'s trips', function () {
+  it('should be able to sort a traveler\'s trips by date', function () {
     expect(traveler.travelerTrips).to.equal(travelerTrips)
     expect(traveler.sortTrips()).to.eql(sortedTravelerTrips)
+  });
+
+  it('should be able to find a traveler\'s past trips', function () {
+    traveler.findPastTrips();
+    expect(traveler.pastTrips).to.eql(sortedTravelerTrips)
   });
 
 
