@@ -51,6 +51,12 @@ describe('Traveler', () => {
     expect(traveler.travelerType).to.equal("relaxer")
   });
 
+  it('should keep track of a traveler\'s trips', function () {
+    expect(traveler.travelerTrips).to.equal(travelerTrips)
+    traveler.travelerTrips = [];
+    expect(traveler.travelerTrips).to.eql([]);
+  });
+
 
 
 
