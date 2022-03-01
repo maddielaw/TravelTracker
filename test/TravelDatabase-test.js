@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import TravelDatabase from '../src/TravelDatabase';
+import Traveler from '../src/Traveler';
 
 
 describe('Travel Database', () => {
@@ -7,7 +8,6 @@ describe('Travel Database', () => {
   let travelDatabase, allTravelData;
 
   beforeEach(function() {
-
 
     allTravelData = {
       travelers: [
@@ -56,9 +56,11 @@ describe('Travel Database', () => {
     expect(travelDatabase.findATraveler(1)).to.eql(allTravelData.travelers[0]);
   });
 
-  // it('should keep track of the current traveler', function () {
-  //   expect(travelDatabase.findATraveler(1)).to.eql(allTravelData.travelers[0]);
-  // });
+  it('should keep track of the current traveler', function () {
+    travelDatabase.findATraveler(1);
+    expect(travelDatabase.currentTraveler).to.eql(allTravelData.travelers[0]);
+    expect(travelDatabase.currentTraveler).to.be.an.instanceOf(Traveler)
+  });
 
 
 
