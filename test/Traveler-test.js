@@ -33,7 +33,7 @@ describe('Traveler', () => {
       userID: 2,
       destinationID: 7,
       travelers: 3,
-      date: "2020/04/03",
+      date: "2022/04/03",
       duration: 8,
       status: "approved",
       suggestedActivities: []
@@ -51,7 +51,7 @@ describe('Traveler', () => {
       userID: 2,
       destinationID: 43,
       travelers: 1,
-      date: "2020/12/27",
+      date: "2022/12/27",
       duration: 18,
       status: "pending",
       suggestedActivities: []
@@ -108,7 +108,7 @@ describe('Traveler', () => {
         userID: 2,
         destinationID: 7,
         travelers: 3,
-        date: "2020/04/03",
+        date: "2022/04/03",
         duration: 8,
         status: "approved",
         suggestedActivities: []
@@ -117,7 +117,7 @@ describe('Traveler', () => {
         userID: 2,
         destinationID: 43,
         travelers: 1,
-        date: "2020/12/27",
+        date: "2022/12/27",
         duration: 18,
         status: "pending",
         suggestedActivities: []}
@@ -206,12 +206,65 @@ describe('Traveler', () => {
 
   it('should be able to find a traveler\'s past trips', function () {
     traveler.findPastTrips();
-    expect(traveler.pastTrips).to.eql(sortedTravelerTrips)
+    expect(traveler.pastTrips).to.eql([
+      {id: 89,
+        userID: 2,
+        destinationID: 10,
+        travelers: 5,
+        date: "2019/09/27",
+        duration: 13,
+        status: "approved",
+        suggestedActivities: []
+        },
+        {id: 177,
+        userID: 2,
+        destinationID: 20,
+        travelers: 6,
+        date: "2020/01/29",
+        duration: 8,
+        status: "approved",
+        suggestedActivities: []
+        },
+        {id: 166,
+        userID: 2,
+        destinationID: 7,
+        travelers: 2,
+        date: "2020/03/05",
+        duration: 6,
+        status: "approved",
+        suggestedActivities: []
+        },
+        {id: 100,
+        userID: 2,
+        destinationID: 6,
+        travelers: 6,
+        date: "2020/3/28",
+        duration: 10,
+        status: "approved",
+        suggestedActivities: []
+        }])
   });
 
   it('should be able to find a traveler\'s upcoming trips', function () {
     traveler.findUpcomingTrips();
-    expect(traveler.upcomingTrips).to.eql([])
+    expect(traveler.upcomingTrips).to.eql([
+      {id: 116,
+        userID: 2,
+        destinationID: 7,
+        travelers: 3,
+        date: "2022/04/03",
+        duration: 8,
+        status: "approved",
+        suggestedActivities: []
+        },
+        {id: 171,
+        userID: 2,
+        destinationID: 43,
+        travelers: 1,
+        date: "2022/12/27",
+        duration: 18,
+        status: "pending",
+        suggestedActivities: []}])
   });
 
   it('should be able to find a traveler\'s current trip(s)', function () {
@@ -226,7 +279,7 @@ describe('Traveler', () => {
       userID: 2,
       destinationID: 43,
       travelers: 1,
-      date: "2020/12/27",
+      date: "2022/12/27",
       duration: 18,
       status: "pending",
       suggestedActivities: []}
@@ -314,7 +367,7 @@ describe('Traveler', () => {
           alt: 'city during the day time with eiffel tower'
         },
         travelers: 3,
-        date: '2020/04/03',
+        date: '2022/04/03',
         duration: 8,
         status: 'approved',
         suggestedActivities: []
@@ -331,15 +384,53 @@ describe('Traveler', () => {
           alt: 'aerial photography of white and blue cruise ships during daytime'
         },
         travelers: 1,
-        date: '2020/12/27',
+        date: '2022/12/27',
         duration: 18,
         status: 'pending',
         suggestedActivities: []
       }])
     });
       
-  it.only('should be able to find a traveler\'s trips for the current year', function () {
-    expect(traveler.findYearlyTrips()).to.eql([])
+  it('should be able to find a traveler\'s trips for the current year', function () {
+    expect(traveler.findYearlyTrips()).to.eql([
+      {
+        id: 116,
+        userID: 2,
+        destinationID: {
+          id: 7,
+          destination: 'Paris, France',
+          estimatedLodgingCostPerDay: 100,
+          estimatedFlightCostPerPerson: 395,
+          image: 'https://images.unsplash.com/photo-1524396309943-e03f5249f002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80',
+          alt: 'city during the day time with eiffel tower'
+        },
+        travelers: 3,
+        date: '2022/04/03',
+        duration: 8,
+        status: 'approved',
+        suggestedActivities: []
+      },
+      {
+        id: 171,
+        userID: 2,
+        destinationID: {
+          id: 43,
+          destination: 'Nassau, The Bahamas',
+          estimatedLodgingCostPerDay: 550,
+          estimatedFlightCostPerPerson: 90,
+          image: 'https://images.unsplash.com/photo-1548574505-5e239809ee19?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1664&q=80',
+          alt: 'aerial photography of white and blue cruise ships during daytime'
+        },
+        travelers: 1,
+        date: '2022/12/27',
+        duration: 18,
+        status: 'pending',
+        suggestedActivities: []
+      }])
+  });
+
+  it('should be able to calculate how much a traveler spent on trips for current year', function () {
+    expect(traveler.calculateYearlyTripCost()).to.eql(13172.5)
   });
   
 })

@@ -67,13 +67,31 @@ class Traveler {
     this.findTravelerDestinations();
     const thisYearsTrips = [];
     const currentYear = new Date().getFullYear();
-
     this.travelerTrips.forEach(trip => {
       if (new Date(trip.date).getFullYear() === currentYear) {
         thisYearsTrips.push(trip)
       }
     })
     return thisYearsTrips
+  };
+
+  calculateYearlyTripCost() {
+    const thisYearTrips = this.findYearlyTrips();
+
+    const lodgingCost = thisYearTrips.reduce((total, trip) => {
+      return total += trip.destinationID.estimatedLodgingCostPerDay * trip.duration;
+    }, 0);
+
+
+    const flightCost = thisYearTrips.reduce((total, trip) => {
+      return total += trip.destinationID.estimatedFlightCostPerPerson * trip.travelers;
+    }, 0);
+
+    const baseCost = lodgingCost + flightCost;
+    const travelAgentFee = baseCost / 10;
+    const finalTotal = baseCost + travelAgentFee;
+
+    return finalTotal;
   }
 
 
