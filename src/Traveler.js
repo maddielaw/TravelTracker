@@ -1,6 +1,6 @@
 
 class Traveler {
-  constructor(travelerData, travelerTrips) {
+  constructor(travelerData, travelerTrips, destinations) {
     this.id = travelerData.id;
     this.name = travelerData.name;
     this.travelerType = travelerData.travelerType;
@@ -9,6 +9,7 @@ class Traveler {
     this.upcomingTrips = [];
     this.currentTrip = [];
     this.pendingTrips = [];
+    this.destinations = destinations;
   }
 
   sortTrips() {
@@ -46,12 +47,21 @@ class Traveler {
       let returnDate = new Date(departureDate.setDate(departureDate.getDate() + trip.duration));
       return new Date(trip.date) <= new Date(currentDate) && returnDate >= new Date(currentDate)
     })
-  }
+  };
 
   findPendingTrips() {
     this.sortTrips();
     this.pendingTrips = this.travelerTrips.filter(trip => trip.status === "pending");
   };
+
+  findTravelerDestinations() {
+    this.sortTrips()
+    this.travelerTrips.map(trip => {
+      const matchingDestination = this.destinations.find(destination => destination.id === trip.destinationID);
+      return trip.destinationID = matchingDestination
+    })
+    return this.travelerTrips
+  }
 
 
 

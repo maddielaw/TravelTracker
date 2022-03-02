@@ -12,7 +12,7 @@ class TravelDatabase {
   findATraveler(id) {
     const singleTravelerData = this.travelers.find(traveler => traveler.id === id)
     const singleTravelerTrips = this.trips.filter(trip => trip.userID === id)
-    this.currentTraveler = new Traveler(singleTravelerData, singleTravelerTrips);
+    this.currentTraveler = new Traveler(singleTravelerData, singleTravelerTrips, this.destinations);
     return this.currentTraveler
   }
 
