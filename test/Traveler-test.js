@@ -175,6 +175,20 @@ describe('Traveler', () => {
     expect(traveler.currentTrip).to.eql([])
   });
 
+  it('should be able to find a traveler\'s pending trips', function () {
+    traveler.findPendingTrips();
+    expect(traveler.pendingTrips).to.eql([
+      {id: 171,
+      userID: 2,
+      destinationID: 43,
+      travelers: 1,
+      date: "2020/12/27",
+      duration: 18,
+      status: "pending",
+      suggestedActivities: []}
+    ])
+  });
+
 
 
 
