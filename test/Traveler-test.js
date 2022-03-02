@@ -336,13 +336,10 @@ describe('Traveler', () => {
         status: 'pending',
         suggestedActivities: []
       }])
-
-
-
-
+    });
+      
+  it.only('should be able to find a traveler\'s trips for the current year', function () {
+    expect(traveler.findYearlyTrips()).to.eql([])
   });
-
-
-
-
+  
 })

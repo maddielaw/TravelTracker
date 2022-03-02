@@ -61,6 +61,19 @@ class Traveler {
       return trip.destinationID = matchingDestination
     })
     return this.travelerTrips
+  };
+
+  findYearlyTrips() {
+    this.findTravelerDestinations();
+    const thisYearsTrips = [];
+    const currentYear = new Date().getFullYear();
+
+    this.travelerTrips.forEach(trip => {
+      if (new Date(trip.date).getFullYear() === currentYear) {
+        thisYearsTrips.push(trip)
+      }
+    })
+    return thisYearsTrips
   }
 
 
