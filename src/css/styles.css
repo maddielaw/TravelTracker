@@ -1,0 +1,55 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  border: 1px solid salmon;
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  display: flex;
+  height: 100%;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 15%;
+}
+
+.trip-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  overflow: scroll;
+  grid-gap: 20px;
+  padding: 20px;
+  width: 100%;
+}
+
+.grid-card {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  background-color: aqua;
+}
+
+.profile-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  width: 30%;
+}
