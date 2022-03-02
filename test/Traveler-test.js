@@ -165,6 +165,11 @@ describe('Traveler', () => {
     expect(traveler.pastTrips).to.eql(sortedTravelerTrips)
   });
 
+  it('should be able to find a traveler\'s upcoming trips', function () {
+    traveler.findUpcomingTrips();
+    expect(traveler.upcomingTrips).to.eql([])
+  });
+
 
 
 

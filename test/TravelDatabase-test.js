@@ -11,7 +11,7 @@ describe('Travel Database', () => {
 
     allTravelData = {
       travelers: [
-        {id: 1, name: "Ham Leadbeater", travelerType: "relaxer", travelerTrips: [{id: 117, userID: 1, destinationID: 28, travelers: 3, date: "2021/01/09", duration: 15, status: "approved", suggestedActivities: []}], pastTrips: []},
+        {id: 1, name: "Ham Leadbeater", travelerType: "relaxer", travelerTrips: [{id: 117, userID: 1, destinationID: 28, travelers: 3, date: "2021/01/09", duration: 15, status: "approved", suggestedActivities: []}], pastTrips: [], upcomingTrips: []},
         {id: 2, name: "Rachael Vaughten", travelerType: "thrill-seeker"},
         {id: 3, name: "Sibby Dawidowitsch", travelerType: "shopper"}],
       trips: [
