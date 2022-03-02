@@ -170,6 +170,11 @@ describe('Traveler', () => {
     expect(traveler.upcomingTrips).to.eql([])
   });
 
+  it('should be able to find a traveler\'s current trip(s)', function () {
+    traveler.findCurrentTrip();
+    expect(traveler.currentTrip).to.eql([])
+  });
+
 
 
 

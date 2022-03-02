@@ -7,8 +7,8 @@ class Traveler {
     this.travelerTrips = travelerTrips;
     this.pastTrips = [];
     this.upcomingTrips = [];
-    // this.pendingTrips = [];
-    // this.currentTrip = [];
+    this.currentTrip = [];
+    this.pendingTrips = [];
   }
 
   sortTrips() {
@@ -36,8 +36,18 @@ class Traveler {
       let returnDate = new Date(departureDate.setDate(departureDate.getDate() + trip.duration));
       return new Date(trip.date) > new Date(currentDate) && returnDate > new Date(currentDate)
     })
-    
   };
+
+  findCurrentTrip() {
+    this.sortTrips();
+    const currentDate = new Date().toLocaleDateString();
+    this.currentTrip = this.travelerTrips.filter(trip => {
+      let departureDate = new Date(trip.date);
+      let returnDate = new Date(departureDate.setDate(departureDate.getDate() + trip.duration));
+      return new Date(trip.date) <= new Date(currentDate) && returnDate >= new Date(currentDate)
+    })
+
+  }
 
 
 
