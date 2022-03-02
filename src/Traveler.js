@@ -21,7 +21,13 @@ class Traveler {
   findPastTrips() {
     this.sortTrips();
     const currentDate = new Date().toLocaleDateString();
-    this.pastTrips = this.travelerTrips.filter(trip => trip.date < currentDate);
+    this.pastTrips = this.travelerTrips.filter(trip => {
+      let departureDate = new Date(trip.date);
+      let returnDate = new Date(departureDate.setDate(departureDate.getDate() + trip.duration))
+      return trip.date < currentDate || returnDate < currentDate
+    })
+    
+
   }
 
 
