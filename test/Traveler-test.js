@@ -433,4 +433,4 @@ describe('Traveler', () => {
     expect(traveler.calculateYearlyTripCost()).to.eql(13172.5)
   });
   
-})
+});
