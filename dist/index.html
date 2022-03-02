@@ -4,14 +4,42 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>travelTracker</title>
 </head>
 <body>
-  <h1>THIS IS WORKINGGGGG</h1>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
+  <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
+  <nav class="nav-bar">
+    <section class="main-logo">
+      <h1 class="logo" id="logo">travelTracker</h1>
+    </section>
+    <section class="welcome-message">
+      <h2 class="welcome" id="welcome">welcome, maddie</h2>
+    </section>
+  </nav>
+  <main class="main-section">
 
+    <section class="trip-grid">
+      <section class="present-trips"></section>
+      <section class="upcoming-trips"></section>
+      <section class="past-trips"></section>
+      <section class="pending-trips"></section>
+    </section>
+
+    <section class="profile-sidebar">
+      <div class="name-date-conatiner">
+        <p class="traveler-name" id="travelerName">Maddie Law</p>
+        <p class="today-date" id="todayDate">today's date</p>
+      </div>
+      <div class="trip-cost-container">
+        <h3 class="total-cost-of-trips" id="totalTripCost">Total amount spent on trips this year</h3>
+      </div>
+      <div class="book-now-btn-container">
+        <p>ready to take off?</p>
+        <button class="book-now-button" type="button" id="bookNowButton">book now!</button>
+      </div>
+    </section>
+
+  </main>
+  <script src="bundle.js"></script>
 </body>
 </html>
