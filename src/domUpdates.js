@@ -33,13 +33,7 @@ let domUpdates = {
   updateTravelerSpending: function (data, cost) {
     totalTripCost.innerText = `You've spent $${cost} on trips this year`
   },
-  resetAllTripsInnerHTML: function () {
-    allTripsContainer.innerHTML = "";
-  },
   updateAllTravelerTrips: function (trip) {
-    allTripsContainer.classList.remove('hidden');
-    upcomingTripsContainer.classList.add('hidden');
-    pendingTripsContainer.classList.add('hidden');
     allTripsContainer.innerHTML += `
       <div class="all-trips trip-card">
         <h3 class="trip-card-location trip-info" id="tripCardLocation">${trip.destinationID.destination}</h3>
@@ -52,13 +46,7 @@ let domUpdates = {
         <h4 class="trip-status trip-info" id="tripStatus">Trip Status: ${trip.status}</h4>
       </div>`
   },
-  resetUpcomingTripsInnerHTML: function () {
-    upcomingTripsContainer.innerHTML = ""
-  },
   updateUpcomingTravelerTrips: function (trip) {
-    allTripsContainer.classList.add('hidden');
-    upcomingTripsContainer.classList.remove('hidden');
-    pendingTripsContainer.classList.add('hidden');
     upcomingTripsContainer.innerHTML += `
       <div class="all-trips trip-card">
         <h3 class="trip-card-location trip-info" id="tripCardLocation">${trip.destinationID.destination}</h3>
@@ -71,13 +59,7 @@ let domUpdates = {
         <h4 class="trip-status trip-info" id="tripStatus">Trip Status: ${trip.status}</h4>
       </div>`
   },
-  resetPendingTripsInnerHTML: function () {
-    pendingTripsContainer.innerHTML = ""
-  },
   updatePendingTravelerTrips: function (trip) {
-    allTripsContainer.classList.add('hidden');
-    upcomingTripsContainer.classList.add('hidden');
-    pendingTripsContainer.classList.remove('hidden');
     pendingTripsContainer.innerHTML += `
     <div class="all-trips trip-card">
         <h3 class="trip-card-location trip-info" id="tripCardLocation">${trip.destinationID.destination}</h3>
@@ -95,7 +77,7 @@ let domUpdates = {
     allTripsContainer.classList.add('hidden');
     upcomingTripsContainer.classList.add('hidden');
   },
-  hideDisplayNotFoundMessage: function () {
+  hideNotFoundMessage: function () {
     notFoundMessage.classList.add('hidden')
   },
   displayAndHideFormPage: function () {

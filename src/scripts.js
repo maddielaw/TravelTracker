@@ -13,6 +13,12 @@ const pendingTripsBtn = document.getElementById('pendingTripsButton');
 const bookTripBtn = document.getElementById('bookNowButton')
 const backToMainBtn = document.getElementById('backToMain')
 
+const allTripsContainer = document.getElementById('allTrips');
+const upcomingTripsContainer = document.getElementById('upcomingTrips');
+const pendingTripsContainer = document.getElementById('pendingTrips');
+const notFoundMessage = document.getElementById('notFound');
+
+
 //Event Listeners -------------------------------------------------------------------------------------
 
 window.addEventListener('load', displayMainDashboard)
@@ -26,14 +32,6 @@ backToMainBtn.addEventListener('click', displayAndHideTripForm);
 
 
 // Main Functions -------------------------------------------------------------------------------------------
-
-
-function displayAndHideTripForm() {
-  domUpdates.displayAndHideFormPage()
-
-}
-
-
 
 function displayMainDashboard() {
   createMainDashboard(33)
@@ -53,7 +51,6 @@ function createMainDashboard(id) {
     createTraveler(travelDatabase, id);
     displayTravelerProfile(travelDatabase);
     displayAllTravelerTrips(travelDatabase);
-    console.log(travelDatabase.currentTraveler)
   });
 };
 
@@ -80,10 +77,7 @@ function displayTravelerProfile(data) {
   displayTravelerSpending(data)
 };
 
-
-
-
-//API & Promise Handling -------------------------------------------------------------------------------------------------
+//API & Promise Handling ------------------------------------------------------------------------------------------------
 
 function resolvePromise() {
   const allTravelerData = fetchCalls.fetchData('travelers');
@@ -131,21 +125,27 @@ function displayTravelerData(data) {
 
 
 function displayAllTravelerTrips(data) {
+  domUpdates.hideNotFoundMessage();
+  showItem(allTripsContainer);
+  hideItem(upcomingTripsContainer);
+  hideItem(pendingTripsContainer);
   const allTravelerTrips = data.currentTraveler.travelerTrips;
-  domUpdates.resetAllTripsInnerHTML();
-  domUpdates.hideDisplayNotFoundMessage();
+  allTripsContainer.innerHTML = ""
   allTravelerTrips.forEach(trip => {
     domUpdates.updateAllTravelerTrips(trip)
   });
 };
 
 function displayUpcomingTravelerTrips(data) {
+  domUpdates.hideNotFoundMessage();
+  showItem(upcomingTripsContainer);
+  hideItem(allTripsContainer);
+  hideItem(pendingTripsContainer);
   const upcomingTravelerTrips = data.currentTraveler.upcomingTrips;
   if (!upcomingTravelerTrips.length) {
     domUpdates.displayNotFoundMessage()
   } else {
-    domUpdates.resetUpcomingTripsInnerHTML();
-    domUpdates.hideDisplayNotFoundMessage();
+    upcomingTripsContainer.innerHTML = ""
     upcomingTravelerTrips.forEach(trip => {
       domUpdates.updateUpcomingTravelerTrips(trip)
     });
@@ -153,16 +153,43 @@ function displayUpcomingTravelerTrips(data) {
 };
 
 function displayPendingTravelerTrips(data) {
+  domUpdates.hideNotFoundMessage();
+  showItem(pendingTripsContainer);
+  hideItem(allTripsContainer);
+  hideItem(upcomingTripsContainer);
   const pendingTravelerTrips = data.currentTraveler.pendingTrips;
   if (!pendingTravelerTrips.length) {
     domUpdates.displayNotFoundMessage()
   } else {
-    domUpdates.resetPendingTripsInnerHTML();
-    domUpdates.hideDisplayNotFoundMessage();
+    pendingTripsContainer.innerHTML = "";
       pendingTravelerTrips.forEach(trip => {
         domUpdates.updatePendingTravelerTrips(trip)
-      })
-  }
+      });
+  };
+};
+
+
+// Form Page  -------------------------------------------------------------------------------------------
+
+function displayAndHideTripForm() {
+  domUpdates.displayAndHideFormPage()
+};
+
+// function createDestinationList(data) {
+//   data.destinations.forEach(destination => {
+
+//   })
+// }
+
+
+
+
+function hideItem(selector) {
+  selector.classList.add('hidden')
+}
+
+function showItem(selector) {
+  selector.classList.remove('hidden')
 }
 
 
