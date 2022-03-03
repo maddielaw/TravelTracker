@@ -45,6 +45,8 @@ main {
   background-color: #fa9763;
 }
 
+/* ~~~~~~~~~~~~~~~~~~ TRIP CARD RULES ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
 .trip-cards-container {
   display: flex;
   flex-flow: wrap;
@@ -79,6 +81,7 @@ img {
   width: 100%;
 }
 
+/* ~~~~~~~~~~~~~~~~~~ SIDEBAR RULES ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .profile-sidebar {
   display: flex;
@@ -97,3 +100,36 @@ img {
 .hidden {
   display: none;
 }
+
+
+/* ~~~~~~~~~~~~~~~~~~ FORM RULES ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.new-trip-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  width: 75%;
+  margin-top: 20px;
+  align-self: center;
+}
+
+.new-trip-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 20px;
+  height: 65%;
+  width: 50%;
+  align-self: center;
+  border-radius: 10px;
+  background-color: #f1ede6;
+  box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+}
+
+.form-title {
+  align-self: center;
+}
+
+
