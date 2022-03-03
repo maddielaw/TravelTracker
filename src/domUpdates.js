@@ -7,9 +7,11 @@ const travelerName = document.getElementById('travelerName');
 const todayDate = document.getElementById('todayDate');
 const totalTripCost = document.getElementById('totalTripCost');
 const allTripsContainer = document.getElementById('allTrips');
+const mainDashboard = document.getElementById('mainSection')
 const upcomingTripsContainer = document.getElementById('upcomingTrips');
 const pendingTripsContainer = document.getElementById('pendingTrips');
 const notFoundMessage = document.getElementById('notFound');
+const tripFormPage = document.getElementById('tripFormContainer')
 
 
 
@@ -95,6 +97,10 @@ let domUpdates = {
   },
   hideDisplayNotFoundMessage: function () {
     notFoundMessage.classList.add('hidden')
+  },
+  displayAndHideFormPage: function () {
+    mainDashboard.classList.toggle('hidden');
+    tripFormPage.classList.toggle('hidden')
   }
 
 

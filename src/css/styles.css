@@ -97,11 +97,6 @@ img {
   align-self: center;
 }
 
-.hidden {
-  display: none;
-}
-
-
 /* ~~~~~~~~~~~~~~~~~~ FORM RULES ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .new-trip-form-container {
@@ -133,3 +128,9 @@ img {
 }
 
 
+
+/* ~~~~~~~~~~~~~~~~~~ HIDDEN RULES ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.hidden {
+  display: none;
+}

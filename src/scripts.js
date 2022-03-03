@@ -10,6 +10,8 @@ import TravelDatabase from './TravelDatabase';
 const allTripsBtn = document.getElementById('allTripsButton');
 const upcomingTripsBtn = document.getElementById('upcomingTripsButton');
 const pendingTripsBtn = document.getElementById('pendingTripsButton');
+const bookTripBtn = document.getElementById('bookNowButton')
+const backToMainBtn = document.getElementById('backToMain')
 
 //Event Listeners -------------------------------------------------------------------------------------
 
@@ -19,9 +21,18 @@ allTripsBtn.addEventListener('click', displayMainDashboard);
 upcomingTripsBtn.addEventListener('click', displayUpcomingDashboard);
 pendingTripsBtn.addEventListener('click', displayPendingDashboard);
 
+bookTripBtn.addEventListener('click', displayAndHideTripForm);
+backToMainBtn.addEventListener('click', displayAndHideTripForm);
 
 
 // Main Functions -------------------------------------------------------------------------------------------
+
+
+function displayAndHideTripForm() {
+  domUpdates.displayAndHideFormPage()
+
+}
+
 
 
 function displayMainDashboard() {
