@@ -16,7 +16,8 @@ const backToMainBtn = document.getElementById('backToMain')
 const allTripsContainer = document.getElementById('allTrips');
 const upcomingTripsContainer = document.getElementById('upcomingTrips');
 const pendingTripsContainer = document.getElementById('pendingTrips');
-const notFoundMessage = document.getElementById('notFound');
+const destinationDropDown = document.getElementById('tripDestination')
+
 
 
 //Event Listeners -------------------------------------------------------------------------------------
@@ -51,6 +52,7 @@ function createMainDashboard(id) {
     createTraveler(travelDatabase, id);
     displayTravelerProfile(travelDatabase);
     displayAllTravelerTrips(travelDatabase);
+    createDestinationList(travelDatabase);
   });
 };
 
@@ -175,14 +177,16 @@ function displayAndHideTripForm() {
   domUpdates.displayAndHideFormPage()
 };
 
-// function createDestinationList(data) {
-//   data.destinations.forEach(destination => {
+function createDestinationList(data) {
+  destinationDropDown.innerHTML = "";
+  data.destinations.forEach(destination => {
+    domUpdates.displayDestinationDropDown(destination)
+  })
+}
 
-//   })
-// }
 
 
-
+// Helpers  -------------------------------------------------------------------------------------------
 
 function hideItem(selector) {
   selector.classList.add('hidden')

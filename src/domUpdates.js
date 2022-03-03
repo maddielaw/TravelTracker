@@ -12,6 +12,7 @@ const upcomingTripsContainer = document.getElementById('upcomingTrips');
 const pendingTripsContainer = document.getElementById('pendingTrips');
 const notFoundMessage = document.getElementById('notFound');
 const tripFormPage = document.getElementById('tripFormContainer')
+const destinationDropDown = document.getElementById('tripDestination')
 
 
 
@@ -83,6 +84,11 @@ let domUpdates = {
   displayAndHideFormPage: function () {
     mainDashboard.classList.toggle('hidden');
     tripFormPage.classList.toggle('hidden')
+  },
+  displayDestinationDropDown: function (destination) {
+    destinationDropDown.innerHTML += `
+      <option value=${destination.destination}>${destination.destination}</option>
+    `
   }
 
 
