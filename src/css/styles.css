@@ -1,7 +1,6 @@
 * {
   padding: 0px;
   margin: 0px;
-  border: 1px solid salmon;
 }
 
 body,
@@ -24,8 +23,9 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 15%;
+  height: 13%;
   background-color: #85c1b7;
+  padding: 10px;
 }
 
 .trip-dashboard {
@@ -57,8 +57,9 @@ nav {
   flex-direction: column;
   justify-content: space-between;
   height: 75%;
-  width: 29%;
-  margin: 20px;
+  width: 28%;
+  margin: 10px;
+  padding: 10px;
   border-radius: 10px;
   background-color: #f1ede6;
   box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
@@ -75,6 +76,11 @@ nav {
   flex-direction: column;
   justify-content: space-around;
   height: 100%;
-  width: 30%;
+  width: 28%;
+  padding: 10px;
   background-color: #f1ede6;
+}
+
+.book-now-btn-container {
+  align-self: center;
 }
