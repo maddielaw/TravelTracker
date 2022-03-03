@@ -24,6 +24,7 @@ function createDashboard(id) {
     createTraveler(travelDatabase, id);
     displayTravelerData(travelDatabase)
     displayTravelerSpending(travelDatabase)
+    displayAllTravelerTrips(travelDatabase)
   })
 }
 
@@ -55,7 +56,7 @@ function handleServerErrors(error) {
 }
 
 
-// Traveler profile -------------------------------------------------------------------------------------------
+// Traveler profile & trips -------------------------------------------------------------------------------------------
 
 function createTraveler(data, id) {
   const newTraveler = data.findATraveler(id);
@@ -64,17 +65,32 @@ function createTraveler(data, id) {
   newTraveler.findUpcomingTrips();
   newTraveler.findCurrentTrip();
   return newTraveler
-}
+};
 
 function displayTravelerSpending(data) {
   const yearlyCost = data.currentTraveler.calculateYearlyTripCost()
   domUpdates.updateTravelerSpending(data, yearlyCost)
-}
+};
 
 function displayTravelerData(data) {
   domUpdates.updateWelcomeMessage(data)
   domUpdates.updateTravelerProfile(data)
+};
+
+
+function displayAllTravelerTrips(data) {
+  const allTravelerTrips = data.currentTraveler.travelerTrips;
+
+  domUpdates.resetTripCardsInnerHTML();
+  
+  allTravelerTrips.forEach(trip => {
+    console.log(trip)
+    domUpdates.updateAllTravelerTrips(trip)
+  })
+
 }
+
+
 
 
 
