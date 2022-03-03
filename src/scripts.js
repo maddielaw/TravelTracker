@@ -123,6 +123,7 @@ function displayTravelerData(data) {
 function displayAllTravelerTrips(data) {
   const allTravelerTrips = data.currentTraveler.travelerTrips;
   domUpdates.resetAllTripsInnerHTML();
+  domUpdates.hideDisplayNotFoundMessage();
   allTravelerTrips.forEach(trip => {
     domUpdates.updateAllTravelerTrips(trip)
   });
