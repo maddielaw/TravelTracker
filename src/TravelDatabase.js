@@ -3,9 +3,9 @@ import Traveler from './Traveler';
 class TravelDatabase {
   constructor(data){
     this.data = data;
-    this.travelers = data.travelers;
-    this.trips = data.trips;
-    this.destinations = data.destinations;
+    this.travelers = data.allTravelers;
+    this.trips = data.allTrips;
+    this.destinations = data.allDestinations;
     this.currentTraveler = {};
   };
 
