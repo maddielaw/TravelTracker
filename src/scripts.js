@@ -27,9 +27,9 @@ function createDashboard(id) {
 }
 
 
-
 function displayTravelerData(data) {
   domUpdates.displayWelcomeMessage(data)
+  domUpdates.displayTravelerProfile(data)
 }
 
 
@@ -61,6 +61,6 @@ function createTraveler(data, id) {
   newTraveler.findPendingTrips();
   newTraveler.findUpcomingTrips();
   newTraveler.findCurrentTrip();
-  console.log(newTraveler)
   return newTraveler
 }
+
