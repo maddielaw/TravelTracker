@@ -18,19 +18,34 @@
   </nav>
   <main class="main-section">
 
-    <section class="trip-grid">
-      <section class="present-trips grid-card">
-        <p>present trip</p>
+    <section class="trip-dashboard">
+      <nav class="trip-filter-button-container">
+        <button class="all-trips-button" type="button" id="allTripsButton">all trips</button>
+        <button class="upcoming-trips-button" type="button" id="upcomingTripsButton">upcoming trips</button>
+        <button class="pending-trips-button" type="button" id="pendingTripsButton">pendng trips</button>
+      </nav>
+
+      <section class="trip-cards-container">
+
+        <div class="trip-card">
+          <h3 class="trip-card-location" id="tripCardLocation">Cape Town, South Africa</h3>
+          <div class="trip-card-img-container"></div>
+          <h4 class="num-travelers" id="numTravelers">Travelers: 2</h4>
+          <h4 class="departure" id="departure">Departure Date: 09/16/2022</h4>
+          <h4 class="duration" id="duration">Trip Duration: 8 days</h4>
+          <h4 class="num-travelers" id="numTravelers">Travelers: 2</h4>
+          <h4 class="trip-status" id="tripStatus">Trip Status: Approved</h4>
+        </div>
+
+        <div class="trip-card"></div>
+        <div class="trip-card"></div>
+        <div class="trip-card"></div>
+        <div class="trip-card"></div>
+
+
       </section>
-      <section class="upcoming-trips grid-card">
-        <p>upcoming trips</p>
-      </section>
-      <section class="past-trips grid-card">
-        <p>past trips</p>
-      </section>
-      <section class="pending-trips grid-card">
-        <p>pending trips</p>
-      </section>
+
+      
     </section>
 
     <section class="profile-sidebar">

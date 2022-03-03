@@ -27,24 +27,50 @@ nav {
   height: 15%;
 }
 
-.trip-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+.trip-dashboard {
+  display: flex;
+  flex-direction: column;
   overflow: scroll;
-  grid-gap: 20px;
-  padding: 20px;
   width: 100%;
 }
 
-.grid-card {
+.trip-filter-button-container {
   display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.trip-cards-container {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
+  overflow: scroll;
   height: 100%;
   width: 100%;
-  margin: 10px;
-  border-radius: 10px;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  background-color: aqua;
+  background-color: #f2f2f2
 }
+
+.trip-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 75%;
+  width: 29%;
+  margin: 20px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+}
+
+.trip-card-img-container {
+  height: 35%;
+  width: 90%;
+  align-self: center;
+}
+
+
+
+
 
 .profile-sidebar {
   display: flex;
