@@ -1,21 +1,37 @@
 import './css/styles.css';
 import './images/turing-logo.png';
 import fetchCalls from './apiCalls';
+import domUpdates from './domUpdates';
+import TravelDatabase from './TravelDatabase';
 
 
 //Event Listeners -------------------------------------------------------------------------------------
 
-window.addEventListener('load', loadDashboard)
+window.addEventListener('load', displayDashboard)
 
 
 
 // Main Functions -------------------------------------------------------------------------------------------
 
-function loadDashboard() {
+
+function displayDashboard() {
+  createDashboard(2)
+} 
+
+function createDashboard(id) {
   resolvePromise().then(allData => {
-    console.log(allData)
+    const travelDatabase = new TravelDatabase(allData);
+    createTraveler(travelDatabase, id);
+    displayTravelerData(travelDatabase)
   })
 }
+
+
+
+function displayTravelerData(data) {
+  domUpdates.displayWelcomeMessage(data)
+}
+
 
 
 
@@ -34,4 +50,17 @@ function resolvePromise() {
       allData.allDestinations = data[2].destinations;
       return allData
     })
+};
+
+
+// Traveler profile -------------------------------------------------------------------------------------------
+
+function createTraveler(data, id) {
+  const newTraveler = data.findATraveler(id);
+  newTraveler.findPastTrips();
+  newTraveler.findPendingTrips();
+  newTraveler.findUpcomingTrips();
+  newTraveler.findCurrentTrip();
+  console.log(newTraveler)
+  return newTraveler
 }
