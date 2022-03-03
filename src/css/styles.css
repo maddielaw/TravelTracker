@@ -1,6 +1,7 @@
 * {
   padding: 0px;
   margin: 0px;
+  font-family: 'Work Sans', sans-serif;
 }
 
 body,
@@ -31,7 +32,6 @@ nav {
 .trip-dashboard {
   display: flex;
   flex-direction: column;
-  overflow: scroll;
   width: 100%;
 }
 
@@ -76,6 +76,7 @@ img {
   height: 186px;
   width: 100%;
 }
+
 
 .profile-sidebar {
   display: flex;
