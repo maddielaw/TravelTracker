@@ -48,6 +48,12 @@ function resolvePromise() {
     })
 };
 
+function handleServerErrors(error) {
+  if (error.message === "Failed to fetch") {
+    window.alert("Oops! Something went wrong.")
+  }
+}
+
 
 // Traveler profile -------------------------------------------------------------------------------------------
 
@@ -71,3 +77,5 @@ function displayTravelerData(data) {
 }
 
 
+
+export default handleServerErrors;
