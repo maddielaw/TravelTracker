@@ -4,14 +4,59 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>travelTracker</title>
 </head>
 <body>
-  <h1>THIS IS WORKINGGGGG</h1>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
+  <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
+  <nav class="nav-bar">
+    <section class="main-logo">
+      <h1 class="logo" id="logo">travelTracker</h1>
+    </section>
+    <section class="welcome-message">
+      <h2 class="welcome" id="welcome">welcome, maddie</h2>
+    </section>
+  </nav>
+  <main class="main-section">
 
+    <section class="trip-dashboard">
+      <nav class="trip-filter-button-container">
+        <button class="all-trips-button" type="button" id="allTripsButton">all trips</button>
+        <button class="upcoming-trips-button" type="button" id="upcomingTripsButton">upcoming trips</button>
+        <button class="pending-trips-button" type="button" id="pendingTripsButton">pendng trips</button>
+      </nav>
+
+      <section class="trip-cards-container">
+        <div class="trip-card">
+          <h3 class="trip-card-location" id="tripCardLocation">Cape Town, South Africa</h3>
+          <div class="trip-card-img-container"></div>
+          <h4 class="num-travelers" id="numTravelers">Travelers: 2</h4>
+          <h4 class="departure" id="departure">Departure Date: 09/16/2022</h4>
+          <h4 class="duration" id="duration">Trip Duration: 8 days</h4>
+          <h4 class="num-travelers" id="numTravelers">Travelers: 2</h4>
+          <h4 class="trip-status" id="tripStatus">Trip Status: Approved</h4>
+        </div>
+        <div class="trip-card"></div>
+        <div class="trip-card"></div>
+        <div class="trip-card"></div>
+        <div class="trip-card"></div>
+      </section>
+    </section>
+    
+    <section class="profile-sidebar">
+      <div class="name-date-conatiner">
+        <p class="traveler-name" id="travelerName">Maddie Law</p>
+        <p class="today-date" id="todayDate">today's date</p>
+      </div>
+      <div class="trip-cost-container">
+        <h3 class="total-cost-of-trips" id="totalTripCost">Total amount spent on trips this year</h3>
+      </div>
+      <div class="book-now-btn-container">
+        <p>ready to take off?</p>
+        <button class="book-now-button" type="button" id="bookNowButton">book now!</button>
+      </div>
+    </section>
+
+  </main>
+  <script src="bundle.js"></script>
 </body>
 </html>
