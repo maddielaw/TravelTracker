@@ -24,7 +24,7 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 20%;
+  height: 50px;
   background-color: #85c1b7;
   padding: 25px;
 }
@@ -75,7 +75,7 @@ main {
 }
 
 img {
-  height: 186px;
+  height: 155px;
   width: 100%;
 }
 

@@ -25,15 +25,15 @@ pendingTripsBtn.addEventListener('click', displayPendingDashboard);
 
 
 function displayMainDashboard() {
-  createMainDashboard(47)
+  createMainDashboard(33)
 }
 
 function displayUpcomingDashboard() {
-  createUpcomingDashboard(47)
+  createUpcomingDashboard(33)
 }
 
 function displayPendingDashboard() {
-  createPendingDashboard(47)
+  createPendingDashboard(33)
 }
 
 
@@ -130,22 +130,28 @@ function displayAllTravelerTrips(data) {
 
 function displayUpcomingTravelerTrips(data) {
   const upcomingTravelerTrips = data.currentTraveler.upcomingTrips;
-  domUpdates.resetUpcomingTripsInnerHTML();
-  upcomingTravelerTrips.forEach(trip => {
-    domUpdates.updateUpcomingTravelerTrips(trip)
-  });
+  if (!upcomingTravelerTrips.length) {
+    domUpdates.displayNotFoundMessage()
+  } else {
+    domUpdates.resetUpcomingTripsInnerHTML();
+    domUpdates.hideDisplayNotFoundMessage();
+    upcomingTravelerTrips.forEach(trip => {
+      domUpdates.updateUpcomingTravelerTrips(trip)
+    });
+  }
 };
 
 function displayPendingTravelerTrips(data) {
   const pendingTravelerTrips = data.currentTraveler.pendingTrips;
   if (!pendingTravelerTrips.length) {
     domUpdates.displayNotFoundMessage()
+  } else {
+    domUpdates.resetPendingTripsInnerHTML();
+    domUpdates.hideDisplayNotFoundMessage();
+      pendingTravelerTrips.forEach(trip => {
+        domUpdates.updatePendingTravelerTrips(trip)
+      })
   }
-
-  domUpdates.resetPendingTripsInnerHTML();
-    pendingTravelerTrips.forEach(trip => {
-      domUpdates.updatePendingTravelerTrips(trip)
-    })
 }
 
 

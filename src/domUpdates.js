@@ -91,6 +91,10 @@ let domUpdates = {
   displayNotFoundMessage: function () {
     notFoundMessage.classList.remove('hidden')
     allTripsContainer.classList.add('hidden');
+    upcomingTripsContainer.classList.add('hidden');
+  },
+  hideDisplayNotFoundMessage: function () {
+    notFoundMessage.classList.add('hidden')
   }
 
 
