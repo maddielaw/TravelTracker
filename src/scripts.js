@@ -1,15 +1,37 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you tell webpack to use a CSS (SCSS) file
-// import './css/base.scss';
 import './css/styles.css';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
-import './images/cape-town.jpeg'
+import './images/turing-logo.png';
+import fetchCalls from './apiCalls';
 
 
-console.log('This is the JavaScript entry file - your code begins here.');
+//Event Listeners -------------------------------------------------------------------------------------
 
-// quick test to make sure repo is set up correctly
+window.addEventListener('load', loadDashboard)
+
+
+
+// Main Functions -------------------------------------------------------------------------------------------
+
+function loadDashboard() {
+  resolvePromise().then(allData => {
+    console.log(allData)
+  })
+}
+
+
+
+
+//API & Promise Handling -------------------------------------------------------------------------------------------------
+
+function resolvePromise() {
+  const allTravelerData = fetchCalls.fetchData('travelers');
+  const allTripData = fetchCalls.fetchData('trips');
+  const allDestinationData = fetchCalls.fetchData('destinations');
+  return Promise.all([allTravelerData, allTripData, allDestinationData])
+    .then(data => {
+      let allData = {}
+      allData.allTravelers = data[0].travelers;
+      allData.allTrips = data[1].trips;
+      allData.allDestinations = data[2].destinations;
+      return allData
+    })
+}
