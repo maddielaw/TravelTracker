@@ -15,7 +15,7 @@ window.addEventListener('load', displayDashboard)
 
 
 function displayDashboard() {
-  createDashboard(2)
+  createDashboard(44)
 } 
 
 function createDashboard(id) {
@@ -23,14 +23,10 @@ function createDashboard(id) {
     const travelDatabase = new TravelDatabase(allData);
     createTraveler(travelDatabase, id);
     displayTravelerData(travelDatabase)
+    displayTravelerSpending(travelDatabase)
   })
 }
 
-
-function displayTravelerData(data) {
-  domUpdates.displayWelcomeMessage(data)
-  domUpdates.displayTravelerProfile(data)
-}
 
 
 
@@ -63,4 +59,15 @@ function createTraveler(data, id) {
   newTraveler.findCurrentTrip();
   return newTraveler
 }
+
+function displayTravelerSpending(data) {
+  const yearlyCost = data.currentTraveler.calculateYearlyTripCost()
+  domUpdates.updateTravelerSpending(data, yearlyCost)
+}
+
+function displayTravelerData(data) {
+  domUpdates.updateWelcomeMessage(data)
+  domUpdates.updateTravelerProfile(data)
+}
+
 
