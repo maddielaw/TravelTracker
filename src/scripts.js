@@ -5,18 +5,35 @@ import domUpdates from './domUpdates';
 import TravelDatabase from './TravelDatabase';
 
 
+//Selector Variables -------------------------------------------------------------------------------------
+
+const allTripsBtn = document.getElementById('allTripsButton');
+const upcomingTripsBtn = document.getElementById('upcomingTripsButton');
+const pendingTripsBtn = document.getElementById('pendingTripsButton');
+
 //Event Listeners -------------------------------------------------------------------------------------
 
-window.addEventListener('load', displayDashboard)
+window.addEventListener('load', displayMainDashboard)
+
+// allTripsBtn.addEventListener('click', );
+upcomingTripsBtn.addEventListener('click', displayUpcomingDashboard);
+// pendingTripsBtn.addEventListener('click', );
 
 
 
 // Main Functions -------------------------------------------------------------------------------------------
 
 
-function displayDashboard() {
-  createDashboard(44)
-} 
+function displayMainDashboard() {
+  createDashboard(33)
+}
+
+function displayUpcomingDashboard() {
+  createUpcomingDashboard(33)
+}
+
+
+
 
 function createDashboard(id) {
   resolvePromise().then(allData => {
@@ -25,8 +42,19 @@ function createDashboard(id) {
     displayTravelerData(travelDatabase)
     displayTravelerSpending(travelDatabase)
     displayAllTravelerTrips(travelDatabase)
-  })
-}
+    console.log(travelDatabase.currentTraveler)
+  });
+};
+
+function createUpcomingDashboard(id) {
+  resolvePromise().then(allData => {
+    const travelDatabase = new TravelDatabase(allData);
+    createTraveler(travelDatabase, id);
+    displayTravelerData(travelDatabase);
+    displayTravelerSpending(travelDatabase);
+    displayUpcomingTravelerTrips(travelDatabase);
+  });
+};
 
 
 
@@ -80,14 +108,18 @@ function displayTravelerData(data) {
 
 function displayAllTravelerTrips(data) {
   const allTravelerTrips = data.currentTraveler.travelerTrips;
-
-  domUpdates.resetTripCardsInnerHTML();
-  
+  domUpdates.resetAllTripsInnerHTML();
   allTravelerTrips.forEach(trip => {
-    console.log(trip)
     domUpdates.updateAllTravelerTrips(trip)
-  })
+  });
+};
 
+function displayUpcomingTravelerTrips(data) {
+  const upcomingTravelerTrips = data.currentTraveler.upcomingTrips;
+  domUpdates.resetUpcomingTripsInnerHTML();
+  upcomingTravelerTrips.forEach(trip => {
+    domUpdates.updateUpcomingTravelerTrips(trip)
+  })
 }
 
 
