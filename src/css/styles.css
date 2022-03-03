@@ -91,3 +91,7 @@ img {
 .book-now-btn-container {
   align-self: center;
 }
+
+.hidden {
+  display: none;
+}
