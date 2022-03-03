@@ -17,7 +17,25 @@
       <h2 class="welcome" id="welcome"></h2>
     </section>
   </nav>
-  <main class="main-section">
+
+  <section class="new-trip-form-container">
+    <form class="new-trip-form" id="newTripForm" >
+      <h2 class="form-title">Find your perfect getaway</h2>
+      <p class="hidden" id="currentTravelerID"></p>
+      <label for="departureDate">Trip Departure Date</label>
+      <input  class="departure-date" type="date" name="date" id="departureDate" required></input>
+      <label for="tripDuration">Number of Days</label>
+      <input class="trip-duration" type="number" name="tripDuration" id="tripDuration" min="1" required></input>
+      <label for="numTravelers">Number of Travelers</label>
+      <input class="num-travelers" type="number" name="numTravelers" id="numTravelers" min="1" required></input>
+      <label for="tripDestination">Where do you want to go?</label>
+      <select class="trip-destination" id="tripDestination" required>
+      </select>  
+      <button class="quote-button" type="button" id="quoteButton">Get a quote!</button>
+    </form>
+  </section>
+
+  <main class="main-section hidden">
 
     <section class="trip-dashboard">
       <nav class="trip-filter-button-container">
@@ -25,7 +43,7 @@
         <button class="upcoming-trips-button" type="button" id="upcomingTripsButton">upcoming trips</button>
         <button class="pending-trips-button" type="button" id="pendingTripsButton">pending trips</button>
       </nav>
-      
+
       <p class="not-found-msg hidden" id="notFound">No trips to see here!</p>
       <section class="trip-cards-container all-trips" id="allTrips"></section>
       <section class="trip-cards-container upcoming-trips hidden" id="upcomingTrips"></section>
