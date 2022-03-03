@@ -26,16 +26,15 @@ pendingTripsBtn.addEventListener('click', displayPendingDashboard);
 
 function displayMainDashboard() {
   createMainDashboard(33)
-}
+};
 
 function displayUpcomingDashboard() {
   createUpcomingDashboard(33)
-}
+};
 
 function displayPendingDashboard() {
   createPendingDashboard(33)
-}
-
+};
 
 function createMainDashboard(id) {
   resolvePromise().then(allData => {
