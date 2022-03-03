@@ -15,9 +15,9 @@ const pendingTripsBtn = document.getElementById('pendingTripsButton');
 
 window.addEventListener('load', displayMainDashboard)
 
-// allTripsBtn.addEventListener('click', );
+allTripsBtn.addEventListener('click', displayMainDashboard);
 upcomingTripsBtn.addEventListener('click', displayUpcomingDashboard);
-// pendingTripsBtn.addEventListener('click', );
+pendingTripsBtn.addEventListener('click', displayPendingDashboard);
 
 
 
@@ -25,23 +25,24 @@ upcomingTripsBtn.addEventListener('click', displayUpcomingDashboard);
 
 
 function displayMainDashboard() {
-  createDashboard(33)
+  createMainDashboard(47)
 }
 
 function displayUpcomingDashboard() {
-  createUpcomingDashboard(33)
+  createUpcomingDashboard(47)
+}
+
+function displayPendingDashboard() {
+  createPendingDashboard(47)
 }
 
 
-
-
-function createDashboard(id) {
+function createMainDashboard(id) {
   resolvePromise().then(allData => {
     const travelDatabase = new TravelDatabase(allData);
     createTraveler(travelDatabase, id);
-    displayTravelerData(travelDatabase)
-    displayTravelerSpending(travelDatabase)
-    displayAllTravelerTrips(travelDatabase)
+    displayTravelerProfile(travelDatabase);
+    displayAllTravelerTrips(travelDatabase);
     console.log(travelDatabase.currentTraveler)
   });
 };
@@ -50,13 +51,24 @@ function createUpcomingDashboard(id) {
   resolvePromise().then(allData => {
     const travelDatabase = new TravelDatabase(allData);
     createTraveler(travelDatabase, id);
-    displayTravelerData(travelDatabase);
-    displayTravelerSpending(travelDatabase);
+    displayTravelerProfile(travelDatabase)
     displayUpcomingTravelerTrips(travelDatabase);
   });
 };
 
+function createPendingDashboard(id) {
+  resolvePromise().then(allData => {
+    const travelDatabase = new TravelDatabase(allData);
+    createTraveler(travelDatabase, id);
+    displayTravelerProfile(travelDatabase)
+    displayPendingTravelerTrips(travelDatabase)
+  });
+};
 
+function displayTravelerProfile(data) {
+  displayTravelerData(data)
+  displayTravelerSpending(data)
+};
 
 
 
@@ -84,7 +96,7 @@ function handleServerErrors(error) {
 }
 
 
-// Traveler profile & trips -------------------------------------------------------------------------------------------
+// Traveler profile -------------------------------------------------------------------------------------------
 
 function createTraveler(data, id) {
   const newTraveler = data.findATraveler(id);
@@ -105,6 +117,8 @@ function displayTravelerData(data) {
   domUpdates.updateTravelerProfile(data)
 };
 
+// Filter trips  -------------------------------------------------------------------------------------------
+
 
 function displayAllTravelerTrips(data) {
   const allTravelerTrips = data.currentTraveler.travelerTrips;
@@ -119,7 +133,19 @@ function displayUpcomingTravelerTrips(data) {
   domUpdates.resetUpcomingTripsInnerHTML();
   upcomingTravelerTrips.forEach(trip => {
     domUpdates.updateUpcomingTravelerTrips(trip)
-  })
+  });
+};
+
+function displayPendingTravelerTrips(data) {
+  const pendingTravelerTrips = data.currentTraveler.pendingTrips;
+  if (!pendingTravelerTrips.length) {
+    domUpdates.displayNotFoundMessage()
+  }
+
+  domUpdates.resetPendingTripsInnerHTML();
+    pendingTravelerTrips.forEach(trip => {
+      domUpdates.updatePendingTravelerTrips(trip)
+    })
 }
 
 
