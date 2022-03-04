@@ -139,7 +139,6 @@ function displayTripQuote(e) {
   e.preventDefault()
   if (formDepartureDate.value < new Date().toISOString().split('T')[0]) {
     domUpdates.displayDateError()
-    // dateErrorMsg.innerText = "Please pick a date in the future!"
   } else if (formNumTravelers.value <= 0 || !formNumTravelers.value) {
     domUpdates.displayFormError()
   } else if (formTripDuration.value <= 0 || !formTripDuration.value) {
@@ -173,7 +172,10 @@ function getNewTripCost() {
 
 
 function displayTripRequstSuccess() {
-
+  domUpdates.hideItem(tripSubmitBtn);
+  domUpdates.hideItem(tripQuote)
+  newTripForm.reset()
+  domUpdates.displayFormSuccessMsg()
 }
 
 
@@ -209,6 +211,7 @@ function packageNewTrip(e) {
     suggestedActivities: []
   };
   fetchCalls.postData('trips', newTripData);
+  displayTripRequstSuccess()
 }
 
 function handleServerErrors(error) {
