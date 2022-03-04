@@ -87,7 +87,7 @@ let domUpdates = {
   },
   displayDestinationDropDown: function (destination) {
     destinationDropDown.innerHTML += `
-      <option value=${destination.destination}>${destination.destination}</option>
+      <option value=${destination.destination} id=${destination.id}>${destination.destination}</option>
     `
   }
 

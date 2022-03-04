@@ -12,12 +12,16 @@ const upcomingTripsBtn = document.getElementById('upcomingTripsButton');
 const pendingTripsBtn = document.getElementById('pendingTripsButton');
 const bookTripBtn = document.getElementById('bookNowButton')
 const backToMainBtn = document.getElementById('backToMain')
+const quoteBtn = document.getElementById('quoteButton')
 
 const allTripsContainer = document.getElementById('allTrips');
 const upcomingTripsContainer = document.getElementById('upcomingTrips');
 const pendingTripsContainer = document.getElementById('pendingTrips');
-const destinationDropDown = document.getElementById('tripDestination')
 
+const formDepartureDate = document.getElementById('departureDate');
+const formTripDuration = document.getElementById('tripDuration');
+const formNumTravelers = document.getElementById('numTravelers');
+const destinationDropDown = document.getElementById('tripDestination');
 
 
 //Event Listeners -------------------------------------------------------------------------------------
@@ -31,8 +35,19 @@ pendingTripsBtn.addEventListener('click', displayPendingDashboard);
 bookTripBtn.addEventListener('click', displayAndHideTripForm);
 backToMainBtn.addEventListener('click', displayAndHideTripForm);
 
+quoteBtn.addEventListener('click', packageNewTrip)
+
+
+
 
 // Main Functions -------------------------------------------------------------------------------------------
+
+
+
+// function testForm() {
+//   const yo = destinationDropDown.options[destinationDropDown.selectedIndex].id
+//   console.log(typeof yo)
+// }
 
 function displayMainDashboard() {
   createMainDashboard(33)
@@ -53,6 +68,7 @@ function createMainDashboard(id) {
     displayTravelerProfile(travelDatabase);
     displayAllTravelerTrips(travelDatabase);
     createDestinationList(travelDatabase);
+
   });
 };
 
@@ -79,28 +95,6 @@ function displayTravelerProfile(data) {
   displayTravelerSpending(data)
 };
 
-//API & Promise Handling ------------------------------------------------------------------------------------------------
-
-function resolvePromise() {
-  const allTravelerData = fetchCalls.fetchData('travelers');
-  const allTripData = fetchCalls.fetchData('trips');
-  const allDestinationData = fetchCalls.fetchData('destinations');
-  return Promise.all([allTravelerData, allTripData, allDestinationData])
-    .then(data => {
-      let allData = {}
-      allData.allTravelers = data[0].travelers;
-      allData.allTrips = data[1].trips;
-      allData.allDestinations = data[2].destinations;
-      return allData
-    })
-};
-
-function handleServerErrors(error) {
-  if (error.message === "Failed to fetch") {
-    window.alert("Oops! Something went wrong.")
-  }
-}
-
 
 // Traveler profile -------------------------------------------------------------------------------------------
 
@@ -124,7 +118,6 @@ function displayTravelerData(data) {
 };
 
 // Filter trips  -------------------------------------------------------------------------------------------
-
 
 function displayAllTravelerTrips(data) {
   domUpdates.hideNotFoundMessage();
@@ -184,6 +177,44 @@ function createDestinationList(data) {
   })
 }
 
+//API & Promise Handling ------------------------------------------------------------------------------------------------
+
+function resolvePromise() {
+  const allTravelerData = fetchCalls.fetchData('travelers');
+  const allTripData = fetchCalls.fetchData('trips');
+  const allDestinationData = fetchCalls.fetchData('destinations');
+  return Promise.all([allTravelerData, allTripData, allDestinationData])
+    .then(data => {
+      let allData = {}
+      allData.allTravelers = data[0].travelers;
+      allData.allTrips = data[1].trips;
+      allData.allDestinations = data[2].destinations;
+      return allData
+    })
+};
+
+
+function packageNewTrip() {
+  const newTripData = {
+    id: Date.now(),
+    userID: 33,
+    destinationID: parseInt(destinationDropDown.options[destinationDropDown.selectedIndex].id),
+    travelers: parseInt(formNumTravelers.value),
+    date: formDepartureDate.value.split('-').join('/'),
+    duration: parseInt(formTripDuration.value),
+    status: 'pending',
+    suggestedActivities: []
+  };
+  fetchCalls.postData('trips', newTripData);
+}
+
+
+
+function handleServerErrors(error) {
+  if (error.message === "Failed to fetch") {
+    window.alert("Oops! Something went wrong.")
+  }
+}
 
 
 // Helpers  -------------------------------------------------------------------------------------------
