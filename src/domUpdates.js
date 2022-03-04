@@ -10,15 +10,15 @@ const allTripsContainer = document.getElementById('allTrips');
 const mainDashboard = document.getElementById('mainSection')
 const upcomingTripsContainer = document.getElementById('upcomingTrips');
 const pendingTripsContainer = document.getElementById('pendingTrips');
+
 const notFoundMessage = document.getElementById('notFound');
 const tripFormPage = document.getElementById('tripFormContainer')
 const destinationDropDown = document.getElementById('tripDestination')
 const tripQuote = document.getElementById('tripQuote')
+const successMsg = document.getElementById('successMsg')
 
 const dateErrorMsg = document.getElementById('dateError')
 const formErrorTag = document.getElementById('formErrors')
-
-
 
 
 
@@ -84,6 +84,9 @@ let domUpdates = {
   },
   displayCostEstimate: function (cost) {
     tripQuote.innerText = `Your trip cost estimate for ${destinationDropDown.options[destinationDropDown.selectedIndex].text} is $${cost}.00`
+  },
+  displayFormSuccessMsg: function () {
+    successMsg.innerText = `Trip request successful! You'll hear from your travel agent once it's been approved.`
   }
 
 
