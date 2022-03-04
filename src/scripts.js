@@ -7,9 +7,6 @@ import TravelDatabase from './TravelDatabase';
 
 //Selector Variables -------------------------------------------------------------------------------------
 
-const allTripsBtn = document.getElementById('allTripsButton');
-const upcomingTripsBtn = document.getElementById('upcomingTripsButton');
-const pendingTripsBtn = document.getElementById('pendingTripsButton');
 const bookTripBtn = document.getElementById('bookNowButton')
 const backToMainBtn = document.getElementById('backToMain')
 const quoteBtn = document.getElementById('quoteButton')
@@ -23,14 +20,13 @@ const formTripDuration = document.getElementById('tripDuration');
 const formNumTravelers = document.getElementById('numTravelers');
 const destinationDropDown = document.getElementById('tripDestination');
 
+const filterBtnContainer = document.getElementById('tripFilterContainer')
+
 
 //Event Listeners -------------------------------------------------------------------------------------
 
-window.addEventListener('load', displayMainDashboard)
-
-allTripsBtn.addEventListener('click', displayMainDashboard);
-upcomingTripsBtn.addEventListener('click', displayUpcomingDashboard);
-pendingTripsBtn.addEventListener('click', displayPendingDashboard);
+window.addEventListener('load', displayDashboard)
+filterBtnContainer.addEventListener('click', displayDashboard);
 
 bookTripBtn.addEventListener('click', displayAndHideTripForm);
 backToMainBtn.addEventListener('click', displayAndHideTripForm);
@@ -38,60 +34,46 @@ backToMainBtn.addEventListener('click', displayAndHideTripForm);
 quoteBtn.addEventListener('click', packageNewTrip)
 
 
-
-
 // Main Functions -------------------------------------------------------------------------------------------
 
-
-function displayMainDashboard() {
-  createMainDashboardView(33)
+function displayDashboard(e) {
+  createDashboardView(33, e)
 };
 
-function displayUpcomingDashboard() {
-  createUpcomingDashboard(33)
-};
-
-function displayPendingDashboard() {
-  createPendingDashboard(33)
-};
-
-
-function createMainDashboardView(id) {
+function createDashboardView(id, e) {
   resolvePromise().then(allData => {
     const travelDatabase = new TravelDatabase(allData);
     createTraveler(travelDatabase, id);
     displayTravelerProfile(travelDatabase);
-    displayTravelerTrips(travelDatabase, allTripsContainer, travelDatabase.currentTraveler.travelerTrips);
     createDestinationList(travelDatabase);
-    showItem(allTripsContainer);
-    hideItem(upcomingTripsContainer);
-    hideItem(pendingTripsContainer);
+    filterBtnGatekeeper(e, travelDatabase)
   });
 };
 
-function createUpcomingDashboard(id) {
-  resolvePromise().then(allData => {
-    const travelDatabase = new TravelDatabase(allData);
-    createTraveler(travelDatabase, id);
-    displayTravelerProfile(travelDatabase)
-    displayTravelerTrips(travelDatabase, upcomingTripsContainer, travelDatabase.currentTraveler.upcomingTrips);
-    showItem(upcomingTripsContainer);
-    hideItem(allTripsContainer);
-    hideItem(pendingTripsContainer);
-  });
-};
 
-function createPendingDashboard(id) {
-  resolvePromise().then(allData => {
-    const travelDatabase = new TravelDatabase(allData);
-    createTraveler(travelDatabase, id);
-    displayTravelerProfile(travelDatabase)
-    displayTravelerTrips(travelDatabase, pendingTripsContainer, travelDatabase.currentTraveler.pendingTrips);
-    showItem(pendingTripsContainer);
-    hideItem(allTripsContainer);
-    hideItem(upcomingTripsContainer);
-  });
-};
+function filterBtnGatekeeper(e, data) {
+  if (e.target.id === 'allTripsButton') {
+    displayAllTravelerTrips(data, allTripsContainer, data.currentTraveler.travelerTrips);
+    domUpdates.showItem(allTripsContainer);
+    domUpdates.hideItem(upcomingTripsContainer);
+    domUpdates.hideItem(pendingTripsContainer);
+  } else if (e.target.id === 'upcomingTripsButton') {
+    displayAllTravelerTrips(data, upcomingTripsContainer, data.currentTraveler.upcomingTrips);
+    domUpdates.showItem(upcomingTripsContainer);
+    domUpdates.hideItem(allTripsContainer);
+    domUpdates.hideItem(pendingTripsContainer);
+  } else if (e.target.id === 'pendingTripsButton') {
+    displayAllTravelerTrips(data, pendingTripsContainer, data.currentTraveler.pendingTrips);
+    domUpdates.showItem(pendingTripsContainer);
+    domUpdates.hideItem(allTripsContainer);
+    domUpdates.hideItem(upcomingTripsContainer);
+  } else {
+    displayAllTravelerTrips(data, allTripsContainer, data.currentTraveler.travelerTrips);
+    domUpdates.showItem(allTripsContainer);
+    domUpdates.hideItem(upcomingTripsContainer);
+    domUpdates.hideItem(pendingTripsContainer);
+  }
+}
 
 function displayTravelerProfile(data) {
   displayTravelerData(data)
@@ -122,11 +104,8 @@ function displayTravelerData(data) {
 
 // Filter trips  -------------------------------------------------------------------------------------------
 
-function displayTravelerTrips(data, selector, arr) {
+function displayAllTravelerTrips(data, selector, arr) {
   domUpdates.hideNotFoundMessage();
-  domUpdates.showItem(selector);
-  domUpdates.hideItem(selector);
-  domUpdates.hideItem(selector);
   if (!arr.length) {
     domUpdates.displayNotFoundMessage()
   } else {
@@ -136,44 +115,6 @@ function displayTravelerTrips(data, selector, arr) {
     });
   }
 };
-
-
-
-
-
-
-// function displayUpcomingTravelerTrips(data) {
-//   domUpdates.hideNotFoundMessage();
-//   showItem(upcomingTripsContainer);
-//   hideItem(allTripsContainer);
-//   hideItem(pendingTripsContainer);
-//   const upcomingTravelerTrips = data.currentTraveler.upcomingTrips;
-//   if (!upcomingTravelerTrips.length) {
-//     domUpdates.displayNotFoundMessage()
-//   } else {
-//     upcomingTripsContainer.innerHTML = ""
-//     upcomingTravelerTrips.forEach(trip => {
-//       domUpdates.updateUpcomingTravelerTrips(trip)
-//     });
-//   }
-// };
-
-// function displayPendingTravelerTrips(data) {
-//   domUpdates.hideNotFoundMessage();
-//   showItem(pendingTripsContainer);
-//   hideItem(allTripsContainer);
-//   hideItem(upcomingTripsContainer);
-//   const pendingTravelerTrips = data.currentTraveler.pendingTrips;
-//   if (!pendingTravelerTrips.length) {
-//     domUpdates.displayNotFoundMessage()
-//   } else {
-//     pendingTripsContainer.innerHTML = "";
-//       pendingTravelerTrips.forEach(trip => {
-//         domUpdates.updatePendingTravelerTrips(trip)
-//       });
-//   };
-// };
-
 
 // Form Page  -------------------------------------------------------------------------------------------
 
@@ -204,7 +145,6 @@ function resolvePromise() {
     })
 };
 
-
 function packageNewTrip() {
   const newTripData = {
     id: Date.now(),
@@ -219,26 +159,11 @@ function packageNewTrip() {
   fetchCalls.postData('trips', newTripData);
 }
 
-
-
 function handleServerErrors(error) {
   if (error.message === "Failed to fetch") {
     window.alert("Oops! Something went wrong.")
   }
 }
-
-
-// Helpers  -------------------------------------------------------------------------------------------
-
-function hideItem(selector) {
-  selector.classList.add('hidden')
-}
-
-function showItem(selector) {
-  selector.classList.remove('hidden')
-}
-
-
 
 
 
