@@ -140,9 +140,11 @@ function displayTripQuote(e) {
   if (formDepartureDate.value < new Date().toISOString().split('T')[0]) {
     dateErrorMsg.innerText = "Please pick a date in the future!"
   } else if (formNumTravelers.value <= 0 || !formNumTravelers.value) {
-    formErrorTag.innerText = "Make sure you fill out all fields!"
+    domUpdates.displayFormError()
+    // formErrorTag.innerText = "Make sure you fill out all fields!"
   } else if (formTripDuration.value <= 0 || !formTripDuration.value) {
-    formErrorTag.innerText = "Make sure you fill out all fields!"
+    domUpdates.displayFormError()
+    // formErrorTag.innerText = "Make sure you fill out all fields!"
   } else {
     handleTripQuote()
   }

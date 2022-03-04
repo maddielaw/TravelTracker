@@ -15,6 +15,9 @@ const tripFormPage = document.getElementById('tripFormContainer')
 const destinationDropDown = document.getElementById('tripDestination')
 const tripQuote = document.getElementById('tripQuote')
 
+const dateErrorMsg = document.getElementById('dateError')
+const formErrorTag = document.getElementById('formErrors')
+
 
 
 
@@ -72,6 +75,9 @@ let domUpdates = {
     destinationDropDown.innerHTML += `
       <option value=${destination.destination} id=${destination.id} data-flight=${destination.estimatedFlightCostPerPerson} data-lodging=${destination.estimatedLodgingCostPerDay}>${destination.destination}</option>
     `
+  },
+  displayFormError: function () {
+    formErrorTag.innerText = "Make sure you fill out all fields!"
   },
   displayCostEstimate: function (cost) {
     tripQuote.innerText = `Your trip cost estimate for ${destinationDropDown.options[destinationDropDown.selectedIndex].text} is $${cost}.00`
