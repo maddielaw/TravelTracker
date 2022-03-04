@@ -18,6 +18,7 @@ const pendingTripsContainer = document.getElementById('pendingTrips');
 
 const newTripForm = document.getElementById('newTripForm')
 const formDepartureDate = document.getElementById('departureDate');
+const dateErrorMsg = document.getElementById('dateError')
 const formTripDuration = document.getElementById('tripDuration');
 const formNumTravelers = document.getElementById('numTravelers');
 const destinationDropDown = document.getElementById('tripDestination');
@@ -52,7 +53,6 @@ function createDashboardView(id, e) {
     filterBtnGatekeeper(e, travelDatabase)
   });
 };
-
 
 function filterBtnGatekeeper(e, data) {
   if (e.target.id === 'allTripsButton') {
@@ -135,11 +135,12 @@ function createDestinationList(data) {
 function getTripQuote(e) {
   e.preventDefault()
   if (new Date(formDepartureDate.value).toLocaleDateString() < new Date().toLocaleDateString()) {
-    console.log("pick a date in the future!")
+    domUpdates.showItem(dateErrorMsg)
   } else {
     domUpdates.showItem(tripSubmitBtn);
     domUpdates.showItem(tripQuote);
     domUpdates.hideItem(quoteBtn);
+    domUpdates.hideItem(dateErrorMsg)
   }
 }
 
