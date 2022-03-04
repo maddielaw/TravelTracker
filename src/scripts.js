@@ -10,12 +10,11 @@ import TravelDatabase from './TravelDatabase';
 const bookTripBtn = document.getElementById('bookNowButton')
 const backToMainBtn = document.getElementById('backToMain')
 const quoteBtn = document.getElementById('quoteButton')
+const clearFormBtn = document.getElementById('clearFormButton')
 const tripSubmitBtn = document.getElementById('submitButton')
-
 const allTripsContainer = document.getElementById('allTrips');
 const upcomingTripsContainer = document.getElementById('upcomingTrips');
 const pendingTripsContainer = document.getElementById('pendingTrips');
-
 const newTripForm = document.getElementById('newTripForm')
 const formDepartureDate = document.getElementById('departureDate');
 const dateErrorMsg = document.getElementById('dateError')
@@ -24,7 +23,6 @@ const formTripDuration = document.getElementById('tripDuration');
 const formNumTravelers = document.getElementById('numTravelers');
 const destinationDropDown = document.getElementById('tripDestination');
 const tripQuote = document.getElementById('tripQuote')
-
 const filterBtnContainer = document.getElementById('tripFilterContainer')
 
 
@@ -37,9 +35,8 @@ bookTripBtn.addEventListener('click', displayAndHideTripForm);
 backToMainBtn.addEventListener('click', displayAndHideTripForm);
 
 quoteBtn.addEventListener('click', displayTripQuote)
+clearFormBtn.addEventListener('click', clearForm)
 newTripForm.addEventListener('submit', packageNewTrip)
-
-
 
 // Main Functions -------------------------------------------------------------------------------------------
 
@@ -155,6 +152,7 @@ function handleTripQuote() {
   dateErrorMsg.innerText = "";
   formErrorTag.innerText = "";
   domUpdates.displayCostEstimate(getNewTripCost())
+  domUpdates.showItem(clearFormBtn)
 }
 
 function getNewTripCost() {
@@ -170,7 +168,6 @@ function getNewTripCost() {
   return finalTripQuote
 }
 
-
 function displayTripRequstSuccess() {
   domUpdates.hideItem(tripSubmitBtn);
   domUpdates.hideItem(tripQuote)
@@ -178,11 +175,14 @@ function displayTripRequstSuccess() {
   domUpdates.displayFormSuccessMsg()
 }
 
+function clearForm() {
+  newTripForm.reset()
+  domUpdates.hideItem(tripSubmitBtn);
+  domUpdates.hideItem(tripQuote);
+  domUpdates.showItem(quoteBtn);
+}
 
-
-
-
-//API & Promise Handling ------------------------------------------------------------------------------------------------
+//API & Promise/Error Handling ------------------------------------------------------------------------------------------------
 
 function resolvePromise() {
   const allTravelerData = fetchCalls.fetchData('travelers');
