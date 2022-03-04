@@ -43,14 +43,8 @@ quoteBtn.addEventListener('click', packageNewTrip)
 // Main Functions -------------------------------------------------------------------------------------------
 
 
-
-// function testForm() {
-//   const yo = destinationDropDown.options[destinationDropDown.selectedIndex].id
-//   console.log(typeof yo)
-// }
-
 function displayMainDashboard() {
-  createMainDashboard(33)
+  createMainDashboardView(33)
 };
 
 function displayUpcomingDashboard() {
@@ -61,14 +55,17 @@ function displayPendingDashboard() {
   createPendingDashboard(33)
 };
 
-function createMainDashboard(id) {
+
+function createMainDashboardView(id) {
   resolvePromise().then(allData => {
     const travelDatabase = new TravelDatabase(allData);
     createTraveler(travelDatabase, id);
     displayTravelerProfile(travelDatabase);
-    displayAllTravelerTrips(travelDatabase);
+    displayTravelerTrips(travelDatabase, allTripsContainer, travelDatabase.currentTraveler.travelerTrips);
     createDestinationList(travelDatabase);
-
+    showItem(allTripsContainer);
+    hideItem(upcomingTripsContainer);
+    hideItem(pendingTripsContainer);
   });
 };
 
@@ -77,7 +74,10 @@ function createUpcomingDashboard(id) {
     const travelDatabase = new TravelDatabase(allData);
     createTraveler(travelDatabase, id);
     displayTravelerProfile(travelDatabase)
-    displayUpcomingTravelerTrips(travelDatabase);
+    displayTravelerTrips(travelDatabase, upcomingTripsContainer, travelDatabase.currentTraveler.upcomingTrips);
+    showItem(upcomingTripsContainer);
+    hideItem(allTripsContainer);
+    hideItem(pendingTripsContainer);
   });
 };
 
@@ -86,7 +86,10 @@ function createPendingDashboard(id) {
     const travelDatabase = new TravelDatabase(allData);
     createTraveler(travelDatabase, id);
     displayTravelerProfile(travelDatabase)
-    displayPendingTravelerTrips(travelDatabase)
+    displayTravelerTrips(travelDatabase, pendingTripsContainer, travelDatabase.currentTraveler.pendingTrips);
+    showItem(pendingTripsContainer);
+    hideItem(allTripsContainer);
+    hideItem(upcomingTripsContainer);
   });
 };
 
@@ -119,49 +122,57 @@ function displayTravelerData(data) {
 
 // Filter trips  -------------------------------------------------------------------------------------------
 
-function displayAllTravelerTrips(data) {
+function displayTravelerTrips(data, selector, arr) {
   domUpdates.hideNotFoundMessage();
-  showItem(allTripsContainer);
-  hideItem(upcomingTripsContainer);
-  hideItem(pendingTripsContainer);
-  const allTravelerTrips = data.currentTraveler.travelerTrips;
-  allTripsContainer.innerHTML = ""
-  allTravelerTrips.forEach(trip => {
-    domUpdates.updateAllTravelerTrips(trip)
-  });
-};
-
-function displayUpcomingTravelerTrips(data) {
-  domUpdates.hideNotFoundMessage();
-  showItem(upcomingTripsContainer);
-  hideItem(allTripsContainer);
-  hideItem(pendingTripsContainer);
-  const upcomingTravelerTrips = data.currentTraveler.upcomingTrips;
-  if (!upcomingTravelerTrips.length) {
+  domUpdates.showItem(selector);
+  domUpdates.hideItem(selector);
+  domUpdates.hideItem(selector);
+  if (!arr.length) {
     domUpdates.displayNotFoundMessage()
   } else {
-    upcomingTripsContainer.innerHTML = ""
-    upcomingTravelerTrips.forEach(trip => {
-      domUpdates.updateUpcomingTravelerTrips(trip)
+    selector.innerHTML = ""
+    arr.forEach(trip => {
+      domUpdates.updateTravelerTrips(trip, selector)
     });
   }
 };
 
-function displayPendingTravelerTrips(data) {
-  domUpdates.hideNotFoundMessage();
-  showItem(pendingTripsContainer);
-  hideItem(allTripsContainer);
-  hideItem(upcomingTripsContainer);
-  const pendingTravelerTrips = data.currentTraveler.pendingTrips;
-  if (!pendingTravelerTrips.length) {
-    domUpdates.displayNotFoundMessage()
-  } else {
-    pendingTripsContainer.innerHTML = "";
-      pendingTravelerTrips.forEach(trip => {
-        domUpdates.updatePendingTravelerTrips(trip)
-      });
-  };
-};
+
+
+
+
+
+// function displayUpcomingTravelerTrips(data) {
+//   domUpdates.hideNotFoundMessage();
+//   showItem(upcomingTripsContainer);
+//   hideItem(allTripsContainer);
+//   hideItem(pendingTripsContainer);
+//   const upcomingTravelerTrips = data.currentTraveler.upcomingTrips;
+//   if (!upcomingTravelerTrips.length) {
+//     domUpdates.displayNotFoundMessage()
+//   } else {
+//     upcomingTripsContainer.innerHTML = ""
+//     upcomingTravelerTrips.forEach(trip => {
+//       domUpdates.updateUpcomingTravelerTrips(trip)
+//     });
+//   }
+// };
+
+// function displayPendingTravelerTrips(data) {
+//   domUpdates.hideNotFoundMessage();
+//   showItem(pendingTripsContainer);
+//   hideItem(allTripsContainer);
+//   hideItem(upcomingTripsContainer);
+//   const pendingTravelerTrips = data.currentTraveler.pendingTrips;
+//   if (!pendingTravelerTrips.length) {
+//     domUpdates.displayNotFoundMessage()
+//   } else {
+//     pendingTripsContainer.innerHTML = "";
+//       pendingTravelerTrips.forEach(trip => {
+//         domUpdates.updatePendingTravelerTrips(trip)
+//       });
+//   };
+// };
 
 
 // Form Page  -------------------------------------------------------------------------------------------
