@@ -138,13 +138,23 @@ function createDestinationList(data) {
 function getTripQuote(e) {
   e.preventDefault()
   if (new Date(formDepartureDate.value).toLocaleDateString() < new Date().toLocaleDateString()) {
-    domUpdates.showItem(dateErrorMsg)
+    console.log('date')
+    dateErrorMsg.innerText = "Please pick a date in the future!"
+  } else if (formNumTravelers.value <= 0 || !formNumTravelers.value) {
+    console.log('travelers')
+    formErrorTag.innerText = "Make sure you fill out all fields!"
+  } else if (formTripDuration.value <= 0 || !formTripDuration.value) {
+    console.log('duration')
+    formErrorTag.innerText = "Make sure you fill out all fields!"
   } else {
+    console.log('none of the above')
     domUpdates.showItem(tripSubmitBtn);
     domUpdates.showItem(tripQuote);
     domUpdates.hideItem(quoteBtn);
-    domUpdates.hideItem(dateErrorMsg)
+    dateErrorMsg.innerText = "";
+    formErrorTag.innerText = "";
   }
+
 }
 
 
