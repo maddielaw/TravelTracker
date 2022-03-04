@@ -10,15 +10,18 @@ import TravelDatabase from './TravelDatabase';
 const bookTripBtn = document.getElementById('bookNowButton')
 const backToMainBtn = document.getElementById('backToMain')
 const quoteBtn = document.getElementById('quoteButton')
+const tripSubmitBtn = document.getElementById('submitButton')
 
 const allTripsContainer = document.getElementById('allTrips');
 const upcomingTripsContainer = document.getElementById('upcomingTrips');
 const pendingTripsContainer = document.getElementById('pendingTrips');
 
+const newTripForm = document.getElementById('newTripForm')
 const formDepartureDate = document.getElementById('departureDate');
 const formTripDuration = document.getElementById('tripDuration');
 const formNumTravelers = document.getElementById('numTravelers');
 const destinationDropDown = document.getElementById('tripDestination');
+const tripQuote = document.getElementById('tripQuote')
 
 const filterBtnContainer = document.getElementById('tripFilterContainer')
 
@@ -31,7 +34,7 @@ filterBtnContainer.addEventListener('click', displayDashboard);
 bookTripBtn.addEventListener('click', displayAndHideTripForm);
 backToMainBtn.addEventListener('click', displayAndHideTripForm);
 
-quoteBtn.addEventListener('click', packageNewTrip)
+newTripForm.addEventListener('submit', getTripQuote)
 
 
 // Main Functions -------------------------------------------------------------------------------------------
@@ -57,7 +60,7 @@ function filterBtnGatekeeper(e, data) {
     domUpdates.showItem(allTripsContainer);
     domUpdates.hideItem(upcomingTripsContainer);
     domUpdates.hideItem(pendingTripsContainer);
-  } else if (e.target.id === 'upcomingTripsButton') {
+  } if (e.target.id === 'upcomingTripsButton') {
     displayAllTravelerTrips(data, upcomingTripsContainer, data.currentTraveler.upcomingTrips);
     domUpdates.showItem(upcomingTripsContainer);
     domUpdates.hideItem(allTripsContainer);
@@ -72,8 +75,8 @@ function filterBtnGatekeeper(e, data) {
     domUpdates.showItem(allTripsContainer);
     domUpdates.hideItem(upcomingTripsContainer);
     domUpdates.hideItem(pendingTripsContainer);
-  }
-}
+  };
+};
 
 function displayTravelerProfile(data) {
   displayTravelerData(data)
@@ -128,6 +131,21 @@ function createDestinationList(data) {
     domUpdates.displayDestinationDropDown(destination)
   })
 }
+
+function getTripQuote(e) {
+  e.preventDefault()
+  if (new Date(formDepartureDate.value).toLocaleDateString() < new Date().toLocaleDateString()) {
+    console.log("pick a date in the future!")
+  } else {
+    domUpdates.showItem(tripSubmitBtn);
+    domUpdates.showItem(tripQuote);
+    domUpdates.hideItem(quoteBtn);
+  }
+}
+
+
+
+
 
 //API & Promise Handling ------------------------------------------------------------------------------------------------
 
