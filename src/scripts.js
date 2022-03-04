@@ -25,7 +25,6 @@ const destinationDropDown = document.getElementById('tripDestination');
 const tripQuote = document.getElementById('tripQuote')
 const filterBtnContainer = document.getElementById('tripFilterContainer')
 
-
 //Event Listeners -------------------------------------------------------------------------------------
 
 window.addEventListener('load', displayDashboard)
@@ -124,7 +123,7 @@ function displayAllTravelerTrips(data, selector, arr) {
 
 function displayAndHideTripForm() {
   domUpdates.displayAndHideFormPage()
-};
+}; 
 
 function createDestinationList(data) {
   destinationDropDown.innerHTML = "";
