@@ -79,6 +79,9 @@ let domUpdates = {
   displayFormError: function () {
     formErrorTag.innerText = "Make sure you fill out all fields!"
   },
+  displayDateError: function () {
+    dateErrorMsg.innerText = "Please pick a date in the future!"
+  },
   displayCostEstimate: function (cost) {
     tripQuote.innerText = `Your trip cost estimate for ${destinationDropDown.options[destinationDropDown.selectedIndex].text} is $${cost}.00`
   }
