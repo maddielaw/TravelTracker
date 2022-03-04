@@ -69,7 +69,7 @@ let domUpdates = {
     destinationDropDown.innerHTML += `
       <option value=${destination.destination} id=${destination.id} data-flight-cost=${destination.estimatedFlightCostPerPerson} data-lodging-cost=${destination.estimatedLodgingCostPerDay}>${destination.destination}</option>
     `
-  }
+  },
 
 
 };

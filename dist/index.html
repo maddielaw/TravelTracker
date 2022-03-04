@@ -21,6 +21,7 @@
   <section class="new-trip-form-container hidden" id="tripFormContainer">
     <form class="new-trip-form" id="newTripForm" >
       <h2 class="form-title">Find your perfect getaway</h2>
+      <p class="form-errors" id="formErrors"></p>
       <p class="hidden" id="currentTravelerID"></p>
       <label for="departureDate">Trip Departure Date</label>
       <p class="date-error-message hidden" id="dateError">Please pick a date in the future!</p>
@@ -32,7 +33,7 @@
       <label for="tripDestination">Where do you want to go?</label>
       <select class="trip-destination" id="tripDestination" required>
       </select>  
-      <button class="quote-button" type="submit" id="quoteButton">Get a quote!</button>
+      <button class="quote-button" type="button" id="quoteButton">Get a quote!</button>
       <p class="trip-quote hidden" id="tripQuote">your estimated cost</p>
       <button class="submit-button hidden" type="submit" id="submitButton">Submit trip request</button>
     </form>

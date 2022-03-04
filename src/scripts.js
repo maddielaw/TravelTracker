@@ -19,6 +19,7 @@ const pendingTripsContainer = document.getElementById('pendingTrips');
 const newTripForm = document.getElementById('newTripForm')
 const formDepartureDate = document.getElementById('departureDate');
 const dateErrorMsg = document.getElementById('dateError')
+const formErrorTag = document.getElementById('formErrors')
 const formTripDuration = document.getElementById('tripDuration');
 const formNumTravelers = document.getElementById('numTravelers');
 const destinationDropDown = document.getElementById('tripDestination');
@@ -35,7 +36,9 @@ filterBtnContainer.addEventListener('click', displayDashboard);
 bookTripBtn.addEventListener('click', displayAndHideTripForm);
 backToMainBtn.addEventListener('click', displayAndHideTripForm);
 
-newTripForm.addEventListener('submit', getTripQuote)
+quoteBtn.addEventListener('click', getTripQuote)
+newTripForm.addEventListener('submit', packageNewTrip)
+
 
 
 // Main Functions -------------------------------------------------------------------------------------------
@@ -164,7 +167,8 @@ function resolvePromise() {
     })
 };
 
-function packageNewTrip() {
+function packageNewTrip(e) {
+  e.preventDefault();
   const newTripData = {
     id: Date.now(),
     userID: 33,
@@ -184,6 +188,15 @@ function handleServerErrors(error) {
   }
 }
 
+function checkForErrors(response) {
+  if (response.ok) {
+    formErrorTag.innerText = "";
+    return response.json()
+  } else {
+    throw new Error("Make sure you fill out all form fields!")
+  }
+}
 
 
-export default handleServerErrors;
+
+export { handleServerErrors, checkForErrors };

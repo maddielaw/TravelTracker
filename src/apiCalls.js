@@ -1,4 +1,4 @@
-import handleServerErrors from "./scripts";
+import { handleServerErrors, checkForErrors } from "./scripts";
 
 const fetchCalls = {
 
@@ -13,8 +13,8 @@ const fetchCalls = {
       body: JSON.stringify(newData),
       headers: {'Content-Type': 'application/json'}
     })
-        .then(response => response.json())
-        .then(data => console.log(data))
+        .then(response => checkForErrors(response))
+        .catch(err => handleServerErrors(err))
   }
 };
 
