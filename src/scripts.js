@@ -36,7 +36,7 @@ filterBtnContainer.addEventListener('click', displayDashboard);
 bookTripBtn.addEventListener('click', displayAndHideTripForm);
 backToMainBtn.addEventListener('click', displayAndHideTripForm);
 
-quoteBtn.addEventListener('click', getTripQuote)
+quoteBtn.addEventListener('click', displayTripQuote)
 newTripForm.addEventListener('submit', packageNewTrip)
 
 
@@ -135,26 +135,45 @@ function createDestinationList(data) {
   })
 }
 
-function getTripQuote(e) {
+function displayTripQuote(e) {
   e.preventDefault()
-  if (new Date(formDepartureDate.value).toLocaleDateString() < new Date().toLocaleDateString()) {
-    console.log('date')
-    dateErrorMsg.innerText = "Please pick a date in the future!"
-  } else if (formNumTravelers.value <= 0 || !formNumTravelers.value) {
+  if (formNumTravelers.value <= 0 || !formNumTravelers.value) {
     console.log('travelers')
     formErrorTag.innerText = "Make sure you fill out all fields!"
   } else if (formTripDuration.value <= 0 || !formTripDuration.value) {
     console.log('duration')
     formErrorTag.innerText = "Make sure you fill out all fields!"
-  } else {
+  } 
+  // else if (new Date(formDepartureDate.value).toLocaleDateString() < new Date().toLocaleDateString()) {
+  //     console.log('date')
+  //     dateErrorMsg.innerText = "Please pick a date in the future!"
+  // } 
+  else {
     console.log('none of the above')
-    domUpdates.showItem(tripSubmitBtn);
-    domUpdates.showItem(tripQuote);
-    domUpdates.hideItem(quoteBtn);
-    dateErrorMsg.innerText = "";
-    formErrorTag.innerText = "";
+    handleTripQuote()
   }
+}
 
+function handleTripQuote() {
+  domUpdates.showItem(tripSubmitBtn);
+  domUpdates.showItem(tripQuote);
+  domUpdates.hideItem(quoteBtn);
+  dateErrorMsg.innerText = "";
+  formErrorTag.innerText = "";
+  tripQuote.innerText = `Your trip cost estimate for ${destinationDropDown.options[destinationDropDown.selectedIndex].text} is $${getNewTripCost()}.00`
+}
+
+function getNewTripCost() {
+  const lodgingPerDay = parseInt(destinationDropDown.options[destinationDropDown.selectedIndex].dataset.lodging)
+  const flightPerPerson = parseInt(destinationDropDown.options[destinationDropDown.selectedIndex].dataset.flight)
+
+  const lodgingTotal = lodgingPerDay * parseInt(formTripDuration.value)
+  const flightTotal = (flightPerPerson * 2) * parseInt(formNumTravelers.value)
+
+  const baseTotal = lodgingTotal + flightTotal
+  const finalTripQuote = baseTotal + (baseTotal * .10)
+
+  return finalTripQuote
 }
 
 

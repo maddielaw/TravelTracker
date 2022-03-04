@@ -67,7 +67,7 @@ let domUpdates = {
   },
   displayDestinationDropDown: function (destination) {
     destinationDropDown.innerHTML += `
-      <option value=${destination.destination} id=${destination.id} data-flight-cost=${destination.estimatedFlightCostPerPerson} data-lodging-cost=${destination.estimatedLodgingCostPerDay}>${destination.destination}</option>
+      <option value=${destination.destination} id=${destination.id} data-flight=${destination.estimatedFlightCostPerPerson} data-lodging=${destination.estimatedLodgingCostPerDay}>${destination.destination}</option>
     `
   },
 
