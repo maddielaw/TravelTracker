@@ -137,19 +137,13 @@ function createDestinationList(data) {
 
 function displayTripQuote(e) {
   e.preventDefault()
-  if (formNumTravelers.value <= 0 || !formNumTravelers.value) {
-    console.log('travelers')
+  if (formDepartureDate.value < new Date().toISOString().split('T')[0]) {
+    dateErrorMsg.innerText = "Please pick a date in the future!"
+  } else if (formNumTravelers.value <= 0 || !formNumTravelers.value) {
     formErrorTag.innerText = "Make sure you fill out all fields!"
   } else if (formTripDuration.value <= 0 || !formTripDuration.value) {
-    console.log('duration')
     formErrorTag.innerText = "Make sure you fill out all fields!"
-  } 
-  // else if (new Date(formDepartureDate.value).toLocaleDateString() < new Date().toLocaleDateString()) {
-  //     console.log('date')
-  //     dateErrorMsg.innerText = "Please pick a date in the future!"
-  // } 
-  else {
-    console.log('none of the above')
+  } else {
     handleTripQuote()
   }
 }
