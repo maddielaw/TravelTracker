@@ -13,6 +13,9 @@ const pendingTripsContainer = document.getElementById('pendingTrips');
 const notFoundMessage = document.getElementById('notFound');
 const tripFormPage = document.getElementById('tripFormContainer')
 const destinationDropDown = document.getElementById('tripDestination')
+const tripQuote = document.getElementById('tripQuote')
+
+
 
 
 
@@ -70,6 +73,9 @@ let domUpdates = {
       <option value=${destination.destination} id=${destination.id} data-flight=${destination.estimatedFlightCostPerPerson} data-lodging=${destination.estimatedLodgingCostPerDay}>${destination.destination}</option>
     `
   },
+  displayCostEstimate: function (cost) {
+    tripQuote.innerText = `Your trip cost estimate for ${destinationDropDown.options[destinationDropDown.selectedIndex].text} is $${cost}.00`
+  }
 
 
 };

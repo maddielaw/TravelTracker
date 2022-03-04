@@ -154,7 +154,7 @@ function handleTripQuote() {
   domUpdates.hideItem(quoteBtn);
   dateErrorMsg.innerText = "";
   formErrorTag.innerText = "";
-  tripQuote.innerText = `Your trip cost estimate for ${destinationDropDown.options[destinationDropDown.selectedIndex].text} is $${getNewTripCost()}.00`
+  domUpdates.displayCostEstimate(getNewTripCost())
 }
 
 function getNewTripCost() {
@@ -168,6 +168,11 @@ function getNewTripCost() {
   const finalTripQuote = baseTotal + (baseTotal * .10)
 
   return finalTripQuote
+}
+
+
+function displayTripRequstSuccess() {
+
 }
 
 
