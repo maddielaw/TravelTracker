@@ -92,6 +92,7 @@ function createTraveler(data, id) {
   newTraveler.findPendingTrips();
   newTraveler.findUpcomingTrips();
   newTraveler.findCurrentTrip();
+  domUpdates.addTravelerIDToForm(id)
   return newTraveler
 };
 

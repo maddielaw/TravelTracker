@@ -13,6 +13,7 @@ const pendingTripsContainer = document.getElementById('pendingTrips');
 
 const notFoundMessage = document.getElementById('notFound');
 const tripFormPage = document.getElementById('tripFormContainer')
+const currentTravelerID = document.getElementById('currentTravelerID')
 const destinationDropDown = document.getElementById('tripDestination')
 const tripQuote = document.getElementById('tripQuote')
 const successMsg = document.getElementById('successMsg')
@@ -70,6 +71,9 @@ let domUpdates = {
   displayAndHideFormPage: function () {
     mainDashboard.classList.toggle('hidden');
     tripFormPage.classList.toggle('hidden')
+  },
+  addTravelerIDToForm: function(id) {
+    currentTravelerID.innerText = id
   },
   displayDestinationDropDown: function (destination) {
     destinationDropDown.innerHTML += `
