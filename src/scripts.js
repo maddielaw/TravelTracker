@@ -59,7 +59,7 @@ function filterBtnGatekeeper(e, data) {
     domUpdates.showItem(allTripsContainer);
     domUpdates.hideItem(upcomingTripsContainer);
     domUpdates.hideItem(pendingTripsContainer);
-  } if (e.target.id === 'upcomingTripsButton') {
+  } else if (e.target.id === 'upcomingTripsButton') {
     displayAllTravelerTrips(data, upcomingTripsContainer, data.currentTraveler.upcomingTrips);
     domUpdates.showItem(upcomingTripsContainer);
     domUpdates.hideItem(allTripsContainer);
@@ -136,9 +136,7 @@ function displayTripQuote(e) {
   e.preventDefault()
   if (formDepartureDate.value < new Date().toISOString().split('T')[0]) {
     domUpdates.displayDateError()
-  } else if (formNumTravelers.value <= 0 || !formNumTravelers.value) {
-    domUpdates.displayFormError()
-  } else if (formTripDuration.value <= 0 || !formTripDuration.value) {
+  } else if (formNumTravelers.value <= 0 || !formNumTravelers.value || formTripDuration.value <= 0 || !formTripDuration.value) {
     domUpdates.displayFormError()
   } else {
     handleTripQuote()
@@ -168,7 +166,7 @@ function getNewTripCost() {
   return finalTripQuote
 }
 
-function displayTripRequstSuccess() {
+function displayTripRequestSuccess() {
   domUpdates.hideItem(tripSubmitBtn);
   domUpdates.hideItem(tripQuote)
   newTripForm.reset()
@@ -211,7 +209,7 @@ function packageNewTrip(e) {
     suggestedActivities: []
   };
   fetchCalls.postData('trips', newTripData);
-  displayTripRequstSuccess()
+  displayTripRequestSuccess()
 }
 
 function handleServerErrors(error) {
