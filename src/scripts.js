@@ -17,8 +17,12 @@ const upcomingTripsContainer = document.getElementById('upcomingTrips');
 const pendingTripsContainer = document.getElementById('pendingTrips');
 const newTripForm = document.getElementById('newTripForm');
 const formDepartureDate = document.getElementById('departureDate');
+
 const dateErrorMsg = document.getElementById('dateError');
 const formErrorTag = document.getElementById('formErrors');
+const usernameError = document.getElementById('usernameError');
+const passwordError = document.getElementById('passwordError');
+
 const formTripDuration = document.getElementById('tripDuration');
 const formNumTravelers = document.getElementById('numTravelers');
 const destinationDropDown = document.getElementById('tripDestination');
@@ -28,6 +32,7 @@ const filterBtnContainer = document.getElementById('tripFilterContainer');
 
 const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
+const loginForm = document.querySelector('.login-form')
 
 //Event Listeners -------------------------------------------------------------------------------------
 
@@ -40,6 +45,10 @@ backToMainBtn.addEventListener('click', displayAndHideTripForm);
 quoteBtn.addEventListener('click', displayTripQuote);
 clearFormBtn.addEventListener('click', clearForm);
 newTripForm.addEventListener('submit', packageNewTrip);
+
+loginForm.addEventListener('submit', validateLogin);
+
+
 
 // Main Functions -------------------------------------------------------------------------------------------
 
@@ -99,18 +108,21 @@ function displayTravelerProfile(data) {
 function validateLogin(e) {
   e.preventDefault();
   const username = usernameInput.value;
+  const password = passwordInput.value;
   const splitUsername = username.split('');
   const usernameLetters = splitUsername.slice(0, 8).join('');
-  const usernameNumbers = splitUsername.slice(8, 10).join('');
+  const usernameNumbers = splitUsername.slice(8, 11).join('');
 
   domUpdates.addTravelerIDToForm(parseInt(usernameNumbers));
 
   domUpdates.validateUsername(usernameLetters, usernameNumbers)
+  domUpdates.validatePassword(password)
 
-
-
-
-
+  if (usernameInput.classList.contains('correct') && passwordInput.classList.contains('correct')) {
+    usernameError.innerText = "";
+    passwordError.innerText = "";
+    console.log('this works')
+  } 
 }
 
 
