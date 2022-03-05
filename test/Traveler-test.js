@@ -430,7 +430,7 @@ describe('Traveler', () => {
   });
 
   it('should be able to calculate how much a traveler spent on trips for current year', function () {
-    expect(traveler.calculateYearlyTripCost()).to.eql(13172.5)
+    expect(traveler.calculateYearlyTripCost()).to.eql(14575)
   });
   
 });
