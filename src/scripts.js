@@ -26,6 +26,9 @@ const tripQuote = document.getElementById('tripQuote');
 const successMsg = document.getElementById('successMsg');
 const filterBtnContainer = document.getElementById('tripFilterContainer');
 
+const usernameInput = document.getElementById('username');
+const passwordInput = document.getElementById('password');
+
 //Event Listeners -------------------------------------------------------------------------------------
 
 window.addEventListener('load', displayDashboard);
@@ -93,6 +96,30 @@ function displayTravelerProfile(data) {
 };
 
 
+function validateLogin(e) {
+  e.preventDefault();
+  const username = usernameInput.value;
+  const splitUsername = username.split('');
+  const usernameLetters = splitUsername.slice(0, 8).join('');
+  const usernameNumbers = splitUsername.slice(8, 10).join('');
+
+  domUpdates.addTravelerIDToForm(parseInt(usernameNumbers));
+
+  domUpdates.validateUsername(usernameLetters, usernameNumbers)
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
 // Traveler profile -------------------------------------------------------------------------------------------
 
 function createTraveler(data, id) {
@@ -101,7 +128,7 @@ function createTraveler(data, id) {
   newTraveler.findPendingTrips();
   newTraveler.findUpcomingTrips();
   newTraveler.findCurrentTrip();
-  domUpdates.addTravelerIDToForm(id);
+  // domUpdates.addTravelerIDToForm(id);
   return newTraveler
 };
 
