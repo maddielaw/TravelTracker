@@ -22,6 +22,11 @@ const successMsg = document.getElementById('successMsg')
 const dateErrorMsg = document.getElementById('dateError')
 const formErrorTag = document.getElementById('formErrors')
 
+const usernameInput = document.getElementById('username');
+const passwordInput = document.getElementById('password');
+const usernameError = document.getElementById('usernameError');
+const passwordError = document.getElementById('passwordError');
+
 
 
 
@@ -92,7 +97,17 @@ let domUpdates = {
   },
   displayFormSuccessMsg: function () {
     successMsg.innerText = `Trip request successful! You'll hear from your travel agent once it's been approved.`
-  }
+  },
+  validateUsername: function (letters, numbers) {
+    if (!letters === 'traveler' && numbers === 0 && numbers === undefined && parseInt(numbers) > 50) {
+      usernameInput.classList.add('incorrect')
+
+    } else {
+      usernameInput.classList.add('correct')
+    }
+
+
+  },
 
 
 };

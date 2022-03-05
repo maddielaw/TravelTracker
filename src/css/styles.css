@@ -140,10 +140,6 @@ img {
 
 /* ~~~~~~~~~~~~~~~~~~ LOGIN RULES ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-
-
-
-
 .login-page {
   display: flex;
   flex-direction: column;
@@ -177,16 +173,18 @@ img {
   width: 60%;
 }
 
+.username-input,
+.password-input {
+  margin-top: 5px;
+}
+
 .login-button {
   margin-top: 20px;
   width: 40%;
 }
 
 
-
-
-
-/* ~~~~~~~~~~~~~~~~~~ HIDDEN RULES ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* ~~~~~~~~~~~~~~~~~~ HIDDEN RULE ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .hidden {
   display: none;
