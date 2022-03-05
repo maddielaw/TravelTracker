@@ -23,6 +23,7 @@ const formTripDuration = document.getElementById('tripDuration');
 const formNumTravelers = document.getElementById('numTravelers');
 const destinationDropDown = document.getElementById('tripDestination');
 const tripQuote = document.getElementById('tripQuote');
+const successMsg = document.getElementById('successMsg');
 const filterBtnContainer = document.getElementById('tripFilterContainer');
 
 //Event Listeners -------------------------------------------------------------------------------------
@@ -130,7 +131,6 @@ function displayAllTravelerTrips(data, selector, arr) {
     selector.innerHTML = ""
     arr.forEach(trip => {
       domUpdates.updateTravelerTrips(trip, selector);
-      console.log(trip.date)
     });
   };
 };
@@ -139,6 +139,8 @@ function displayAllTravelerTrips(data, selector, arr) {
 
 function displayAndHideTripForm() {
   domUpdates.displayAndHideFormPage();
+  successMsg.innerText = "";
+  domUpdates.showItem(quoteBtn);
 }; 
 
 function createDestinationList(data) {
@@ -191,6 +193,7 @@ function clearForm() {
   domUpdates.hideItem(tripSubmitBtn);
   domUpdates.hideItem(tripQuote);
   domUpdates.showItem(quoteBtn);
+  successMsg.innerText = "";
 };
 
 //API & Promise/Error Handling ------------------------------------------------------------------------------------------------
