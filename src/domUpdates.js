@@ -99,7 +99,6 @@ let domUpdates = {
     successMsg.innerText = `Trip request successful! You'll hear from your travel agent once it's been approved.`
   },
   validateUsername: function (letters, numbers) {
-    console.log(parseInt(numbers))
     if (letters !== 'traveler' || numbers === '0' || numbers === '00' || numbers === undefined || parseInt(numbers) > 50) {
       usernameInput.classList.add('incorrect');
       usernameError.innerText = "username does not match"
