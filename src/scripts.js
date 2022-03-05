@@ -7,37 +7,44 @@ import TravelDatabase from './TravelDatabase';
 
 //Selector Variables -------------------------------------------------------------------------------------
 
+const mainDashboard = document.getElementById('mainSection');
+const welcomeMessage = document.getElementById('welcome');
+
 const bookTripBtn = document.getElementById('bookNowButton');
 const backToMainBtn = document.getElementById('backToMain');
 const quoteBtn = document.getElementById('quoteButton');
 const clearFormBtn = document.getElementById('clearFormButton');
 const tripSubmitBtn = document.getElementById('submitButton');
+
+const filterBtnContainer = document.getElementById('tripFilterContainer');
 const allTripsContainer = document.getElementById('allTrips');
 const upcomingTripsContainer = document.getElementById('upcomingTrips');
 const pendingTripsContainer = document.getElementById('pendingTrips');
+
 const newTripForm = document.getElementById('newTripForm');
 const formDepartureDate = document.getElementById('departureDate');
+const travelerID = document.getElementById('currentTravelerID');
+const formTripDuration = document.getElementById('tripDuration');
+const formNumTravelers = document.getElementById('numTravelers');
+const destinationDropDown = document.getElementById('tripDestination');
+const tripQuote = document.getElementById('tripQuote');
+const successMsg = document.getElementById('successMsg');
 
 const dateErrorMsg = document.getElementById('dateError');
 const formErrorTag = document.getElementById('formErrors');
 const usernameError = document.getElementById('usernameError');
 const passwordError = document.getElementById('passwordError');
 
-const formTripDuration = document.getElementById('tripDuration');
-const formNumTravelers = document.getElementById('numTravelers');
-const destinationDropDown = document.getElementById('tripDestination');
-const tripQuote = document.getElementById('tripQuote');
-const successMsg = document.getElementById('successMsg');
-const filterBtnContainer = document.getElementById('tripFilterContainer');
-
+const loginPage = document.getElementById('loginPage');
 const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
 const loginForm = document.querySelector('.login-form')
 
+
+
 //Event Listeners -------------------------------------------------------------------------------------
 
-window.addEventListener('load', displayDashboard);
-filterBtnContainer.addEventListener('click', displayDashboard);
+filterBtnContainer.addEventListener('click', reRenderDashboard);
 
 bookTripBtn.addEventListener('click', displayAndHideTripForm);
 backToMainBtn.addEventListener('click', displayAndHideTripForm);
@@ -49,12 +56,40 @@ newTripForm.addEventListener('submit', packageNewTrip);
 loginForm.addEventListener('submit', validateLogin);
 
 
-
 // Main Functions -------------------------------------------------------------------------------------------
 
-function displayDashboard(e) {
-  createDashboardView(33, e);
+function validateLogin(e) {
+  e.preventDefault();
+  const username = usernameInput.value;
+  const password = passwordInput.value;
+  const splitUsername = username.split('');
+  const usernameLetters = splitUsername.slice(0, 8).join('');
+  const usernameNumbers = splitUsername.slice(8, 11).join('');
+
+  domUpdates.addTravelerIDToForm(parseInt(usernameNumbers));
+
+  domUpdates.validateUsername(usernameLetters, usernameNumbers)
+  domUpdates.validatePassword(password)
+
+  if (usernameInput.classList.contains('correct') && passwordInput.classList.contains('correct')) {
+    usernameError.innerText = "";
+    passwordError.innerText = "";
+    loadDashboardAfterLogin(e)
+  } 
+}
+
+function reRenderDashboard(e) {
+  const parsedTravelerID = parseInt(travelerID.innerText)
+  createDashboardView(parsedTravelerID, e);
+  domUpdates.hideItem(loginPage);
 };
+
+function loadDashboardAfterLogin(e) {
+  const parsedTravelerID = parseInt(travelerID.innerText)
+  createDashboardView(parsedTravelerID, e);
+  domUpdates.hideItem(loginPage);
+  domUpdates.showItem(mainDashboard);
+}
 
 function createDashboardView(id, e) {
   resolvePromise().then(allData => {
@@ -104,34 +139,6 @@ function displayTravelerProfile(data) {
   displayTravelerSpending(data);
 };
 
-
-function validateLogin(e) {
-  e.preventDefault();
-  const username = usernameInput.value;
-  const password = passwordInput.value;
-  const splitUsername = username.split('');
-  const usernameLetters = splitUsername.slice(0, 8).join('');
-  const usernameNumbers = splitUsername.slice(8, 11).join('');
-
-  domUpdates.addTravelerIDToForm(parseInt(usernameNumbers));
-
-  domUpdates.validateUsername(usernameLetters, usernameNumbers)
-  domUpdates.validatePassword(password)
-
-  if (usernameInput.classList.contains('correct') && passwordInput.classList.contains('correct')) {
-    usernameError.innerText = "";
-    passwordError.innerText = "";
-    console.log('this works')
-  } 
-}
-
-
-
-
-
-
-
-
 // Traveler profile -------------------------------------------------------------------------------------------
 
 function createTraveler(data, id) {
@@ -140,7 +147,6 @@ function createTraveler(data, id) {
   newTraveler.findPendingTrips();
   newTraveler.findUpcomingTrips();
   newTraveler.findCurrentTrip();
-  // domUpdates.addTravelerIDToForm(id);
   return newTraveler
 };
 
