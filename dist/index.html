@@ -17,15 +17,41 @@
       <h2 class="welcome" id="welcome"></h2>
     </section>
   </nav>
-  <main class="main-section">
+
+  <section class="new-trip-form-container hidden" id="tripFormContainer">
+    <form class="new-trip-form" id="newTripForm" >
+      <h2 class="form-title">Find your perfect getaway</h2>
+      <p class="form-errors" id="formErrors"></p>
+      <p class="date-error-message" id="dateError"></p>
+      <p class="hidden" id="currentTravelerID"></p>
+      <label for="departureDate">Trip Departure Date</label>
+      <input  class="departure-date" type="date" name="date" id="departureDate" required></input>
+      <label for="tripDuration">Number of Days</label>
+      <input class="trip-duration" type="number" name="tripDuration" id="tripDuration" min="1" required></input>
+      <label for="numTravelers">Number of Travelers</label>
+      <input class="num-travelers" type="number" name="numTravelers" id="numTravelers" min="1" required></input>
+      <label for="tripDestination">Where do you want to go?</label>
+      <select class="trip-destination" id="tripDestination" required>
+      </select>  
+      <button class="quote-button" type="button" id="quoteButton">Get a quote!</button>
+      <p class="trip-quote hidden" id="tripQuote">your estimated cost</p>
+      <p class="trip-request-success-msg" id="successMsg"></p>
+      <button class="submit-button hidden" type="submit" id="submitButton">Submit trip request</button>
+    </form>
+    <button class="clear-form-button hidden" type="button" id="clearFormButton">Clear form</button>
+    <button class="back-to-dashboard-button" type="button" id="backToMain">Back to Dashboard</button>
+  </section>
+
+  <main class="main-section" id="mainSection">
 
     <section class="trip-dashboard">
-      <nav class="trip-filter-button-container">
+
+      <nav class="trip-filter-button-container" id="tripFilterContainer">
         <button class="all-trips-button" type="button" id="allTripsButton">all trips</button>
         <button class="upcoming-trips-button" type="button" id="upcomingTripsButton">upcoming trips</button>
         <button class="pending-trips-button" type="button" id="pendingTripsButton">pending trips</button>
       </nav>
-      
+
       <p class="not-found-msg hidden" id="notFound">No trips to see here!</p>
       <section class="trip-cards-container all-trips" id="allTrips"></section>
       <section class="trip-cards-container upcoming-trips hidden" id="upcomingTrips"></section>

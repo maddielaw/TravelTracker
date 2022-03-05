@@ -27,6 +27,7 @@ class Traveler {
       let returnDate = new Date(departureDate.setDate(departureDate.getDate() + trip.duration));
       return new Date(trip.date) < new Date(currentDate) && returnDate < new Date(currentDate)
     });
+    return this.pastTrips
   };
 
   findUpcomingTrips() {
@@ -37,6 +38,7 @@ class Traveler {
       let returnDate = new Date(departureDate.setDate(departureDate.getDate() + trip.duration));
       return new Date(trip.date) > new Date(currentDate) && returnDate > new Date(currentDate)
     })
+    return this.upcomingTrips
   };
 
   findCurrentTrip() {
@@ -47,11 +49,13 @@ class Traveler {
       let returnDate = new Date(departureDate.setDate(departureDate.getDate() + trip.duration));
       return new Date(trip.date) <= new Date(currentDate) && returnDate >= new Date(currentDate)
     })
+    return this.currentTrip
   };
 
   findPendingTrips() {
     this.sortTrips();
     this.pendingTrips = this.travelerTrips.filter(trip => trip.status === "pending");
+    return this.pendingTrips
   };
 
   findTravelerDestinations() {
