@@ -114,7 +114,11 @@ function displayTravelerData(data) {
   domUpdates.updateTravelerProfile(data);
 };
 
-
+function formatDate(date) {
+  const newDate = new Date(date)
+  const formattedDate = newDate.toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'})
+  return formattedDate
+}
 
 // Filter trips  -------------------------------------------------------------------------------------------
 
@@ -238,4 +242,4 @@ function checkForErrors(response) {
 
 
 
-export { handleServerErrors, checkForErrors };
+export { handleServerErrors, checkForErrors, formatDate };
