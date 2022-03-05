@@ -130,7 +130,6 @@ function displayAllTravelerTrips(data, selector, arr) {
     selector.innerHTML = ""
     arr.forEach(trip => {
       domUpdates.updateTravelerTrips(trip, selector);
-      console.log(trip.date)
     });
   };
 };
