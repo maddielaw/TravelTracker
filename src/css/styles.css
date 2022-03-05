@@ -25,11 +25,19 @@ main {
   flex-direction: column;
 }
 
+.logo {
+  font-size: 25px;
+}
+
+.welcome {
+  font-size: 20px;
+}
+
 .nav-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 50px;
+  height: 60px;
   background-color: #85c1b7;
   padding: 25px;
 }
@@ -50,6 +58,11 @@ main {
   background-color: #fa9763;
 }
 
+.filter-button {
+  width: 15%;
+  font-size: 15px;
+}
+
 /* ~~~~~~~~~~~~~~~~~~ TRIP CARD RULES ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .trip-cards-container {
@@ -65,8 +78,8 @@ main {
 .trip-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 75%;
+  justify-content: space-around;
+  height: 69%;
   width: 28%;
   margin: 10px;
   padding: 10px;
@@ -78,12 +91,18 @@ main {
 .trip-card-img-container {
   height: 35%;
   width: 100%;
+  margin-bottom: 10px;
   align-self: center;
 }
 
 img {
   height: 155px;
   width: 100%;
+  border-radius: 10px;
+}
+
+.trip-card-location {
+  align-self: center;
 }
 
 /* ~~~~~~~~~~~~~~~~~~ SIDEBAR RULES ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
