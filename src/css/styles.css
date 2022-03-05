@@ -129,8 +129,22 @@ img {
   background-color: #f1ede6;
 }
 
-.book-now-btn-container {
+.book-now-container {
   align-self: center;
+  font-size: 23px;
+  width: 90%;
+}
+
+.icon-text-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 5px;
+}
+
+
+
+.book-now-button {
+  width: 90%;
 }
 
 /* ~~~~~~~~~~~~~~~~~~ FORM RULES ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
