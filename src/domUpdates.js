@@ -26,6 +26,7 @@ const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
 const usernameError = document.getElementById('usernameError');
 const passwordError = document.getElementById('passwordError');
+const loginForm = document.querySelector('.login-form')
 
 
 
@@ -100,19 +101,19 @@ let domUpdates = {
   },
   validateUsername: function (letters, numbers) {
     if (letters !== 'traveler' || numbers === '0' || numbers === '00' || numbers === undefined || parseInt(numbers) > 50) {
-      usernameInput.classList.add('incorrect');
+      usernameInput.className = 'incorrect';
       usernameError.innerText = "username does not match"
     } 
     else {
-      usernameInput.classList.add('correct');
+      usernameInput.className = 'correct';
     };
   },
   validatePassword: function (password) {
     if (password !== "travel") {
-      passwordInput.classList.add('incorrect');
+      passwordInput.className = 'incorrect';
       passwordError.innerText = "password does not match"
     } else {
-      passwordInput.classList.add('correct');
+      passwordInput.className = 'correct';
     };
   }
 
