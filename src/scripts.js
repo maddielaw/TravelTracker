@@ -23,6 +23,7 @@ const formTripDuration = document.getElementById('tripDuration');
 const formNumTravelers = document.getElementById('numTravelers');
 const destinationDropDown = document.getElementById('tripDestination');
 const tripQuote = document.getElementById('tripQuote');
+const successMsg = document.getElementById('successMsg')
 const filterBtnContainer = document.getElementById('tripFilterContainer');
 
 //Event Listeners -------------------------------------------------------------------------------------
@@ -136,6 +137,7 @@ function displayAllTravelerTrips(data, selector, arr) {
 
 // Form Page  -------------------------------------------------------------------------------------------
 
+
 function displayAndHideTripForm() {
   domUpdates.displayAndHideFormPage();
 }; 
@@ -181,8 +183,8 @@ function getNewTripCost() {
 function displayTripRequestSuccess() {
   domUpdates.hideItem(tripSubmitBtn);
   domUpdates.hideItem(tripQuote);
-  newTripForm.reset();
   domUpdates.displayFormSuccessMsg();
+  newTripForm.reset();
 };
 
 function clearForm() {
