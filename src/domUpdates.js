@@ -1,4 +1,4 @@
-import { formatDate } from "./scripts";
+import { formatDate, formatCost } from "./scripts";
 
 
 //Selector Variables -------------------------------------------------------------------------------------
@@ -40,7 +40,7 @@ let domUpdates = {
     todayDate.innerText = `${new Date().toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric',})}`;
   },
   updateTravelerSpending: function (data, cost) {
-    totalTripCost.innerText = `You've spent $${cost}.00 on trips this year`
+    totalTripCost.innerText = `You've spent ${formatCost(cost)} on trips this year`
   },
   updateTravelerTrips: function (trip, selector) {
     selector.innerHTML += `
