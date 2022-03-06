@@ -97,7 +97,7 @@ let domUpdates = {
     formErrorTag.innerText = "Number of travelers must be less than 10 and trip duration must be less than 365"
   },
   displayCostEstimate: function (cost) {
-    tripQuote.innerText = `Your trip cost estimate for ${destinationDropDown.options[destinationDropDown.selectedIndex].text} is $${cost}.00`
+    tripQuote.innerText = `Your trip cost estimate for ${destinationDropDown.options[destinationDropDown.selectedIndex].text} is ${formatCost(cost)}`
   },
   displayFormSuccessMsg: function () {
     successMsg.innerText = `Trip request successful! You'll hear from your travel agent once it's been approved.`
