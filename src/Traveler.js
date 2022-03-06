@@ -94,6 +94,13 @@ class Traveler {
     return finalTotal;
   };
 
+  findNumDaysTraveledThisYear() {
+    const thisYearTrips = this.findYearlyTrips();
+    return thisYearTrips.reduce((total, trip) => {
+      return total += trip.duration
+    }, 0);
+  };
+
 };
 
 
