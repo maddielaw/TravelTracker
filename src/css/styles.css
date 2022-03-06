@@ -217,6 +217,17 @@ img {
   box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
 }
 
+.new-trip-form label,
+.login-form {
+  font-size: 18px;
+}
+
+.new-trip-form input,
+.new-trip-form select,
+.login-form input {
+  font-size: 16px;
+}
+
 .form-title-container {
   display: flex;
   align-self: center;
@@ -242,6 +253,14 @@ img {
 .submit-button {
   align-self: center;
   width: 40%;
+}
+
+.form-errors,
+.date-error-message {
+  align-self: center;
+  font-size: 19px;
+  color: #f88a4f;
+  font-weight: 900;
 }
 
 
@@ -302,9 +321,7 @@ img {
 }
 
 .password-error,
-.username-error,
-.form-errors,
-.date-error-message {
+.username-error {
   color: #f88a4f;
   font-size: 14px;
   font-weight: 900;
