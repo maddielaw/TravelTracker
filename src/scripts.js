@@ -1,5 +1,4 @@
 import './css/styles.css';
-import './images/turing-logo.png';
 import fetchCalls from './apiCalls';
 import domUpdates from './domUpdates';
 import TravelDatabase from './TravelDatabase';

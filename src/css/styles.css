@@ -48,7 +48,8 @@ button {
   justify-content: space-between;
   align-items: center;
   height: 50px;
-  background: linear-gradient(#85C1B7, #A5D5CE);
+  background-color: #3e5d88;
+  color: white;
   padding: 25px;
 }
 
@@ -84,7 +85,7 @@ button {
   overflow: scroll;
   height: 100%;
   width: 100%;
-  background-color: #f2f2f2;
+  background-color: white;
 }
 
 .trip-card {
@@ -96,7 +97,7 @@ button {
   margin: 10px;
   padding: 10px;
   border-radius: 10px;
-  background-color: #f1ede6;
+  background-color: #f2f2f2;
   box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
 }
 
@@ -131,9 +132,7 @@ img {
   height: 97%;
   width: 23%;
   padding: 10px;
-  background-color: #393e41;
-  color: white;
-  /* background-color: #f1ede6; */
+  background-color: #f2f2f2;
 }
 
 .name-date-container {
@@ -165,7 +164,6 @@ img {
   font-weight: 700;
   margin-top: 40px;
   color: black;
-  background-color: #eebb68;
 }
 
 .book-now-container {
@@ -223,7 +221,6 @@ img {
   align-self: center;
 }
 
-
 /* ~~~~~~~~~~~~~~~~~~ LOGIN RULES ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .login-page {
@@ -267,14 +264,25 @@ img {
   margin-top: 10px;
 }
 
+#username,
+#password {
+  margin-top: 5px;
+}
+
 .login-button {
   margin-top: 20px;
   width: 40%;
+  font-size: 15px;
+  padding: 3px;
+}
+
+.login-button:hover {
+  color: #fa8241;
 }
 
 .password-error,
 .username-error {
-  color: red;
+  color: #f88a4f;
   font-size: 14px;
   font-weight: 900;
 }
