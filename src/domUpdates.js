@@ -119,8 +119,6 @@ let domUpdates = {
       passwordInput.className = 'correct';
     };
   }
-
-
 };
 
 
