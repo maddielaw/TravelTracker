@@ -96,7 +96,6 @@ function createDashboardView(id, e) {
     const travelDatabase = new TravelDatabase(allData);
     createTraveler(travelDatabase, id);
     displayTravelerProfile(travelDatabase);
-    displayNumDaysTraveled(travelDatabase)
     createDestinationList(travelDatabase);
     filterBtnGatekeeper(e, travelDatabase);
   });
@@ -164,7 +163,6 @@ function displayTravelerData(data) {
 
 function displayNumDaysTraveled(data) {
   const daysTraveled = data.currentTraveler.findNumDaysTraveledThisYear();
-  console.log(daysTraveled)
 }
 
 function formatDate(date) {

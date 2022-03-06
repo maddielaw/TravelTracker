@@ -142,11 +142,13 @@ img {
 }
 
 .traveler-name-title,
-.today-date-title {
+.today-date-title,
+.num-days-traveled-title {
   font-size: 10px;
 }
 
-.today-date-title {
+.today-date-title,
+.num-days-traveled-title {
   margin-top: 25px;
 }
 
