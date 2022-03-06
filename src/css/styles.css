@@ -40,12 +40,12 @@ button:hover {
   width: 30%;
 }
 .logo {
-  font-size: 25px;
+  font-size: 30px;
   margin-left: 10px;
 }
 
 .welcome {
-  font-size: 25px;
+  font-size: 23px;
 }
 
 .nav-bar {
@@ -190,7 +190,7 @@ img {
 
 .book-now-container {
   align-self: center;
-  font-size: 23px;
+  font-size: 21px;
   width: 90%;
   margin-top: 80px;
 }
@@ -198,7 +198,7 @@ img {
 .icon-text-container {
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .book-now-button {
