@@ -201,9 +201,11 @@ function displayTripQuote(e) {
     domUpdates.displayDateError();
   } else if (formNumTravelers.value <= 0 || !formNumTravelers.value || formTripDuration.value <= 0 || !formTripDuration.value) {
     domUpdates.displayFormError();
+  } else if (formNumTravelers.value > 10 || formTripDuration.value > 365) {
+    domUpdates.displayDurationOrTravelerError()
   } else {
     handleTripQuote();
-  };
+  }
 };
 
 function handleTripQuote() {

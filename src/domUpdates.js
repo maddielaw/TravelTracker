@@ -93,6 +93,9 @@ let domUpdates = {
   displayDateError: function () {
     dateErrorMsg.innerText = "Please pick a date in the future!"
   },
+  displayDurationOrTravelerError: function () {
+    formErrorTag.innerText = "Number of travelers must be less than 10 and trip duration must be less than 365"
+  },
   displayCostEstimate: function (cost) {
     tripQuote.innerText = `Your trip cost estimate for ${destinationDropDown.options[destinationDropDown.selectedIndex].text} is $${cost}.00`
   },
