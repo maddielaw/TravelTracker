@@ -47,7 +47,7 @@ const loginForm = document.querySelector('.login-form')
 filterBtnContainer.addEventListener('click', reRenderDashboard);
 
 bookTripBtn.addEventListener('click', displayAndHideTripForm);
-backToMainBtn.addEventListener('click', displayAndHideTripForm);
+backToMainBtn.addEventListener('click', returnToDashboard);
 
 quoteBtn.addEventListener('click', displayTripQuote);
 clearFormBtn.addEventListener('click', clearForm);
@@ -84,6 +84,11 @@ function loadDashboardAfterLogin(e) {
   createDashboardView(parsedTravelerID, e);
   domUpdates.hideItem(loginPage);
   domUpdates.showItem(mainDashboard);
+}
+
+function returnToDashboard(e) {
+  domUpdates.displayAndHideFormPage();
+  reRenderDashboard(e)
 }
 
 function createDashboardView(id, e) {

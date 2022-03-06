@@ -40,7 +40,7 @@ button {
 }
 
 .welcome {
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .nav-bar {
@@ -71,7 +71,8 @@ button {
 
 .filter-button {
   width: 15%;
-  font-size: 15px;
+  font-size: 17px;
+  padding: 5px;
 }
 
 /* ~~~~~~~~~~~~~~~~~~ TRIP CARD RULES ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -127,11 +128,12 @@ img {
 .profile-sidebar {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   height: 97%;
   width: 23%;
   padding: 10px;
-  background-color: #f1ede6;
+  background-color: #393e41;
+  color: white;
+  /* background-color: #f1ede6; */
 }
 
 .name-date-container {
@@ -139,12 +141,14 @@ img {
   flex-direction: column;
   justify-content: space-around;
   height: 10%;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .traveler-name-title,
 .today-date-title,
 .num-days-traveled-title {
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .today-date-title,
@@ -157,17 +161,18 @@ img {
   align-items: center;
   height: 15%;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   font-weight: 700;
-  box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+  margin-top: 40px;
+  color: black;
   background-color: #eebb68;
 }
-
 
 .book-now-container {
   align-self: center;
   font-size: 23px;
   width: 90%;
+  margin-top: 80px;
 }
 
 .icon-text-container {
@@ -177,7 +182,10 @@ img {
 }
 
 .book-now-button {
+  font-size: 18px;
+  padding: 5px;
   width: 90%;
+  margin-left: 10px;
 }
 
 

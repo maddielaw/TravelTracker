@@ -6,12 +6,10 @@ import { formatDate } from "./scripts";
 const welcomeMessage = document.getElementById('welcome');
 const travelerName = document.getElementById('travelerName');
 const todayDate = document.getElementById('todayDate');
-const numDaysTraveled = document.getElementById('numDaysTraveled');
 const totalTripCost = document.getElementById('totalTripCost');
 const allTripsContainer = document.getElementById('allTrips');
 const mainDashboard = document.getElementById('mainSection')
 const upcomingTripsContainer = document.getElementById('upcomingTrips');
-const pendingTripsContainer = document.getElementById('pendingTrips');
 
 const notFoundMessage = document.getElementById('notFound');
 const tripFormPage = document.getElementById('tripFormContainer')
@@ -27,11 +25,6 @@ const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
 const usernameError = document.getElementById('usernameError');
 const passwordError = document.getElementById('passwordError');
-const loginForm = document.querySelector('.login-form')
-
-
-
-
 
 //DOM Updates -------------------------------------------------------------------------------------
 
