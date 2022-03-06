@@ -85,13 +85,21 @@ class Traveler {
       return total += trip.destinationID.estimatedLodgingCostPerDay * trip.duration;
     }, 0);
     const flightCost = thisYearTrips.reduce((total, trip) => {
-      return total += trip.destinationID.estimatedFlightCostPerPerson * trip.travelers;
+      return total += (trip.destinationID.estimatedFlightCostPerPerson * 2) * trip.travelers;
     }, 0);
     const baseCost = lodgingCost + flightCost;
     const travelAgentFee = baseCost / 10;
     const finalTotal = baseCost + travelAgentFee;
 
     return finalTotal;
+  };
+
+  findNumDaysTraveled() {
+    const approvedTrips = this.travelerTrips.filter(trip => trip.status === "approved");
+    
+    return approvedTrips.reduce((total, trip) => {
+      return total += trip.duration
+    }, 0)
   };
 
 };

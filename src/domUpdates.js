@@ -6,6 +6,7 @@ import { formatDate } from "./scripts";
 const welcomeMessage = document.getElementById('welcome');
 const travelerName = document.getElementById('travelerName');
 const todayDate = document.getElementById('todayDate');
+const numDaysTraveled = document.getElementById('numDaysTraveled');
 const totalTripCost = document.getElementById('totalTripCost');
 const allTripsContainer = document.getElementById('allTrips');
 const mainDashboard = document.getElementById('mainSection')
@@ -22,6 +23,12 @@ const successMsg = document.getElementById('successMsg')
 const dateErrorMsg = document.getElementById('dateError')
 const formErrorTag = document.getElementById('formErrors')
 
+const usernameInput = document.getElementById('username');
+const passwordInput = document.getElementById('password');
+const usernameError = document.getElementById('usernameError');
+const passwordError = document.getElementById('passwordError');
+const loginForm = document.querySelector('.login-form')
+
 
 
 
@@ -37,10 +44,10 @@ let domUpdates = {
   },
   updateTravelerProfile: function (data) {
     travelerName.innerText = data.currentTraveler.name;
-    todayDate.innerText = `Today's Date: ${new Date().toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric',})}`;
+    todayDate.innerText = `${new Date().toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric',})}`;
   },
   updateTravelerSpending: function (data, cost) {
-    totalTripCost.innerText = `You've spent $${cost} on trips this year`
+    totalTripCost.innerText = `You've spent $${cost}.00 on trips this year`
   },
   updateTravelerTrips: function (trip, selector) {
     selector.innerHTML += `
@@ -92,6 +99,23 @@ let domUpdates = {
   },
   displayFormSuccessMsg: function () {
     successMsg.innerText = `Trip request successful! You'll hear from your travel agent once it's been approved.`
+  },
+  validateUsername: function (letters, numbers) {
+    if (letters !== 'traveler' || numbers === '0' || numbers === '00' || numbers === undefined || parseInt(numbers) > 50) {
+      usernameInput.className = 'incorrect';
+      usernameError.innerText = "username does not match"
+    } 
+    else {
+      usernameInput.className = 'correct';
+    };
+  },
+  validatePassword: function (password) {
+    if (password !== "travel") {
+      passwordInput.className = 'incorrect';
+      passwordError.innerText = "password does not match"
+    } else {
+      passwordInput.className = 'correct';
+    };
   }
 
 
