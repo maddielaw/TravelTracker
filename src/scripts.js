@@ -229,7 +229,7 @@ function getNewTripCost() {
 function displayTripRequestSuccess() {
   domUpdates.hideItem(tripSubmitBtn);
   domUpdates.hideItem(tripQuote);
-  // domUpdates.hideItem(clearFormBtn);
+  domUpdates.hideItem(clearFormBtn);
   newTripForm.reset();
   domUpdates.displayFormSuccessMsg();
 };
