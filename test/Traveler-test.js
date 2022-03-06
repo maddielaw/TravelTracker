@@ -433,8 +433,8 @@ describe('Traveler', () => {
     expect(traveler.calculateYearlyTripCost()).to.eql(14575)
   });
 
-  it('should be able to calculate how many days a traveler has traveled for current year', function () {
-    expect(traveler.findNumDaysTraveledThisYear()).to.eql(26)
+  it('should be able to calculate how many days a traveler has traveled', function () {
+    expect(traveler.findNumDaysTraveled()).to.eql(45)
   });
   
 });

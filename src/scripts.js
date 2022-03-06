@@ -96,6 +96,7 @@ function createDashboardView(id, e) {
     const travelDatabase = new TravelDatabase(allData);
     createTraveler(travelDatabase, id);
     displayTravelerProfile(travelDatabase);
+    displayNumDaysTraveled(travelDatabase)
     createDestinationList(travelDatabase);
     filterBtnGatekeeper(e, travelDatabase);
   });
@@ -155,10 +156,16 @@ function displayTravelerSpending(data) {
   domUpdates.updateTravelerSpending(data, yearlyCost);
 };
 
+
 function displayTravelerData(data) {
   domUpdates.updateWelcomeMessage(data);
   domUpdates.updateTravelerProfile(data);
 };
+
+function displayNumDaysTraveled(data) {
+  const daysTraveled = data.currentTraveler.findNumDaysTraveledThisYear();
+  console.log(daysTraveled)
+}
 
 function formatDate(date) {
   const newDate = new Date(date)

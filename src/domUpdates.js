@@ -6,6 +6,7 @@ import { formatDate } from "./scripts";
 const welcomeMessage = document.getElementById('welcome');
 const travelerName = document.getElementById('travelerName');
 const todayDate = document.getElementById('todayDate');
+const numDaysTraveled = document.getElementById('numDaysTraveled');
 const totalTripCost = document.getElementById('totalTripCost');
 const allTripsContainer = document.getElementById('allTrips');
 const mainDashboard = document.getElementById('mainSection')
@@ -43,10 +44,10 @@ let domUpdates = {
   },
   updateTravelerProfile: function (data) {
     travelerName.innerText = data.currentTraveler.name;
-    todayDate.innerText = `Today's Date: ${new Date().toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric',})}`;
+    todayDate.innerText = `${new Date().toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric',})}`;
   },
   updateTravelerSpending: function (data, cost) {
-    totalTripCost.innerText = `You've spent $${cost} on trips this year`
+    totalTripCost.innerText = `You've spent $${cost}.00 on trips this year`
   },
   updateTravelerTrips: function (trip, selector) {
     selector.innerHTML += `

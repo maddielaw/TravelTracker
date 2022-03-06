@@ -94,11 +94,12 @@ class Traveler {
     return finalTotal;
   };
 
-  findNumDaysTraveledThisYear() {
-    const thisYearTrips = this.findYearlyTrips();
-    return thisYearTrips.reduce((total, trip) => {
+  findNumDaysTraveled() {
+    const approvedTrips = this.travelerTrips.filter(trip => trip.status === "approved");
+    
+    return approvedTrips.reduce((total, trip) => {
       return total += trip.duration
-    }, 0);
+    }, 0)
   };
 
 };
