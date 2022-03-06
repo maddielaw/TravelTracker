@@ -72,7 +72,7 @@ button:hover {
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: 9%;
+  height: 10%;
   background-color: #fa9763;
 }
 
@@ -111,8 +111,9 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-
   height: 50%;
+  padding: 10px;
+  border-left: 1px solid #cdcdcd;
 }
 
 .trip-card-img-container {
@@ -130,10 +131,13 @@ img {
 }
 
 .trip-card-location {
-  align-self: center;
   width: 100%;
   padding: 7px;
   border-bottom: 1px solid #cdcdcdd0;
+}
+
+.trip-info {
+  font-size: 20px;
 }
 
 .not-found-msg {
@@ -164,12 +168,11 @@ img {
 
 .traveler-name-title,
 .today-date-title,
-.num-days-traveled-title {
-  font-size: 12px;
+.trip-card-title {
+  font-size: 13px;
 }
 
-.today-date-title,
-.num-days-traveled-title {
+.today-date-title {
   margin-top: 25px;
 }
 

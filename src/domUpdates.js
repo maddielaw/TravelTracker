@@ -50,11 +50,14 @@ let domUpdates = {
           <img src=${trip.destinationID.image} alt=${trip.destinationID.alt}></img>
         </div>
         <div class="trip-info-container">
-          <h4 class="num-travelers" id=${trip.id}>Travelers: ${trip.travelers}</h4>
-          <h4 class="num-travelers" id=${trip.id}>Travelers: ${trip.travelers}</h4>
-          <h4 class="departure" id=${trip.id}>Departure Date: ${formatDate(trip.date)}</h4>
-          <h4 class="duration" id=${trip.id}>Trip Duration: ${trip.duration} days</h4>
-          <h4 class="trip-status" id=${trip.id}>Trip Status: ${trip.status}</h4>
+          <h4 class="trip-card-title">number of travelers</h4>
+          <h4 class="num-travelers trip-info" id=${trip.id}>${trip.travelers}</h4>
+          <h4 class="trip-card-title">departure date</h4>
+          <h4 class="departure trip-info" id=${trip.id}>${formatDate(trip.date)}</h4>
+          <h4 class="trip-card-title">trip duration</h4>
+          <h4 class="duration trip-info" id=${trip.id}>${trip.duration} days</h4>
+          <h4 class="trip-card-title">trip status</h4>
+          <h4 class="trip-status trip-info" id=${trip.id}>${trip.status}</h4>
         </div>
       </div>`
   },
