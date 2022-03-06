@@ -60,17 +60,12 @@ loginForm.addEventListener('submit', validateLogin);
 
 function validateLogin(e) {
   e.preventDefault();
-  const username = usernameInput.value;
+  const usernameLetters = usernameInput.value.split('').slice(0, 8).join('')
+  const usernameNumbers = usernameInput.value.split('').slice(8, 11).join('')
   const password = passwordInput.value;
-  const splitUsername = username.split('');
-  const usernameLetters = splitUsername.slice(0, 8).join('');
-  const usernameNumbers = splitUsername.slice(8, 11).join('');
-
   domUpdates.addTravelerIDToForm(parseInt(usernameNumbers));
-
   domUpdates.validateUsername(usernameLetters, usernameNumbers)
   domUpdates.validatePassword(password)
-
   if (usernameInput.classList.contains('correct') && passwordInput.classList.contains('correct')) {
     usernameError.innerText = "";
     passwordError.innerText = "";
@@ -160,10 +155,6 @@ function displayTravelerData(data) {
   domUpdates.updateWelcomeMessage(data);
   domUpdates.updateTravelerProfile(data);
 };
-
-function displayNumDaysTraveled(data) {
-  const daysTraveled = data.currentTraveler.findNumDaysTraveledThisYear();
-}
 
 function formatDate(date) {
   const newDate = new Date(date)
