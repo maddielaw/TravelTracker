@@ -25,6 +25,10 @@ button {
   cursor: pointer;
 }
 
+button:hover {
+  color: #fa8241;
+}
+
 .nav-and-login-container {
   display: flex;
   flex-direction: column;
@@ -163,7 +167,7 @@ img {
   border-radius: 5px;
   font-weight: 700;
   margin-top: 40px;
-  color: black;
+  background-color: #fa9863d7;
 }
 
 .book-now-container {
@@ -213,13 +217,34 @@ img {
   box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
 }
 
-.form-title {
+.form-title-container {
+  display: flex;
   align-self: center;
+}
+
+.form-title {
+  margin-left: 10px;
 }
 
 .trip-quote {
   align-self: center;
 }
+
+.back-to-dashboard-button,
+.clear-form-button,
+.quote-button,
+.submit-button {
+  font-size: 15px;
+  padding: 3px;
+}
+
+.quote-button,
+.submit-button {
+  align-self: center;
+  width: 40%;
+}
+
+
 
 /* ~~~~~~~~~~~~~~~~~~ LOGIN RULES ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
@@ -276,12 +301,10 @@ img {
   padding: 3px;
 }
 
-.login-button:hover {
-  color: #fa8241;
-}
-
 .password-error,
-.username-error {
+.username-error,
+.form-errors,
+.date-error-message {
   color: #f88a4f;
   font-size: 14px;
   font-weight: 900;

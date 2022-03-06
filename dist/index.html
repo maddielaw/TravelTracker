@@ -42,7 +42,10 @@
 <!-- FORM SECTIOM -->
   <section class="new-trip-form-container hidden" id="tripFormContainer">
     <form class="new-trip-form" id="newTripForm" >
-      <h2 class="form-title">Find your perfect getaway</h2>
+      <div class="form-title-container">
+        <i class="material-icons" style="font-size:30px;">travel_explore</i>
+        <h2 class="form-title">Find your perfect getaway</h2>
+      </div>
       <p class="form-errors" id="formErrors"></p>
       <p class="date-error-message" id="dateError"></p>
       <p class="hidden" id="currentTravelerID"></p>
@@ -60,8 +63,8 @@
       <p class="trip-request-success-msg" id="successMsg"></p>
       <button class="submit-button hidden" type="submit" id="submitButton">Submit trip request</button>
     </form>
-    <button class="clear-form-button hidden" type="button" id="clearFormButton">Clear form</button>
     <button class="back-to-dashboard-button" type="button" id="backToMain">Back to Dashboard</button>
+    <button class="clear-form-button hidden" type="button" id="clearFormButton">Clear form</button>
   </section>
 
 <!-- MAIN DASHBOARD SECTIOM -->
