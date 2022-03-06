@@ -45,14 +45,17 @@ let domUpdates = {
   updateTravelerTrips: function (trip, selector) {
     selector.innerHTML += `
       <div class="all-trips trip-card">
-        <h3 class="trip-card-location trip-info" id="tripCardLocation">${trip.destinationID.destination}</h3>
+        <h3 class="trip-card-location trip-info" id=${trip.id}>${trip.destinationID.destination}</h3>
         <div class="trip-card-img-container trip-info">
           <img src=${trip.destinationID.image} alt=${trip.destinationID.alt}></img>
         </div>
-        <h4 class="num-travelers trip-info" id="numTravelers">Travelers: ${trip.travelers}</h4>
-        <h4 class="departure trip-info" id="departure">Departure Date: ${formatDate(trip.date)}</h4>
-        <h4 class="duration trip-info" id="duration">Trip Duration: ${trip.duration} days</h4>
-        <h4 class="trip-status trip-info" id="tripStatus">Trip Status: ${trip.status}</h4>
+        <div class="trip-info-container">
+          <h4 class="num-travelers" id=${trip.id}>Travelers: ${trip.travelers}</h4>
+          <h4 class="num-travelers" id=${trip.id}>Travelers: ${trip.travelers}</h4>
+          <h4 class="departure" id=${trip.id}>Departure Date: ${formatDate(trip.date)}</h4>
+          <h4 class="duration" id=${trip.id}>Trip Duration: ${trip.duration} days</h4>
+          <h4 class="trip-status" id=${trip.id}>Trip Status: ${trip.status}</h4>
+        </div>
       </div>`
   },
   showItem: function (selector) {

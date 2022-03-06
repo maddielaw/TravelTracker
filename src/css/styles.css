@@ -107,10 +107,19 @@ button:hover {
   box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
 }
 
+.trip-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  height: 50%;
+}
+
 .trip-card-img-container {
   height: 35%;
   width: 100%;
-  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 5px;
   align-self: center;
 }
 
@@ -344,7 +353,7 @@ img {
 .username-error {
   color: #f88a4f;
   font-size: 14px;
-  font-weight: 900;
+  font-weight: 400;
 }
 
 
