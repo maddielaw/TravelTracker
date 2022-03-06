@@ -229,6 +229,7 @@ function getNewTripCost() {
 function displayTripRequestSuccess() {
   domUpdates.hideItem(tripSubmitBtn);
   domUpdates.hideItem(tripQuote);
+  // domUpdates.hideItem(clearFormBtn);
   newTripForm.reset();
   domUpdates.displayFormSuccessMsg();
 };
@@ -261,7 +262,7 @@ function packageNewTrip(e) {
   e.preventDefault();
   const newTripData = {
     id: Date.now(),
-    userID: 33,
+    userID: parseInt(travelerID.innerText),
     destinationID: parseInt(destinationDropDown.options[destinationDropDown.selectedIndex].id),
     travelers: parseInt(formNumTravelers.value),
     date: formDepartureDate.value.split('-').join('/'),

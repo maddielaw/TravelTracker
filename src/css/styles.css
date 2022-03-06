@@ -64,7 +64,7 @@ button:hover {
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: #f2f2f2;
+  background-color: white;
 }
 
 .trip-filter-button-container {
@@ -110,8 +110,8 @@ button:hover {
 .trip-info-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  height: 50%;
+  justify-content: space-between;
+  height: 40%;
   padding: 10px;
   border-left: 1px solid #cdcdcd;
 }
@@ -131,7 +131,7 @@ img {
 }
 
 .trip-card-location {
-  width: 100%;
+  width: 95%;
   padding: 7px;
   border-bottom: 1px solid #cdcdcdd0;
 }
@@ -174,6 +174,11 @@ img {
 
 .today-date-title {
   margin-top: 25px;
+}
+
+.traveler-name,
+.today-date {
+  font-size: 18px;
 }
 
 .trip-cost-container {
