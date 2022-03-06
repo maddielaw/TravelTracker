@@ -100,7 +100,7 @@ let domUpdates = {
     successMsg.innerText = `Trip request successful! You'll hear from your travel agent once it's been approved.`
   },
   validateUsername: function (letters, numbers) {
-    if (letters !== 'traveler' || numbers === '0' || numbers === '00' || numbers === undefined || parseInt(numbers) > 50) {
+    if (letters !== 'traveler' || numbers === '0' || numbers === '00' || numbers === undefined || numbers === '' || parseInt(numbers) > 50) {
       usernameInput.className = 'incorrect';
       usernameError.innerText = "username does not match"
     } 
