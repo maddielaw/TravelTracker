@@ -2,6 +2,7 @@
   padding: 0px;
   margin: 0px;
   font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
 }
 
 body,
@@ -265,7 +266,21 @@ img {
   align-self: center;
   font-size: 19px;
   color: #f88a4f;
-  font-weight: 900;
+  font-weight: 400;
+}
+
+.form-button-container {
+  display: flex;
+  justify-content: space-around;
+  width: 30%;
+}
+
+.trip-request-success-msg,
+.trip-quote {
+  color: #dd7b45;
+  font-size: 19px;
+  padding: 7px;
+  font-weight: 400;
 }
 
 
