@@ -20,6 +20,11 @@ main {
   height: 100%;
 }
 
+button {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  cursor: pointer;
+}
+
 .nav-and-login-container {
   display: flex;
   flex-direction: column;
@@ -43,7 +48,7 @@ main {
   justify-content: space-between;
   align-items: center;
   height: 50px;
-  background-color: #85c1b7;
+  background: linear-gradient(#85C1B7, #A5D5CE);
   padding: 25px;
 }
 
@@ -129,6 +134,34 @@ img {
   background-color: #f1ede6;
 }
 
+.name-date-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 10%;
+}
+
+.traveler-name-title,
+.today-date-title {
+  font-size: 10px;
+}
+
+.today-date-title {
+  margin-top: 25px;
+}
+
+.trip-cost-container {
+  display: flex;
+  align-items: center;
+  height: 15%;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 700;
+  box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+  background-color: #eebb68;
+}
+
+
 .book-now-container {
   align-self: center;
   font-size: 23px;
@@ -141,11 +174,10 @@ img {
   margin-bottom: 5px;
 }
 
-
-
 .book-now-button {
   width: 90%;
 }
+
 
 /* ~~~~~~~~~~~~~~~~~~ FORM RULES ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
