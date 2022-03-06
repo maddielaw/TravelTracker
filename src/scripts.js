@@ -154,7 +154,6 @@ function displayTravelerSpending(data) {
   domUpdates.updateTravelerSpending(data, yearlyCost);
 };
 
-
 function displayTravelerData(data) {
   domUpdates.updateWelcomeMessage(data);
   domUpdates.updateTravelerProfile(data);
@@ -164,6 +163,14 @@ function formatDate(date) {
   const newDate = new Date(date)
   const formattedDate = newDate.toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'})
   return formattedDate
+}
+
+function formatCost(cost) {
+  const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  });
+  return formatter.format(cost)
 }
 
 // Filter trips  -------------------------------------------------------------------------------------------
@@ -293,4 +300,4 @@ function checkForErrors(response) {
 
 
 
-export { handleServerErrors, checkForErrors, formatDate };
+export { handleServerErrors, checkForErrors, formatDate, formatCost };
