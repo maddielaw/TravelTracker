@@ -45,7 +45,7 @@ let domUpdates = {
   updateTravelerTrips: function (trip, selector) {
     selector.innerHTML += `
       <div class="all-trips trip-card">
-        <h3 class="trip-card-location trip-info" id=${trip.id}>${trip.destinationID.destination}</h3>
+        <h3 class="trip-card-location" id=${trip.id}>${trip.destinationID.destination}</h3>
         <div class="trip-card-img-container trip-info">
           <img src=${trip.destinationID.image} alt=${trip.destinationID.alt}></img>
         </div>
