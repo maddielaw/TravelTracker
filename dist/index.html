@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Work+Sans:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <title>travelTracker</title>
 </head>
@@ -42,16 +42,19 @@
 <!-- FORM SECTIOM -->
   <section class="new-trip-form-container hidden" id="tripFormContainer">
     <form class="new-trip-form" id="newTripForm" >
-      <h2 class="form-title">Find your perfect getaway</h2>
+      <div class="form-title-container">
+        <i class="material-icons" style="font-size:30px;">travel_explore</i>
+        <h2 class="form-title">Find your perfect getaway</h2>
+      </div>
       <p class="form-errors" id="formErrors"></p>
       <p class="date-error-message" id="dateError"></p>
       <p class="hidden" id="currentTravelerID"></p>
       <label for="departureDate">Trip Departure Date</label>
       <input  class="departure-date" type="date" name="date" id="departureDate" required></input>
       <label for="tripDuration">Number of Days</label>
-      <input class="trip-duration" type="number" name="tripDuration" id="tripDuration" min="1" required></input>
+      <input class="trip-duration" type="number" name="tripDuration" id="tripDuration" min="1" max="365" required></input>
       <label for="numTravelers">Number of Travelers</label>
-      <input class="num-travelers" type="number" name="numTravelers" id="numTravelers" min="1" required></input>
+      <input class="num-travelers" type="number" name="numTravelers" id="numTravelers" min="1" max="10" required></input>
       <label for="tripDestination">Where do you want to go?</label>
       <select class="trip-destination" id="tripDestination" required>
       </select>  
@@ -60,8 +63,10 @@
       <p class="trip-request-success-msg" id="successMsg"></p>
       <button class="submit-button hidden" type="submit" id="submitButton">Submit trip request</button>
     </form>
-    <button class="clear-form-button hidden" type="button" id="clearFormButton">Clear form</button>
-    <button class="back-to-dashboard-button" type="button" id="backToMain">Back to Dashboard</button>
+    <div class="form-button-container">
+      <button class="back-to-dashboard-button" type="button" id="backToMain">Back to Dashboard</button>
+      <button class="clear-form-button hidden" type="button" id="clearFormButton">Clear form</button>
+    </div>
   </section>
 
 <!-- MAIN DASHBOARD SECTIOM -->
@@ -84,8 +89,6 @@
         <p class="traveler-name" id="travelerName"></p>
         <p class="today-date-title">today's date</p>
         <p class="today-date" id="todayDate"></p>
-        <p class="num-days-traveled-title">number of days traveled this year</p>
-        <p class="num-days-traveled" id="numDaysTraveled"></p>
       </div>
       <div class="trip-cost-container">
         <h3 class="total-cost-of-trips" id="totalTripCost"></h3>

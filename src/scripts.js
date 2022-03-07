@@ -1,5 +1,4 @@
 import './css/styles.css';
-import './images/turing-logo.png';
 import fetchCalls from './apiCalls';
 import domUpdates from './domUpdates';
 import TravelDatabase from './TravelDatabase';
@@ -38,7 +37,7 @@ const passwordError = document.getElementById('passwordError');
 const loginPage = document.getElementById('loginPage');
 const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
-const loginForm = document.querySelector('.login-form')
+const loginForm = document.querySelector('.login-form');
 
 
 
@@ -47,7 +46,7 @@ const loginForm = document.querySelector('.login-form')
 filterBtnContainer.addEventListener('click', reRenderDashboard);
 
 bookTripBtn.addEventListener('click', displayAndHideTripForm);
-backToMainBtn.addEventListener('click', displayAndHideTripForm);
+backToMainBtn.addEventListener('click', returnToDashboard);
 
 quoteBtn.addEventListener('click', displayTripQuote);
 clearFormBtn.addEventListener('click', clearForm);
@@ -60,16 +59,18 @@ loginForm.addEventListener('submit', validateLogin);
 
 function validateLogin(e) {
   e.preventDefault();
-  const username = usernameInput.value;
+  const usernameLetters = usernameInput.value.split('').slice(0, 8).join('')
+  const slicedNumbers = usernameInput.value.split('').slice(8, 10)
+  const usernameNumbers = slicedNumbers.join('')
   const password = passwordInput.value;
-  const splitUsername = username.split('');
-  const usernameLetters = splitUsername.slice(0, 8).join('');
-  const usernameNumbers = splitUsername.slice(8, 11).join('');
 
-  domUpdates.addTravelerIDToForm(parseInt(usernameNumbers));
-
-  domUpdates.validateUsername(usernameLetters, usernameNumbers)
-  domUpdates.validatePassword(password)
+  if (!slicedNumbers.includes(' ')) {
+    domUpdates.addTravelerIDToForm(parseInt(usernameNumbers));
+    domUpdates.validateUsername(usernameLetters, usernameNumbers)
+    domUpdates.validatePassword(password)
+  } else {
+    usernameError.innerText = "username does not match"
+  }
 
   if (usernameInput.classList.contains('correct') && passwordInput.classList.contains('correct')) {
     usernameError.innerText = "";
@@ -89,6 +90,11 @@ function loadDashboardAfterLogin(e) {
   createDashboardView(parsedTravelerID, e);
   domUpdates.hideItem(loginPage);
   domUpdates.showItem(mainDashboard);
+}
+
+function returnToDashboard(e) {
+  domUpdates.displayAndHideFormPage();
+  reRenderDashboard(e)
 }
 
 function createDashboardView(id, e) {
@@ -155,20 +161,23 @@ function displayTravelerSpending(data) {
   domUpdates.updateTravelerSpending(data, yearlyCost);
 };
 
-
 function displayTravelerData(data) {
   domUpdates.updateWelcomeMessage(data);
   domUpdates.updateTravelerProfile(data);
 };
 
-function displayNumDaysTraveled(data) {
-  const daysTraveled = data.currentTraveler.findNumDaysTraveledThisYear();
-}
-
 function formatDate(date) {
   const newDate = new Date(date)
   const formattedDate = newDate.toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'})
   return formattedDate
+}
+
+function formatCost(cost) {
+  const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  });
+  return formatter.format(cost)
 }
 
 // Filter trips  -------------------------------------------------------------------------------------------
@@ -189,8 +198,7 @@ function displayAllTravelerTrips(data, selector, arr) {
 
 function displayAndHideTripForm() {
   domUpdates.displayAndHideFormPage();
-  successMsg.innerText = "";
-  domUpdates.showItem(quoteBtn);
+  clearForm()
 }; 
 
 function createDestinationList(data) {
@@ -206,9 +214,11 @@ function displayTripQuote(e) {
     domUpdates.displayDateError();
   } else if (formNumTravelers.value <= 0 || !formNumTravelers.value || formTripDuration.value <= 0 || !formTripDuration.value) {
     domUpdates.displayFormError();
+  } else if (formNumTravelers.value > 10 || formTripDuration.value > 365) {
+    domUpdates.displayDurationOrTravelerError()
   } else {
     handleTripQuote();
-  };
+  }
 };
 
 function handleTripQuote() {
@@ -234,6 +244,7 @@ function getNewTripCost() {
 function displayTripRequestSuccess() {
   domUpdates.hideItem(tripSubmitBtn);
   domUpdates.hideItem(tripQuote);
+  domUpdates.hideItem(clearFormBtn);
   newTripForm.reset();
   domUpdates.displayFormSuccessMsg();
 };
@@ -243,6 +254,7 @@ function clearForm() {
   domUpdates.hideItem(tripSubmitBtn);
   domUpdates.hideItem(tripQuote);
   domUpdates.showItem(quoteBtn);
+  domUpdates.hideItem(clearFormBtn);
   successMsg.innerText = "";
 };
 
@@ -266,7 +278,7 @@ function packageNewTrip(e) {
   e.preventDefault();
   const newTripData = {
     id: Date.now(),
-    userID: 33,
+    userID: parseInt(travelerID.innerText),
     destinationID: parseInt(destinationDropDown.options[destinationDropDown.selectedIndex].id),
     travelers: parseInt(formNumTravelers.value),
     date: formDepartureDate.value.split('-').join('/'),
@@ -295,4 +307,4 @@ function checkForErrors(response) {
 
 
 
-export { handleServerErrors, checkForErrors, formatDate };
+export { handleServerErrors, checkForErrors, formatDate, formatCost };

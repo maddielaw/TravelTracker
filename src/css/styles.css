@@ -2,6 +2,7 @@
   padding: 0px;
   margin: 0px;
   font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
 }
 
 body,
@@ -25,6 +26,10 @@ button {
   cursor: pointer;
 }
 
+button:hover {
+  color: #fa8241;
+}
+
 .nav-and-login-container {
   display: flex;
   flex-direction: column;
@@ -35,12 +40,12 @@ button {
   width: 30%;
 }
 .logo {
-  font-size: 25px;
+  font-size: 30px;
   margin-left: 10px;
 }
 
 .welcome {
-  font-size: 20px;
+  font-size: 23px;
 }
 
 .nav-bar {
@@ -48,7 +53,9 @@ button {
   justify-content: space-between;
   align-items: center;
   height: 50px;
-  background: linear-gradient(#85C1B7, #A5D5CE);
+  background-color: #3e5d88;
+  border-bottom: 3px solid #2f4666;
+  color: white;
   padding: 25px;
 }
 
@@ -57,7 +64,7 @@ button {
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: #f2f2f2;
+  background-color: white;
 }
 
 .trip-filter-button-container {
@@ -65,13 +72,14 @@ button {
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: 9%;
+  height: 10%;
   background-color: #fa9763;
 }
 
 .filter-button {
   width: 15%;
-  font-size: 15px;
+  font-size: 17px;
+  padding: 5px;
 }
 
 /* ~~~~~~~~~~~~~~~~~~ TRIP CARD RULES ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -83,7 +91,7 @@ button {
   overflow: scroll;
   height: 100%;
   width: 100%;
-  background-color: #f2f2f2;
+  background-color: white;
 }
 
 .trip-card {
@@ -95,14 +103,24 @@ button {
   margin: 10px;
   padding: 10px;
   border-radius: 10px;
-  background-color: #f1ede6;
+  background-color: #f2f2f2;
   box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+}
+
+.trip-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 40%;
+  padding: 10px;
+  border-left: 1px solid #cdcdcd;
 }
 
 .trip-card-img-container {
   height: 35%;
   width: 100%;
-  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 5px;
   align-self: center;
 }
 
@@ -113,7 +131,13 @@ img {
 }
 
 .trip-card-location {
-  align-self: center;
+  width: 95%;
+  padding: 7px;
+  border-bottom: 1px solid #cdcdcdd0;
+}
+
+.trip-info {
+  font-size: 20px;
 }
 
 .not-found-msg {
@@ -127,11 +151,10 @@ img {
 .profile-sidebar {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   height: 97%;
   width: 23%;
   padding: 10px;
-  background-color: #f1ede6;
+  background-color: #f2f2f2;
 }
 
 .name-date-container {
@@ -139,45 +162,55 @@ img {
   flex-direction: column;
   justify-content: space-around;
   height: 10%;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .traveler-name-title,
 .today-date-title,
-.num-days-traveled-title {
-  font-size: 10px;
+.trip-card-title {
+  font-size: 13px;
 }
 
-.today-date-title,
-.num-days-traveled-title {
+.today-date-title {
   margin-top: 25px;
+}
+
+.traveler-name,
+.today-date {
+  font-size: 18px;
 }
 
 .trip-cost-container {
   display: flex;
   align-items: center;
-  height: 15%;
+  height: 11%;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   font-weight: 700;
-  box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
-  background-color: #eebb68;
+  margin-top: 40px;
+  border-left: 5px solid #fa9863;
+  background-color: #fec09fd7;
 }
-
 
 .book-now-container {
   align-self: center;
-  font-size: 23px;
+  font-size: 21px;
   width: 90%;
+  margin-top: 80px;
 }
 
 .icon-text-container {
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .book-now-button {
+  font-size: 18px;
+  padding: 5px;
   width: 90%;
+  margin-left: 10px;
 }
 
 
@@ -207,13 +240,66 @@ img {
   box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
 }
 
-.form-title {
+.new-trip-form label,
+.login-form {
+  font-size: 18px;
+}
+
+.new-trip-form input,
+.new-trip-form select,
+.login-form input {
+  font-size: 16px;
+}
+
+.form-title-container {
+  display: flex;
   align-self: center;
+}
+
+.form-title {
+  margin-left: 10px;
 }
 
 .trip-quote {
   align-self: center;
 }
+
+.back-to-dashboard-button,
+.clear-form-button,
+.quote-button,
+.submit-button {
+  font-size: 15px;
+  padding: 3px;
+}
+
+.quote-button,
+.submit-button {
+  align-self: center;
+  width: 40%;
+}
+
+.form-errors,
+.date-error-message {
+  align-self: center;
+  font-size: 19px;
+  color: #f88a4f;
+  font-weight: 400;
+}
+
+.form-button-container {
+  display: flex;
+  justify-content: space-around;
+  width: 30%;
+}
+
+.trip-request-success-msg,
+.trip-quote {
+  color: #dd7b45;
+  font-size: 19px;
+  padding: 7px;
+  font-weight: 400;
+}
+
 
 
 /* ~~~~~~~~~~~~~~~~~~ LOGIN RULES ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -259,16 +345,23 @@ img {
   margin-top: 10px;
 }
 
+#username,
+#password {
+  margin-top: 5px;
+}
+
 .login-button {
   margin-top: 20px;
   width: 40%;
+  font-size: 15px;
+  padding: 3px;
 }
 
 .password-error,
 .username-error {
-  color: red;
+  color: #f88a4f;
   font-size: 14px;
-  font-weight: 900;
+  font-weight: 400;
 }
 
 

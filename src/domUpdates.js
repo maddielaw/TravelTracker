@@ -1,4 +1,4 @@
-import { formatDate } from "./scripts";
+import { formatDate, formatCost } from "./scripts";
 
 
 //Selector Variables -------------------------------------------------------------------------------------
@@ -6,12 +6,10 @@ import { formatDate } from "./scripts";
 const welcomeMessage = document.getElementById('welcome');
 const travelerName = document.getElementById('travelerName');
 const todayDate = document.getElementById('todayDate');
-const numDaysTraveled = document.getElementById('numDaysTraveled');
 const totalTripCost = document.getElementById('totalTripCost');
 const allTripsContainer = document.getElementById('allTrips');
 const mainDashboard = document.getElementById('mainSection')
 const upcomingTripsContainer = document.getElementById('upcomingTrips');
-const pendingTripsContainer = document.getElementById('pendingTrips');
 
 const notFoundMessage = document.getElementById('notFound');
 const tripFormPage = document.getElementById('tripFormContainer')
@@ -27,11 +25,6 @@ const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
 const usernameError = document.getElementById('usernameError');
 const passwordError = document.getElementById('passwordError');
-const loginForm = document.querySelector('.login-form')
-
-
-
-
 
 //DOM Updates -------------------------------------------------------------------------------------
 
@@ -47,19 +40,25 @@ let domUpdates = {
     todayDate.innerText = `${new Date().toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric',})}`;
   },
   updateTravelerSpending: function (data, cost) {
-    totalTripCost.innerText = `You've spent $${cost}.00 on trips this year`
+    totalTripCost.innerText = `You've spent ${formatCost(cost)} on trips this year`
   },
   updateTravelerTrips: function (trip, selector) {
     selector.innerHTML += `
       <div class="all-trips trip-card">
-        <h3 class="trip-card-location trip-info" id="tripCardLocation">${trip.destinationID.destination}</h3>
+        <h3 class="trip-card-location trip-info" id=${trip.id}>${trip.destinationID.destination}</h3>
         <div class="trip-card-img-container trip-info">
           <img src=${trip.destinationID.image} alt=${trip.destinationID.alt}></img>
         </div>
-        <h4 class="num-travelers trip-info" id="numTravelers">Travelers: ${trip.travelers}</h4>
-        <h4 class="departure trip-info" id="departure">Departure Date: ${formatDate(trip.date)}</h4>
-        <h4 class="duration trip-info" id="duration">Trip Duration: ${trip.duration} days</h4>
-        <h4 class="trip-status trip-info" id="tripStatus">Trip Status: ${trip.status}</h4>
+        <div class="trip-info-container">
+          <h4 class="trip-card-title">number of travelers</h4>
+          <h4 class="num-travelers trip-info" id=${trip.id}>${trip.travelers}</h4>
+          <h4 class="trip-card-title">departure date</h4>
+          <h4 class="departure trip-info" id=${trip.id}>${formatDate(trip.date)}</h4>
+          <h4 class="trip-card-title">trip duration</h4>
+          <h4 class="duration trip-info" id=${trip.id}>${trip.duration} days</h4>
+          <h4 class="trip-card-title">trip status</h4>
+          <h4 class="trip-status trip-info" id=${trip.id}>${trip.status}</h4>
+        </div>
       </div>`
   },
   showItem: function (selector) {
@@ -94,14 +93,17 @@ let domUpdates = {
   displayDateError: function () {
     dateErrorMsg.innerText = "Please pick a date in the future!"
   },
+  displayDurationOrTravelerError: function () {
+    formErrorTag.innerText = "Number of travelers must be less than 10 and trip duration must be less than 365"
+  },
   displayCostEstimate: function (cost) {
-    tripQuote.innerText = `Your trip cost estimate for ${destinationDropDown.options[destinationDropDown.selectedIndex].text} is $${cost}.00`
+    tripQuote.innerText = `Your trip cost estimate for ${destinationDropDown.options[destinationDropDown.selectedIndex].text} is ${formatCost(cost)}`
   },
   displayFormSuccessMsg: function () {
     successMsg.innerText = `Trip request successful! You'll hear from your travel agent once it's been approved.`
   },
   validateUsername: function (letters, numbers) {
-    if (letters !== 'traveler' || numbers === '0' || numbers === '00' || numbers === undefined || parseInt(numbers) > 50) {
+    if (letters !== 'traveler' || numbers === '0' || numbers === '00' || numbers === undefined || numbers === '' || parseInt(numbers) > 50) {
       usernameInput.className = 'incorrect';
       usernameError.innerText = "username does not match"
     } 
@@ -117,8 +119,6 @@ let domUpdates = {
       passwordInput.className = 'correct';
     };
   }
-
-
 };
 
 
