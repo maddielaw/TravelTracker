@@ -1,14 +1,13 @@
 import { expect } from 'chai';
 import Traveler from '../src/Traveler';
 
-
 describe('Traveler', () => {
 
   let travelerData, travelerTrips, traveler, sortedTravelerTrips, destinations;
 
   beforeEach(function() {
 
-    travelerData = {id: 2, name: "Rachael Vaughten", travelerType: "thrill-seeker"}
+    travelerData = {id: 2, name: "Rachael Vaughten", travelerType: "thrill-seeker"};
 
     travelerTrips = [
       {id: 89,
@@ -65,7 +64,6 @@ describe('Traveler', () => {
       status: "approved",
       suggestedActivities: []}
       ];
-
 
       sortedTravelerTrips = [
         {id: 89,
@@ -165,11 +163,11 @@ describe('Traveler', () => {
           image: "https://images.unsplash.com/photo-1548574505-5e239809ee19?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1664&q=80",
           alt: "aerial photography of white and blue cruise ships during daytime"
           }
-      ]
+      ];
     
-    traveler = new Traveler(travelerData, travelerTrips, destinations)
+    traveler = new Traveler(travelerData, travelerTrips, destinations);
 
-  })
+  });
 
   it('should be a function', function () {
     expect(Traveler).to.be.a('function');
@@ -180,28 +178,28 @@ describe('Traveler', () => {
   });
 
   it('should keep track of a traveler\'s id', function () {
-    expect(traveler.id).to.equal(2)
+    expect(traveler.id).to.equal(2);
   });
 
   it('should keep track of a traveler\'s name', function () {
-    expect(traveler.name).to.equal("Rachael Vaughten")
+    expect(traveler.name).to.equal("Rachael Vaughten");
     traveler.name = "";
-    expect(traveler.name).to.equal("")
+    expect(traveler.name).to.equal("");
   });
 
   it('should keep track of a traveler\'s type', function () {
-    expect(traveler.travelerType).to.equal("thrill-seeker")
+    expect(traveler.travelerType).to.equal("thrill-seeker");
   });
 
   it('should keep track of a traveler\'s trips', function () {
-    expect(traveler.travelerTrips).to.equal(travelerTrips)
+    expect(traveler.travelerTrips).to.equal(travelerTrips);
     traveler.travelerTrips = [];
     expect(traveler.travelerTrips).to.eql([]);
   });
 
   it('should be able to sort a traveler\'s trips by date', function () {
-    expect(traveler.travelerTrips).to.equal(travelerTrips)
-    expect(traveler.sortTrips()).to.eql(sortedTravelerTrips)
+    expect(traveler.travelerTrips).to.equal(travelerTrips);
+    expect(traveler.sortTrips()).to.eql(sortedTravelerTrips);
   });
 
   it('should be able to find a traveler\'s past trips', function () {
@@ -242,7 +240,7 @@ describe('Traveler', () => {
         duration: 10,
         status: "approved",
         suggestedActivities: []
-        }])
+        }]);
   });
 
   it('should be able to find a traveler\'s upcoming trips', function () {
@@ -269,7 +267,7 @@ describe('Traveler', () => {
 
   it('should be able to find a traveler\'s current trip(s)', function () {
     traveler.findCurrentTrip();
-    expect(traveler.currentTrip).to.eql([])
+    expect(traveler.currentTrip).to.eql([]);
   });
 
   it('should be able to find a traveler\'s pending trips', function () {
@@ -283,7 +281,7 @@ describe('Traveler', () => {
       duration: 18,
       status: "pending",
       suggestedActivities: []}
-    ])
+    ]);
   });
 
   it('should be able to find a traveler\'s destinations', function () {
@@ -388,7 +386,7 @@ describe('Traveler', () => {
         duration: 18,
         status: 'pending',
         suggestedActivities: []
-      }])
+      }]);
     });
       
   it('should be able to find a traveler\'s trips for the current year', function () {
@@ -426,15 +424,14 @@ describe('Traveler', () => {
         duration: 18,
         status: 'pending',
         suggestedActivities: []
-      }])
+      }]);
   });
 
   it('should be able to calculate how much a traveler spent on trips for current year', function () {
-    expect(traveler.calculateYearlyTripCost()).to.eql(14575)
+    expect(traveler.calculateYearlyTripCost()).to.eql(14575);
   });
 
   it('should be able to calculate how many days a traveler has traveled', function () {
-    expect(traveler.findNumDaysTraveled()).to.eql(45)
+    expect(traveler.findNumDaysTraveled()).to.eql(45);
   });
-  
 });
