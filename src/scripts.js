@@ -37,7 +37,7 @@ const passwordError = document.getElementById('passwordError');
 const loginPage = document.getElementById('loginPage');
 const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
-const loginForm = document.querySelector('.login-form')
+const loginForm = document.querySelector('.login-form');
 
 
 
@@ -60,11 +60,18 @@ loginForm.addEventListener('submit', validateLogin);
 function validateLogin(e) {
   e.preventDefault();
   const usernameLetters = usernameInput.value.split('').slice(0, 8).join('')
-  const usernameNumbers = usernameInput.value.split('').slice(8, 11).join('')
+  const slicedNumbers = usernameInput.value.split('').slice(8, 10)
+  const usernameNumbers = slicedNumbers.join('')
   const password = passwordInput.value;
-  domUpdates.addTravelerIDToForm(parseInt(usernameNumbers));
-  domUpdates.validateUsername(usernameLetters, usernameNumbers)
-  domUpdates.validatePassword(password)
+
+  if (!slicedNumbers.includes(' ')) {
+    domUpdates.addTravelerIDToForm(parseInt(usernameNumbers));
+    domUpdates.validateUsername(usernameLetters, usernameNumbers)
+    domUpdates.validatePassword(password)
+  } else {
+    usernameError.innerText = "username does not match"
+  }
+
   if (usernameInput.classList.contains('correct') && passwordInput.classList.contains('correct')) {
     usernameError.innerText = "";
     passwordError.innerText = "";
