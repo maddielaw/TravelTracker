@@ -1,105 +1,88 @@
-# Webpack Starter Kit
+ # travelTracker 
 
-## Clone This Repo
+<img width="1385" alt="Screen Shot 2022-03-07 at 12 07 50 PM" src="https://user-images.githubusercontent.com/92049763/157101232-62bf0c78-1f8f-448d-8cb3-0dce84281809.png">
 
-That's right, _clone_ not fork. You will use this repo multiple times, but you can only fork a repository once. So here is what you need to do to clone the repo and still be able to push changes to your repo:
+## Description
+This project is a traveler-portal for a travel agent website. Users can login with their credentials and view their specific travel dashboard showing them past, present, upcoming, and pending trip details. They can filter that dashboard view by all trips, upcoming trips, or pending trips. Users can also see some basic information in their profile sidebar including the total amount they've spent on trips in the past year.
 
-1. Clone down this repo. Since you don't want to name your project "webpack-starter-kit", you can use an optional argument when you run `git clone` (you replace the `[...]` with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Remove the default remote: `git remote rm origin` (notice that `git remote -v` not gives you back nothing)
-1. Create a new repo on GitHub with the name of `[what you want to name the repo]` to be consistent with naming
-1. Copy the address that you would use to clone down this repo - something like `git@github.com:...`
-1. Add this remote to your cloned down repo: `git remote add origin [address you copied in the previous step]` - do not include the brackets
+Users can then choose to book a new trip and select date, duration, number of travelers and destination. They can first receive a cost estimate for the trip and then choose to submit. The trip will have a status of pending and the user can navigate back to their dashboard to view that trip!
 
-Now try to commit something and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
+## Motivation
+- Create a data model driven by principles of OOP
+- Refine the code review process by working with others to review and receieve feedback on code
+- Build and utilize a robust testing suite to ensure the data model is iron-clad
+- Work with an API and local server to send and receive data
 
-## Setup
+## Technology Used
+- JavaScript
+- HTML5
+- CSS
+- Mocha and Chai
+- Lighthouse
+- Webpack
 
-After one person has gone through the steps of cloning down this repo and editing the remote, everyone should clone down the repo. 
+## Deployment
+travelTracker requires a local server be running in order to work. You will need to access the [backend server repo](https://github.com/turingschool-examples/travel-tracker-api), clone it down to your local machine, and follow the README instructions.
 
-Then install the library dependencies. Run:
+Once you have the server running on your local machine you can access travelTracker at the deployment link (link will be updated soon!)
 
-```bash
-npm install
-```
 
-To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with some `h1` text, Turing logo image and a beautiful gradient background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
+## Features
 
-## Where to Add Your Code
+- The game will track possible winning and draw conditions and alert players when one has won or when a draw has been reached.
+- After a win or draw the board will automatically reset after a period of time.
+- The win counter for each side will track the number of wins each player has.
+- The game is responsive across desktop, tablet, and mobile allowing users to play on the go (or while out camping)!
 
-### JavaScript
+### Login Page
 
-You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. Webpack expects all of your code files to be in a specific place, or else it doesn't know how to combine them all behind the scenes.
+The user will see the login page on load -- the login credentials are:
+- username: `traveler50` (with 50 representing the traveler's ID. Any number between 1 and 50 is supported)
+- password: `travel`
 
-**Create all of your feature code files in the `src` directory.**
+The user's travel dashboard is populated using `fetch` and passing in the ID from their username. Validation of the username and password is handled based on certain conditions and throws error messages if either the username and/or password is incorrect or not populated.
 
-Since code is separated into multiple files, you need to use the `import` and `export` syntax to share code across file.
+![travelTracker login page](https://media3.giphy.com/media/FSlJC1uvXhdhQAnuza/giphy.gif?cid=790b76118e5d5f6f6c2d03cdd703d6dbe5398aa4c70dbd2c&rid=giphy.gif&ct=g)
 
-Here is a video that walks through some information about [import and export](https://www.youtube.com/watch?v=_3oSWwapPKQ). There are a lot of resources out there about `import` and `export`, and resources will sometimes call them `ES6 modules`. It's something you will see in React and beyond.
 
-### HTML
+### Travel Dashboard
 
-Add the HTML you need in the `index.html` file in the `./dist` directory. There is some boilerplate HTML that exists from the start that you can modify.
+After logging in, a user will see their travel dashboard populated with their past, present, upcoming, and pending trips. They can filter their trips by selecting the `upcoming trips` or `pending trips` buttons. They can also see their traveler profile on the right-hand sidebar.
 
-### CSS (SCSS/SASS)
+![travelTracker dashboard](https://user-images.githubusercontent.com/92049763/157094034-28128b03-97de-4662-bc01-8b0444e8556d.gif)
 
-This project is setup to use SCSS/Sass files by default instead of your regular CSS files. Add your SCSS files in the `src/css` directory. There is a `base.scss` file already there, but you can change this file and add multiple SCSS files in this directory.
 
-This might sound weird, but you need to `import` your SCSS files in the JavaScript entry file (`scripts.js`) for the styles to be applied to your HTML. The example `base.scss` file has already been imported in the JavaScript entry file as an example.
+### Book a New Trip
 
-### Images
+A user can select the `book now` button on the right-hand sidebar in order to book a new trip. They are directed to a form page where they can select the departure date, trip duration, number of travelers, and select the location from a dropdown. 
 
-Add your image files in the `src/images` directory. Similar to CSS files, you need to `import` image files in the JavaScript entry file (`scripts.js`). Then go into the HTML and add an `img` element with the `src` attribute pointing to the `images` directory. There is an example in the `index.html` file for you to see.
+After filling out the form the user can receive a cost estimate for the trip and choose to submit. At any time in the process they can clear the form or return to the main dashboard.
 
-## How to View Your Code in Action
+After submitting the trip request the user will see a success message letting them know their trip will be looked over and approved by the travel agent. If they return to the main dashboard they will see their new trip as pending.
 
-In the terminal, run:
+![travelTracker - book new trip](https://user-images.githubusercontent.com/92049763/157094501-5a79c4bb-c63f-4348-b57c-9886a2e58cb4.gif)
+*Note:* departure dates in the past, trip durations over 365 and a traveler count over 10 are not accepted.
 
-```bash
-npm start
-```
 
-You will see a bunch of lines output to your terminal. One of those lines will be something like:
+### Responsive Design & Accessibility
 
-```bash
-Project is running at http://localhost:8080/
-```
+travelTracker is responsive for desktop, laptop, tablet, and mobile users and was built with accessibility in mind. 
 
-Go to `http://localhost:8080/` in your browser to view your code running in the browser.
+I tested my site's accessibility with Lighthouse and also utilized Dalton for Google Chrome to test the site's color palette for colorblind users. The site is fully functional utilizing `tab`. I'm committed to continuing to improve on this to ensure that my site is accessible for all users.
 
----
+![travelTracker mobile](https://user-images.githubusercontent.com/92049763/157099342-f4069b48-14b0-4198-be1c-ecb0d9c12519.gif)
 
-## Test Files Organization
 
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
+## Future Additions
+- Add a travel agent login and dashboard so the agency can view all travelers and approve pending trips, suggest activities for travelers trips, and add new destinations
+- Flesh out the traveler sidebar with additional stats, such as the number of days they've traveled, a countdown to their next trip
+- Incorporate local storage so that a traveler's dashboard will persist on refresh for a certain amount of time
 
-**Put all of your test files in the `test` directory.** As a convention, all test filenames should end with `-test.js`. For instance: `box-test.js`.
+## Credits
+Author: [Maddie Law](https://github.com/maddielaw)
 
-## Running Your Tests
+Project spec -> [here](https://frontend.turing.edu/projects/travel-tracker.html)
 
-Run your test suite using the command:
+[Turing School of Software and Design's GitHub](https://github.com/turingschool-examples)
 
-```bash
-npm test
-```
-
-The test results will output to the terminal.
-
----
-
-## Linting Your Code
-
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
-
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory. 
-
-## Webpack?
-
-If you look in the `package.json` file, you'll see one of the library dependencies called `webpack`. If you're interested in learning more about what Webpack is and how it works behind the scenes, take a look through the [Webpack configuration documentation](https://webpack.js.org/concepts/).
-
-## Deploying to GitHub Pages
-
-_If you are finished with the functionality and testing of your project_, then you can consider deploying your project to the web! This way anyone can play it without cloning down your repo.
-
-[GitHub Pages](https://pages.github.com/) is a great way to deploy your project to the web. Don't worry about this until your project is free of bugs and well tested!
-
-If you _are_ done, you can follow [this procedure](./gh-pages-procedure.md) to get your project live on GitHub Pages.
+[Google Fonts - icons and fonts](https://fonts.google.com/?query=work)
