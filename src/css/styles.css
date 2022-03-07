@@ -300,8 +300,6 @@ img {
   font-weight: 400;
 }
 
-
-
 /* ~~~~~~~~~~~~~~~~~~ LOGIN RULES ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .login-page {
@@ -364,9 +362,27 @@ img {
   font-weight: 400;
 }
 
-
 /* ~~~~~~~~~~~~~~~~~~ HIDDEN RULE ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .hidden {
   display: none;
 }
+
+/* ~~~~~~~~~~~~~~~~~~ MEDIA QUERIES ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
+@media screen and (max-width: 425px) {
+  .nav-bar {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .login-form {
+    width: 80%;
+  }
+}
+
+
