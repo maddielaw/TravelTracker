@@ -198,8 +198,7 @@ function displayAllTravelerTrips(data, selector, arr) {
 
 function displayAndHideTripForm() {
   domUpdates.displayAndHideFormPage();
-  successMsg.innerText = "";
-  domUpdates.showItem(quoteBtn);
+  clearForm()
 }; 
 
 function createDestinationList(data) {
@@ -255,6 +254,7 @@ function clearForm() {
   domUpdates.hideItem(tripSubmitBtn);
   domUpdates.hideItem(tripQuote);
   domUpdates.showItem(quoteBtn);
+  domUpdates.hideItem(clearFormBtn);
   successMsg.innerText = "";
 };
 
