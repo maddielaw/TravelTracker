@@ -440,14 +440,24 @@ img {
   .profile-sidebar {
     width: 35%;
   }
+  .form-title {
+    font-size: 20px;
+  }
+  .new-trip-form {
+    width: 70%;
+  }
+  .new-trip-form label {
+    font-size: 15px;
+  }
+  .login-form {
+    width: 50%;
+  }
+
 }
 
 @media screen and (max-width: 656px) {
   .trip-card {
     width: 55%;
-  }
-  .login-form {
-    width: 50%;
   }
   .profile-sidebar {
     width: 45%;
@@ -478,6 +488,11 @@ img {
   }
   .welcome {
     font-size: 13px;
+  }
+  .not-found-msg {
+    font-size: 20px;
+    margin-top: 20px;
+
   }
 }
 
@@ -530,10 +545,61 @@ img {
   .total-cost-of-trips {
     font-size: 18px;
   }
+  body {
+    width: 100%;
+  }
+  .new-trip-form {
+    width: 95%;
+  }
+  .form-title {
+    font-size: 16px;
+  }
 }
 
 @media screen and (max-width: 320px) {
   body {
     width: 100%;
   }
+  .quote-button {
+    width: 90%;
+  }
+  .form-title {
+    font-size: 14px;
+  }
+  .form-title-container {
+    align-items: center;
+  }
+  .back-to-dashboard-button,
+  .submit-button,
+  .clear-form-button {
+    font-size: 12px;
+  }
+  .form-errors,
+  .date-error-message {
+    font-size: 15px;
+  }
+  .new-trip-form input,
+  .new-trip-form select,
+  .login-form input {
+  font-size: 16px;
+  }
 }
+
+
+@media screen and (max-width: 537px) {
+  .new-trip-form {
+    width: 90%;
+  }
+  .form-button-container {
+    width: 100%;
+  }
+  .back-to-dashboard-button,
+  .submit-button {
+    width: 70%;
+  }
+  .trip-request-success-msg,
+  .trip-quote {
+    font-size: 15px;
+  }
+}
+
