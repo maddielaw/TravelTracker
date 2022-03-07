@@ -33,6 +33,7 @@ const dateErrorMsg = document.getElementById('dateError');
 const formErrorTag = document.getElementById('formErrors');
 const usernameError = document.getElementById('usernameError');
 const passwordError = document.getElementById('passwordError');
+const notFoundMessage = document.getElementById('notFound');
 
 const loginPage = document.getElementById('loginPage');
 const usernameInput = document.getElementById('username');
@@ -183,7 +184,7 @@ function formatCost(cost) {
 // Filter trips  -------------------------------------------------------------------------------------------
 
 function displayAllTravelerTrips(data, selector, arr) {
-  domUpdates.hideNotFoundMessage();
+  domUpdates.hideItem(notFoundMessage);
   if (!arr.length) {
     domUpdates.displayNotFoundMessage();
   } else {
@@ -210,7 +211,7 @@ function createDestinationList(data) {
 
 function displayTripQuote(e) {
   e.preventDefault();
-  if (formDepartureDate.value < new Date().toISOString().split('T')[0]) {
+  if (formDepartureDate.value <= new Date().toISOString().split('T')[0]) {
     domUpdates.displayDateError();
   } else if (formNumTravelers.value <= 0 || !formNumTravelers.value || formTripDuration.value <= 0 || !formTripDuration.value) {
     domUpdates.displayFormError();
