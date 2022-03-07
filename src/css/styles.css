@@ -187,7 +187,6 @@ img {
   height: 11%;
   padding: 10px;
   border-radius: 5px;
-  font-weight: 700;
   margin-top: 40px;
   border-left: 5px solid #fa9863;
   background-color: #fec09fd7;
@@ -385,4 +384,156 @@ img {
   }
 }
 
+@media screen and (max-width: 1113px) {
+  .filter-button {
+    font-size: 15px;
+  }
+  .book-now-container {
+    font-size: 15px;
+  }
+  .icon-text-container {
+    align-items: center;
+  }
+  .total-cost-of-trips {
+    font-size: 15px;
+  }
+}
 
+@media screen and (max-width: 997px) {
+  .filter-button {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 882px) {
+  .filter-button {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 861px) {
+  .trip-card {
+    width: 39%;
+  }
+  .profile-sidebar {
+    width: 30%;
+  }
+  .trip-info-container {
+    height: 37%;
+    padding: 5px;
+  }
+  .trip-info {
+    font-size: 17px;
+  }
+  .trip-card-title {
+    font-size: 11px;
+  }
+  .trip-card-img-container {
+    margin-top: 2px;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .filter-button {
+    width: 20%;
+  }
+  .profile-sidebar {
+    width: 35%;
+  }
+}
+
+@media screen and (max-width: 656px) {
+  .trip-card {
+    width: 55%;
+  }
+  .login-form {
+    width: 50%;
+  }
+  .profile-sidebar {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .filter-button {
+    width: 25%;
+  }
+}
+
+@media screen and (max-width: 508px) {
+  .filter-button {
+    height: 60%;
+  }
+  .welcome {
+    font-size: 17px;
+  }
+}
+
+@media screen and (max-width: 453px) {
+  .trip-card {
+    width: 77%;
+  }
+  .login-form {
+    width: 70%;
+  }
+  .welcome {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 419px) {
+  .book-now-button {
+    font-size: 14px;
+  }
+  .total-cost-of-trips {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .traveler-name-title,
+  .today-date-title {
+    font-size: 11px;
+  }
+  .traveler-name,
+  .today-date {
+    font-size: 15px;
+  }
+  .trip-cost-container {
+    height: 15%;
+    margin-top: 20px;
+  }
+  .filter-button {
+    font-size: 11px;
+  }
+  .login-form {
+    width: 80%;
+  }
+  .main-section {
+    flex-direction: column;
+  }
+  .profile-sidebar {
+    width: 96%;
+    height: 60%;
+    border-top: 1px solid #cdcdcd;
+  }
+  .book-now-container {
+    margin-top: 20px;
+  }
+  .icon-text-container {
+    justify-content: center;
+  }
+  .traveler-name,
+  .today-date {
+    font-size: 17px;
+  }
+  .total-cost-of-trips {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  body {
+    width: 100%;
+  }
+}
