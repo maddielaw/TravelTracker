@@ -9,7 +9,7 @@ Users can then choose to book a new trip and select date, duration, number of tr
 
 ## Motivation
 - Create a data model driven by principles of OOP
-- Refine the code review process by working with others to review and receieve feedback on code
+- Refine the code review process by working with others to review and recieve feedback on code
 - Build and utilize a robust testing suite to ensure the data model is iron-clad
 - Work with an API and local server to send and receive data
 
@@ -40,8 +40,6 @@ The user will see the login page on load -- the login credentials are:
 - username: `traveler50` (with 50 representing the traveler's ID. Any number between 1 and 50 is supported)
 - password: `travel`
 
-The user's travel dashboard is populated using `fetch` and passing in the ID from their username. Validation of the username and password is handled based on certain conditions and throws error messages if either the username and/or password is incorrect or not populated.
-
 ![travelTracker login page](https://media3.giphy.com/media/FSlJC1uvXhdhQAnuza/giphy.gif?cid=790b76118e5d5f6f6c2d03cdd703d6dbe5398aa4c70dbd2c&rid=giphy.gif&ct=g)
 
 
@@ -64,19 +62,23 @@ After submitting the trip request the user will see a success message letting th
 *Note:* departure dates in the past, trip durations over 365 and a traveler count over 10 are not accepted.
 
 
-### Responsive Design & Accessibility
+### Accessibility
 
-travelTracker is responsive for desktop, laptop, tablet, and mobile users and was built with accessibility in mind. 
+travelTracker was built with accessibility in mind -- I tested my site's accessibility with Lighthouse and the site is fully functional utilizing `tab`. I'm committed to continuing to improve on this to ensure that my site is accessible for all users and welcome additional feedback!
 
-I tested my site's accessibility with Lighthouse and also utilized Dalton for Google Chrome to test the site's color palette for colorblind users. The site is fully functional utilizing `tab`. I'm committed to continuing to improve on this to ensure that my site is accessible for all users.
+### Responsive Design 
+
+travelTracker is responsive for desktop, laptop, tablet, and mobile users so travelers can track their trips on the go!
 
 ![travelTracker mobile](https://user-images.githubusercontent.com/92049763/157099342-f4069b48-14b0-4198-be1c-ecb0d9c12519.gif)
 
 
 ## Future Additions
 - Add a travel agent login and dashboard so the agency can view all travelers and approve pending trips, suggest activities for travelers trips, and add new destinations
-- Flesh out the traveler sidebar with additional stats, such as the number of days they've traveled, a countdown to their next trip
-- Incorporate local storage so that a traveler's dashboard will persist on refresh for a certain amount of time
+- Flesh out the traveler sidebar with additional stats, such as the number of days they've traveled, a countdown to their next trip, etc.
+- Allow user ability to star / favorite destinations
+- Incorporate local storage so that a traveler's dashboard will persist on refresh
+
 
 ## Credits
 Author: [Maddie Law](https://github.com/maddielaw)
