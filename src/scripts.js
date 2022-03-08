@@ -48,12 +48,11 @@ loginForm.addEventListener('submit', validateLogin);
 function validateLogin(e) {
   e.preventDefault();
   const usernameLetters = usernameInput.value.split('').slice(0, 8).join('');
-  const slicedNumbers = usernameInput.value.split('').slice(8, 10);
+  const slicedNumbers = usernameInput.value.split('').slice(8, 11);
   const usernameNumbers = slicedNumbers.join('');
   const password = passwordInput.value;
 
   if (!slicedNumbers.includes(' ')) {
-    domUpdates.addTravelerIDToForm(parseInt(usernameNumbers));
     domUpdates.validateUsername(usernameLetters, usernameNumbers);
     domUpdates.validatePassword(password);
   } else {
@@ -61,6 +60,7 @@ function validateLogin(e) {
   };
 
   if (usernameInput.classList.contains('correct') && passwordInput.classList.contains('correct')) {
+    domUpdates.addTravelerIDToForm(parseInt(usernameNumbers));
     usernameError.innerText = "";
     passwordError.innerText = "";
     loadDashboardAfterLogin(e);
