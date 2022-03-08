@@ -45,7 +45,6 @@ describe('Travel Database', () => {
   });
 
   it('should keep track of all travelers', function () {
-    console.log(travelDatabase.travelers);
     expect(travelDatabase.travelers).to.eql(allTravelData.allTravelers);
   });
 
