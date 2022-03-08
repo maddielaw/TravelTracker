@@ -3,23 +3,18 @@ import fetchCalls from './apiCalls';
 import domUpdates from './domUpdates';
 import TravelDatabase from './TravelDatabase';
 
-
 //Selector Variables -------------------------------------------------------------------------------------
 
 const mainDashboard = document.getElementById('mainSection');
-const welcomeMessage = document.getElementById('welcome');
-
 const bookTripBtn = document.getElementById('bookNowButton');
 const backToMainBtn = document.getElementById('backToMain');
 const quoteBtn = document.getElementById('quoteButton');
 const clearFormBtn = document.getElementById('clearFormButton');
 const tripSubmitBtn = document.getElementById('submitButton');
-
 const filterBtnContainer = document.getElementById('tripFilterContainer');
 const allTripsContainer = document.getElementById('allTrips');
 const upcomingTripsContainer = document.getElementById('upcomingTrips');
 const pendingTripsContainer = document.getElementById('pendingTrips');
-
 const newTripForm = document.getElementById('newTripForm');
 const formDepartureDate = document.getElementById('departureDate');
 const travelerID = document.getElementById('currentTravelerID');
@@ -28,74 +23,67 @@ const formNumTravelers = document.getElementById('numTravelers');
 const destinationDropDown = document.getElementById('tripDestination');
 const tripQuote = document.getElementById('tripQuote');
 const successMsg = document.getElementById('successMsg');
-
 const dateErrorMsg = document.getElementById('dateError');
 const formErrorTag = document.getElementById('formErrors');
 const usernameError = document.getElementById('usernameError');
 const passwordError = document.getElementById('passwordError');
-
+const notFoundMessage = document.getElementById('notFound');
 const loginPage = document.getElementById('loginPage');
 const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
 const loginForm = document.querySelector('.login-form');
 
-
-
 //Event Listeners -------------------------------------------------------------------------------------
 
 filterBtnContainer.addEventListener('click', reRenderDashboard);
-
 bookTripBtn.addEventListener('click', displayAndHideTripForm);
 backToMainBtn.addEventListener('click', returnToDashboard);
-
 quoteBtn.addEventListener('click', displayTripQuote);
 clearFormBtn.addEventListener('click', clearForm);
 newTripForm.addEventListener('submit', packageNewTrip);
-
 loginForm.addEventListener('submit', validateLogin);
-
 
 // Main Functions -------------------------------------------------------------------------------------------
 
 function validateLogin(e) {
   e.preventDefault();
-  const usernameLetters = usernameInput.value.split('').slice(0, 8).join('')
-  const slicedNumbers = usernameInput.value.split('').slice(8, 10)
-  const usernameNumbers = slicedNumbers.join('')
+  const usernameLetters = usernameInput.value.split('').slice(0, 8).join('');
+  const slicedNumbers = usernameInput.value.split('').slice(8, 11);
+  const usernameNumbers = slicedNumbers.join('');
   const password = passwordInput.value;
 
   if (!slicedNumbers.includes(' ')) {
-    domUpdates.addTravelerIDToForm(parseInt(usernameNumbers));
-    domUpdates.validateUsername(usernameLetters, usernameNumbers)
-    domUpdates.validatePassword(password)
+    domUpdates.validateUsername(usernameLetters, usernameNumbers);
+    domUpdates.validatePassword(password);
   } else {
-    usernameError.innerText = "username does not match"
-  }
+    usernameError.innerText = "username does not match";
+  };
 
   if (usernameInput.classList.contains('correct') && passwordInput.classList.contains('correct')) {
+    domUpdates.addTravelerIDToForm(parseInt(usernameNumbers));
     usernameError.innerText = "";
     passwordError.innerText = "";
-    loadDashboardAfterLogin(e)
-  } 
-}
+    loadDashboardAfterLogin(e);
+  };
+};
 
 function reRenderDashboard(e) {
-  const parsedTravelerID = parseInt(travelerID.innerText)
+  const parsedTravelerID = parseInt(travelerID.innerText);
   createDashboardView(parsedTravelerID, e);
   domUpdates.hideItem(loginPage);
 };
 
 function loadDashboardAfterLogin(e) {
-  const parsedTravelerID = parseInt(travelerID.innerText)
+  const parsedTravelerID = parseInt(travelerID.innerText);
   createDashboardView(parsedTravelerID, e);
   domUpdates.hideItem(loginPage);
   domUpdates.showItem(mainDashboard);
-}
+};
 
 function returnToDashboard(e) {
   domUpdates.displayAndHideFormPage();
-  reRenderDashboard(e)
-}
+  reRenderDashboard(e);
+};
 
 function createDashboardView(id, e) {
   resolvePromise().then(allData => {
@@ -153,7 +141,7 @@ function createTraveler(data, id) {
   newTraveler.findPendingTrips();
   newTraveler.findUpcomingTrips();
   newTraveler.findCurrentTrip();
-  return newTraveler
+  return newTraveler;
 };
 
 function displayTravelerSpending(data) {
@@ -167,23 +155,23 @@ function displayTravelerData(data) {
 };
 
 function formatDate(date) {
-  const newDate = new Date(date)
-  const formattedDate = newDate.toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'})
-  return formattedDate
-}
+  const newDate = new Date(date);
+  const formattedDate = newDate.toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'});
+  return formattedDate;
+};
 
 function formatCost(cost) {
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD'
   });
-  return formatter.format(cost)
-}
+  return formatter.format(cost);
+};
 
 // Filter trips  -------------------------------------------------------------------------------------------
 
 function displayAllTravelerTrips(data, selector, arr) {
-  domUpdates.hideNotFoundMessage();
+  domUpdates.hideItem(notFoundMessage);
   if (!arr.length) {
     domUpdates.displayNotFoundMessage();
   } else {
@@ -198,7 +186,7 @@ function displayAllTravelerTrips(data, selector, arr) {
 
 function displayAndHideTripForm() {
   domUpdates.displayAndHideFormPage();
-  clearForm()
+  clearForm();
 }; 
 
 function createDestinationList(data) {
@@ -210,15 +198,15 @@ function createDestinationList(data) {
 
 function displayTripQuote(e) {
   e.preventDefault();
-  if (formDepartureDate.value < new Date().toISOString().split('T')[0]) {
+  if (formDepartureDate.value <= new Date().toISOString().split('T')[0]) {
     domUpdates.displayDateError();
   } else if (formNumTravelers.value <= 0 || !formNumTravelers.value || formTripDuration.value <= 0 || !formTripDuration.value) {
     domUpdates.displayFormError();
   } else if (formNumTravelers.value > 10 || formTripDuration.value > 365) {
-    domUpdates.displayDurationOrTravelerError()
+    domUpdates.displayDurationOrTravelerError();
   } else {
     handleTripQuote();
-  }
+  };
 };
 
 function handleTripQuote() {
@@ -238,7 +226,7 @@ function getNewTripCost() {
   const flightTotal = (flightPerPerson * 2) * parseInt(formNumTravelers.value);
   const baseTotal = lodgingTotal + flightTotal;
   const finalTripQuote = baseTotal + (baseTotal * .10);
-  return finalTripQuote
+  return finalTripQuote;
 };
 
 function displayTripRequestSuccess() {
@@ -288,7 +276,7 @@ function packageNewTrip(e) {
   };
   fetchCalls.postData('trips', newTripData);
   displayTripRequestSuccess();
-}
+};
 
 function handleServerErrors(error) {
   if (error.message === "Failed to fetch") {
@@ -304,7 +292,5 @@ function checkForErrors(response) {
     throw new Error("Make sure you fill out all form fields!");
   };
 };
-
-
 
 export { handleServerErrors, checkForErrors, formatDate, formatCost };

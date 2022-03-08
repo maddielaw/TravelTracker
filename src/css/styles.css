@@ -39,6 +39,7 @@ button:hover {
   display: flex;
   width: 30%;
 }
+
 .logo {
   font-size: 30px;
   margin-left: 10px;
@@ -212,7 +213,6 @@ img {
   margin-left: 10px;
 }
 
-
 /* ~~~~~~~~~~~~~~~~~~ FORM RULES ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .new-trip-form-container {
@@ -376,9 +376,6 @@ img {
     justify-content: center;
     align-items: flex-start;
   }
-}
-
-@media screen and (max-width: 425px) {
   .login-form {
     width: 80%;
   }
@@ -452,7 +449,6 @@ img {
   .login-form {
     width: 50%;
   }
-
 }
 
 @media screen and (max-width: 656px) {
@@ -492,7 +488,6 @@ img {
   .not-found-msg {
     font-size: 20px;
     margin-top: 20px;
-
   }
 }
 
@@ -584,7 +579,6 @@ img {
   font-size: 16px;
   }
 }
-
 
 @media screen and (max-width: 537px) {
   .new-trip-form {

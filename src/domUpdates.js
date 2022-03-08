@@ -1,6 +1,5 @@
 import { formatDate, formatCost } from "./scripts";
 
-
 //Selector Variables -------------------------------------------------------------------------------------
 
 const welcomeMessage = document.getElementById('welcome');
@@ -8,19 +7,16 @@ const travelerName = document.getElementById('travelerName');
 const todayDate = document.getElementById('todayDate');
 const totalTripCost = document.getElementById('totalTripCost');
 const allTripsContainer = document.getElementById('allTrips');
-const mainDashboard = document.getElementById('mainSection')
+const mainDashboard = document.getElementById('mainSection');
 const upcomingTripsContainer = document.getElementById('upcomingTrips');
-
 const notFoundMessage = document.getElementById('notFound');
-const tripFormPage = document.getElementById('tripFormContainer')
-const currentTravelerID = document.getElementById('currentTravelerID')
-const destinationDropDown = document.getElementById('tripDestination')
-const tripQuote = document.getElementById('tripQuote')
-const successMsg = document.getElementById('successMsg')
-
-const dateErrorMsg = document.getElementById('dateError')
-const formErrorTag = document.getElementById('formErrors')
-
+const tripFormPage = document.getElementById('tripFormContainer');
+const currentTravelerID = document.getElementById('currentTravelerID');
+const destinationDropDown = document.getElementById('tripDestination');
+const tripQuote = document.getElementById('tripQuote');
+const successMsg = document.getElementById('successMsg');
+const dateErrorMsg = document.getElementById('dateError');
+const formErrorTag = document.getElementById('formErrors');
 const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
 const usernameError = document.getElementById('usernameError');
@@ -28,19 +24,18 @@ const passwordError = document.getElementById('passwordError');
 
 //DOM Updates -------------------------------------------------------------------------------------
 
-
 let domUpdates = {
 
   updateWelcomeMessage: function (data) {
     const firstName = data.currentTraveler.name.split(' ')[0];
-    welcomeMessage.innerText = `welcome, ${firstName.toLowerCase()}`
+    welcomeMessage.innerText = `welcome, ${firstName.toLowerCase()}`;
   },
   updateTravelerProfile: function (data) {
     travelerName.innerText = data.currentTraveler.name;
     todayDate.innerText = `${new Date().toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric',})}`;
   },
   updateTravelerSpending: function (data, cost) {
-    totalTripCost.innerText = `You've spent ${formatCost(cost)} on trips this year`
+    totalTripCost.innerText = `You've spent ${formatCost(cost)} on trips this year`;
   },
   updateTravelerTrips: function (trip, selector) {
     selector.innerHTML += `
@@ -62,25 +57,22 @@ let domUpdates = {
       </div>`
   },
   showItem: function (selector) {
-    selector.classList.remove('hidden')
+    selector.classList.remove('hidden');
   },
   hideItem: function (selector) {
-    selector.classList.add('hidden')
+    selector.classList.add('hidden');
   },
   displayNotFoundMessage: function () {
-    notFoundMessage.classList.remove('hidden')
+    notFoundMessage.classList.remove('hidden');
     allTripsContainer.classList.add('hidden');
     upcomingTripsContainer.classList.add('hidden');
   },
-  hideNotFoundMessage: function () {
-    notFoundMessage.classList.add('hidden')
-  },
   displayAndHideFormPage: function () {
     mainDashboard.classList.toggle('hidden');
-    tripFormPage.classList.toggle('hidden')
+    tripFormPage.classList.toggle('hidden');
   },
   addTravelerIDToForm: function(id) {
-    currentTravelerID.innerText = id
+    currentTravelerID.innerText = id;
   },
   displayDestinationDropDown: function (destination) {
     destinationDropDown.innerHTML += `
@@ -88,24 +80,24 @@ let domUpdates = {
     `
   },
   displayFormError: function () {
-    formErrorTag.innerText = "Make sure you fill out all fields!"
+    formErrorTag.innerText = "Make sure you fill out all fields!";
   },
   displayDateError: function () {
-    dateErrorMsg.innerText = "Please pick a date in the future!"
+    dateErrorMsg.innerText = "Please pick a date in the future!";
   },
   displayDurationOrTravelerError: function () {
-    formErrorTag.innerText = "Number of travelers must be less than 10 and trip duration must be less than 365"
+    formErrorTag.innerText = "Number of travelers must be less than 10 and trip duration must be less than 365";
   },
   displayCostEstimate: function (cost) {
-    tripQuote.innerText = `Your trip cost estimate for ${destinationDropDown.options[destinationDropDown.selectedIndex].text} is ${formatCost(cost)}`
+    tripQuote.innerText = `Your trip cost estimate for ${destinationDropDown.options[destinationDropDown.selectedIndex].text} is ${formatCost(cost)}. Do you want to proceed with booking?`;
   },
   displayFormSuccessMsg: function () {
-    successMsg.innerText = `Trip request successful! You'll hear from your travel agent once it's been approved.`
+    successMsg.innerText = `Trip request successful! You'll hear from your travel agent once it's been approved.`;
   },
   validateUsername: function (letters, numbers) {
     if (letters !== 'traveler' || numbers === '0' || numbers === '00' || numbers === undefined || numbers === '' || parseInt(numbers) > 50) {
       usernameInput.className = 'incorrect';
-      usernameError.innerText = "username does not match"
+      usernameError.innerText = "username does not match";
     } 
     else {
       usernameInput.className = 'correct';
@@ -114,13 +106,11 @@ let domUpdates = {
   validatePassword: function (password) {
     if (password !== "travel") {
       passwordInput.className = 'incorrect';
-      passwordError.innerText = "password does not match"
+      passwordError.innerText = "password does not match";
     } else {
       passwordInput.className = 'correct';
     };
   }
 };
-
-
 
 export default domUpdates;

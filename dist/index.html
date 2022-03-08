@@ -9,8 +9,6 @@
   <title>travelTracker</title>
 </head>
 <body>
-
-  <!-- NAV & LOGIN SECTIOM -->
   <section class="nav-and-login-container">
     <nav class="nav-bar">
       <section class="main-logo">
@@ -38,8 +36,6 @@
       </form>
     </section>
   </section>
-
-<!-- FORM SECTIOM -->
   <section class="new-trip-form-container hidden" id="tripFormContainer">
     <form class="new-trip-form" id="newTripForm" >
       <div class="form-title-container">
@@ -56,8 +52,7 @@
       <label for="numTravelers">Number of Travelers</label>
       <input class="num-travelers" type="number" name="numTravelers" id="numTravelers" min="1" max="10" required></input>
       <label for="tripDestination">Where do you want to go?</label>
-      <select class="trip-destination" id="tripDestination" required>
-      </select>  
+      <select class="trip-destination" id="tripDestination" required></select>  
       <button class="quote-button" type="button" id="quoteButton">Get a quote!</button>
       <p class="trip-quote hidden" id="tripQuote">your estimated cost</p>
       <p class="trip-request-success-msg" id="successMsg"></p>
@@ -68,8 +63,6 @@
       <button class="clear-form-button hidden" type="button" id="clearFormButton">Clear form</button>
     </div>
   </section>
-
-<!-- MAIN DASHBOARD SECTIOM -->
   <main class="main-section hidden" id="mainSection">
     <section class="trip-dashboard">
       <nav class="trip-filter-button-container" id="tripFilterContainer">
@@ -82,7 +75,6 @@
       <section class="trip-cards-container upcoming-trips hidden" id="upcomingTrips"></section>
       <section class="trip-cards-container pending-trips hidden" id="pendingTrips"></section>
     </section>
-
     <section class="profile-sidebar">
       <div class="name-date-container">
         <p class="traveler-name-title">traveler name</p>

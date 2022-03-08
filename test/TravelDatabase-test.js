@@ -2,7 +2,6 @@ import { expect } from 'chai';
 import TravelDatabase from '../src/TravelDatabase';
 import Traveler from '../src/Traveler';
 
-
 describe('Travel Database', () => {
 
   let destinationsSubset, travelDatabase, allTravelData;
@@ -17,8 +16,7 @@ describe('Travel Database', () => {
 
     allTravelData = {
       allTravelers: [
-        {id: 1, name: "Ham Leadbeater", travelerType: "relaxer", travelerTrips: [{id: 117, userID: 1, destinationID: 28, travelers: 3, date: "2021/01/09", duration: 15, status: "approved", suggestedActivities: []}], pastTrips: [], upcomingTrips: [], pendingTrips: [], currentTrip: [], 
-        destinations: destinationsSubset},
+        {id: 1, name: "Ham Leadbeater", travelerType: "relaxer", travelerTrips: [{id: 117, userID: 1, destinationID: 28, travelers: 3, date: "2021/01/09", duration: 15, status: "approved", suggestedActivities: []}], pastTrips: [], upcomingTrips: [], pendingTrips: [], currentTrip: [], destinations: destinationsSubset},
         {id: 2, name: "Rachael Vaughten", travelerType: "thrill-seeker"},
         {id: 3, name: "Sibby Dawidowitsch", travelerType: "shopper"}],
       allTrips: [
@@ -31,9 +29,8 @@ describe('Travel Database', () => {
         {id: 9,destination: "Amsterdam, Netherlands",estimatedLodgingCostPerDay: 100,estimatedFlightCostPerPerson: 950,image: "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",alt: "canal with boats and trees and buildings along the side"}]
     };
 
-    travelDatabase = new TravelDatabase(allTravelData)
-
-  })
+    travelDatabase = new TravelDatabase(allTravelData);
+  });
 
   it('should be a function', function () {
     expect(TravelDatabase).to.be.a('function');
@@ -48,7 +45,6 @@ describe('Travel Database', () => {
   });
 
   it('should keep track of all travelers', function () {
-    console.log(travelDatabase.travelers);
     expect(travelDatabase.travelers).to.eql(allTravelData.allTravelers);
   });
 
@@ -67,13 +63,6 @@ describe('Travel Database', () => {
   it('should keep track of the current traveler', function () {
     travelDatabase.findATraveler(1);
     expect(travelDatabase.currentTraveler).to.eql(allTravelData.allTravelers[0]);
-    expect(travelDatabase.currentTraveler).to.be.an.instanceOf(Traveler)
+    expect(travelDatabase.currentTraveler).to.be.an.instanceOf(Traveler);
   });
-
-
-
-
-
-
-
-})
+});
