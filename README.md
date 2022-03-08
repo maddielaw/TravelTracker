@@ -24,7 +24,7 @@ Users can then choose to book a new trip and select date, duration, number of tr
 ## Deployment
 travelTracker requires a local server be running in order to work. You will need to access the [backend server repo](https://github.com/turingschool-examples/travel-tracker-api), clone it down to your local machine, and follow the README instructions.
 
-Once you have the server running on your local machine you can access travelTracker at the deployment link (link will be updated soon!)
+Once you have the server running on your local machine you can access travelTracker at the [deployment link](http://maddielaw.github.io/TravelTracker).
 
 
 ## Features
