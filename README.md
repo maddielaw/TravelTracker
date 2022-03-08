@@ -29,11 +29,6 @@ Once you have the server running on your local machine you can access travelTrac
 
 ## Features
 
-- The game will track possible winning and draw conditions and alert players when one has won or when a draw has been reached.
-- After a win or draw the board will automatically reset after a period of time.
-- The win counter for each side will track the number of wins each player has.
-- The game is responsive across desktop, tablet, and mobile allowing users to play on the go (or while out camping)!
-
 ### Login Page
 
 The user will see the login page on load -- the login credentials are:
